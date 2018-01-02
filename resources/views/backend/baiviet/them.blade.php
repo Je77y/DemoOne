@@ -10,77 +10,46 @@
                     <div class="content">
                         <form>
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Company (disabled)</label>
-                                        <input type="text" class="form-control" disabled placeholder="Company" value="Creative Code Inc.">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label>Username</label>
-                                        <input type="text" class="form-control" placeholder="Username" value="michael23">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input type="email" class="form-control" placeholder="Email">
+                                        <label>Chủ đề</label>
+                                        <select class="form-control">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First Name</label>
-                                        <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                        <label>Tiêu đề</label>
+                                        <input type="text" class="form-control" placeholder="Company">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Last Name</label>
-                                        <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
+                                        <label>Tóm tắt</label>
+                                        <textarea class="form-control" rows="5" name="content" placeholder="Tóm tắt"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>City</label>
-                                        <input type="text" class="form-control" placeholder="City" value="Mike">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Country</label>
-                                        <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label>Postal Code</label>
-                                        <input type="number" class="form-control" placeholder="ZIP Code">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>About Me</label>
+                                        <label>Nội dung</label>
                                         <textarea class="form-control ckeditor" rows="10" name="content" placeholder="Nội dung"></textarea>
                                     </div>
                                 </div>
                             </div>
-                            <a href="/admin/baiviet" class="btn btn-default btn-fill pull-left">Quay lai</a>
-                            <button type="submit" class="btn btn-info btn-fill pull-right">Tạo mới</button>
+                            <a href="/admin/baiviet" class="btn btn-default pull-right">Quay lai</a>
+                            <button type="submit" class="btn btn-info btn-fill pull-left">Tạo mới</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -90,4 +59,14 @@
         </div>
     </div>
 </div>
+@endsection
+@section('css')
+<!-- Latest compiled and minified CSS -->
+
+@endsection
+@section('script')
+<!-- Ckeditor  -->
+<script src="ckeditor/ckeditor.js"></script>
+<!-- Bootstrap Select -->
+
 @endsection

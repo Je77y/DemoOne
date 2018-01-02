@@ -19,11 +19,11 @@
     <!--  CSS for Demo Purpose, don't include it in your project     -->
     <link href="backend/assets/css/demo.css" rel="stylesheet" />
     <!--  Your CSS -->
-    @yield('css')
     <!--  Fonts and icons     -->
     <link href="backend/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
     <link href="backend/assets/css/font-awesome.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    @yield('css')
 </head>
 
 <body>
@@ -67,8 +67,6 @@
         </div>
     </div>
 </body>
-<!-- Ckeditor  -->
-<script src="ckeditor/ckeditor.js"></script>
 <!--   Core JS Files   -->
 <script src="backend/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
 <script src="backend/assets/js/bootstrap.min.js" type="text/javascript"></script>

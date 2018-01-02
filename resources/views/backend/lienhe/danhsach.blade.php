@@ -36,9 +36,6 @@
                                     <td>$36,738</td>
                                     <td>Niger</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -50,9 +47,6 @@
                                     <td>$23,789</td>
                                     <td>Curaçao</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -64,9 +58,6 @@
                                     <td>$56,142</td>
                                     <td>Netherlands</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -78,9 +69,6 @@
                                     <td>$38,735</td>
                                     <td>Korea, South</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -92,9 +80,6 @@
                                     <td>$63,542</td>
                                     <td>Malawi</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
                                         </button>
@@ -106,9 +91,6 @@
                                     <td>$78,615</td>
                                     <td>Chile</td>
                                     <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
                                         <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times"></i>
                                         </button>
