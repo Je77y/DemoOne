@@ -1,15 +1,15 @@
-@extends('backend/layout/base') @section('title', 'Quản lý bài viết') @section('content')
+@extends('backend/layout/base') @section('title', 'Quản lý chủ đề') @section('content')
 <div class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Chủ đề</h4>
-                        <p class="category">Here is a subtitle for this table</p>
+                        <h4 class="title">Chủ đề / Dự án</h4>
+                        <br>
                     </div>
                     <div class="col-md-6">
-                        <a href="/admin/baiviet/them" class="btn btn-primary">Tạo chủ đề</a>
+                        <a href="/admin/chude/them" class="btn btn-primary">Thêm chủ đề / dự án</a>
                     </div>
                     <div class="col-md-6">
                         <form action="#" method="get" accept-charset="utf-8">
@@ -34,92 +34,42 @@
                                 <th></th>
                             </thead>
                             <tbody>
+                                <?php
+                                    $page = isset($_GET['page']) ? $_GET['page'] : 0; 
+                                    $index = 1 + $page*9 
+                                ?>
+                                @foreach($dschude as $chude)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
+                                    <td>{{ $index++ }}</td>
+                                    <td>{{ $chude->tenchude }}</td>
+                                    <td>
+                                        @if($chude->duan == 1)
+                                            <span class="label label-primary">Dự án</span>
+                                        @else 
+                                            <span class="label label-info">Chủ đề</span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $chude->tomtat }}</td>
+                                    <td>
+                                        <img src="upload/{{ $chude->hinhanh }}" style="width: 80px; height: 80px; " alt="loi">
+                                    </td>
                                     <td class="text-right">
-                                        <a type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
+                                        <a href="/admin/chude/sua/{{ $chude->id }}" type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
                                             <i class="fa fa-edit fa-lg"></i>
                                         </a>
-                                        <a type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
+                                        <a href="/admin/chude/xoa/{{ $chude->id }}" type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
                                             <i class="fa fa-times fa-lg"></i>
                                         </a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            {!! $dschude->render() !!}
+                        </div>
                     </div>
                 </div>
             </div>
