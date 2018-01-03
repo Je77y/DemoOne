@@ -52,9 +52,23 @@ class ChuDeController extends Controller
         return redirect('/admin/chude');
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $text = $request->get('tukhoa');
+        $duan = $request->get('isDuAn');
+        if (!empty($text))
+        {
+            if ($duan != -1)
+                $dschude = ChuDe::whereRaw('match(tenchude, tomtat) against(? in natural language mode)', $text)->get();
+            $dschude = ChuDe::where('duan', $duan)->get();
+        }
+        else
+        {
+            if ($duan == -1)
+                return redirect('/admin/chude');
+            $dschude = ChuDe::where('duan', $duan)->get();
+        }
+        return view('backend/chude/timkiem', compact('dschude', 'text', 'duan'));
     }
 
     public function edit($id)

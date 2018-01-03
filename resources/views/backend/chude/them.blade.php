@@ -29,8 +29,10 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Dự án</label>
-                                        <input name="duan" type="checkbox" class="checkbox" value="1">
+                                        <label>
+                                            Dự án
+                                            <input style="margin-left: 15px;" name="duan" type="checkbox" value="1">
+                                        </label>
                                     </div>
                                 </div>
                             </div>
@@ -49,7 +51,6 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>

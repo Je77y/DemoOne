@@ -29,11 +29,12 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Dự án</label>
-                                        <input name="duan" type="checkbox" class="checkbox" value="1"  @if($chude->duan == 1)
+                                        <label>Dự án
+                                        <input style="margin-left: 15px" name="duan" type="checkbox" class="checkbox" value="1"  @if($chude->duan == 1)
                                             {{ 'checked' }}
                                         @endif
                                         >
+                                        </label>
                                     </div>
                                 </div>
                             </div>

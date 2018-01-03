@@ -28,11 +28,12 @@
 
 <body>
     <div class="wrapper">
-        @include('backend/layout/header')
+            @include('backend/layout/header')
+        
 
         <div class="main-panel">
-            @include('backend/layout/menu')
-
+        @include('backend/layout/menu')
+            
             @yield('content')
 
             <footer class="footer">

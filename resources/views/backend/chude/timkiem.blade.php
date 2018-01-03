@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="header">
-                        <h4 class="title">Chủ đề / Dự án</h4>
+                        <h4 class="title">Tìm kiếm: {{ $text }} </h4>
                         <br>
                         <form action="/admin/chude/timkiem" method="post" accept-charset="utf-8">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -20,14 +20,14 @@
                                     <div class="form-group">
                                         <label>Loại dự án</label>
                                         <select class="form-control" name="isDuAn">
-                                            <option value="-1">Tất cả</option>
-                                            <option value="0">Chủ đề</option>
-                                            <option value="1">Dự án</option>
+                                            <option value="-1" @if($duan == -1) {{ 'selected' }} @endif>Tất cả</option>
+                                            <option value="0" @if($duan == 0) {{ 'selected' }} @endif >Chủ đề</option>
+                                            <option value="1" @if($duan == 1) {{ 'selected' }} @endif>Dự án</option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-success btn-fill pull-left"><i class="fa fa-search" aria-hidden="true"></i>  Lọc / Tìm kiếm</button>
+                            <button type="submit" class="btn btn-success btn-fill pull-left"><i class="fa fa-search" aria-hidden="true"></i> Lọc / Tìm kiếm</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -78,7 +78,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            {!! $dschude->render() !!}
+                            <a href="/admin/chude" class="btn btn-default pull-left" style="margin-bottom: 10px; margin-left: 15px ">Quay lai</a>
                         </div>
                     </div>
                 </div>
@@ -86,8 +86,4 @@
         </div>
     </div>
 </div>
-@endsection @section('css')
-<link rel="stylesheet" type="text/css" href="backend/assets/css/chosen.min.css"> @endsection @section('script')
-<script src="backend/assets/js/chosen.jquery.min.js"></script>
-<script src="backend/assets/js/chosen.proto.min.js"></script>
 @endsection

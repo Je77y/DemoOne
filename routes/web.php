@@ -26,6 +26,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::post('/chude/tao', 'ChuDeController@store');
 	Route::get('/chude/sua/{id}', 'ChuDeController@edit');
 	Route::post('/chude/capnhat/{id}', 'ChuDeController@update');
+	Route::post('/chude/timkiem', 'ChuDeController@show');
 	Route::get('/chude/xoa/{id}', 'ChuDeController@destroy');
 
 	Route::get('/lienhe', 'LienHeController@index');

@@ -1,8 +1,8 @@
 <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
     <div class="sidebar-wrapper">
        <div class="logo">
-                <a href="#" class="simple-text">
-                    Quản lý dự án
+                <a href="/admin" class="simple-text">
+                    Trang chủ
                 </a>
         </div>
         <ul class="nav">
