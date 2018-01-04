@@ -1,0 +1,17 @@
+.la-videos .post-loop .post-item .entry-thumbnail > a:before,
+.la-videos .post-loop .post-item .entry-thumbnail > a:after{
+    display: none !important;
+}
+.la-videos .post-loop .post-item .entry-thumbnail a i {
+    position: absolute;
+    color: rgb(247, 40, 40);
+    top: 50%;
+    left: 50%;
+    font-size: 40px;
+    width: 40px;
+    margin: -20px 0 0 -20px;
+    text-align: center;
+}
+.la-videos .post-loop .post-item .entry-thumbnail a.loading i{
+    color: #fff;
+}
