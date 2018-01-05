@@ -22,6 +22,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/hinhanh', 'HinhAnhController@index');
 
 	Route::get('/chude', 'ChuDeController@index');
+	Route::get('/chude/list', 'ChuDeController@chudes');
+	Route::post('/chude/store', 'ChuDeController@store');
+	Route::get('/chude/edit/{id}', 'ChuDeController@edit');
+	Route::post('/chude/update', 'ChuDeController@update');
+	Route::get('/chude/show/{id}', 'ChuDeController@show');
+	Route::get('/chude/destroy/{id}', 'ChuDeController@destroy');
 
 	Route::get('/lienhe', 'LienHeController@index');
 
