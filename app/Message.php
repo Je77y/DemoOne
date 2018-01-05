@@ -4,12 +4,12 @@ namespace App;
 
 class Message
 {
-	public $thongbao;
-    public $noidung;
+	public $status;
+    public $message;
 
-    public function __construct($thongbao, $noidung)
+    public function __construct($status, $message)
     {
-    	$this->thongbao = $thongbao;
-    	$this->noidung = $noidung;
+    	$this->status = $status;
+    	$this->message = $message;
     }
 }

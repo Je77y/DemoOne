@@ -3,7 +3,9 @@
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Sửa chủ đề</h4>
+            <div class="center">
+                <h4 class="modal-title">Sửa chủ đề</h4>
+            </div>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -18,18 +20,24 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Tên chủ đề</label>
-                            <input name="tenchude" type="text" class="form-control" placeholder="Tên chủ đề" value="{{ $chude->tenchude }}">
+                            <label>Tên chủ đề</label> <span class="requireTxt">(*)</span>
+                            <input name="tenchude" type="text" class="form-control required" placeholder="Tên chủ đề" value="{{ $chude->tenchude }}">
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Tóm tắt</label>
-                            <textarea name="tomtat" class="form-control" row="8" placeholder="Tóm tắt">{{ $chude->tomtat }}</textarea>
+                            <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
+                            <textarea name="tomtat" class="form-control required" row="8" placeholder="Tóm tắt">{{ $chude->tomtat }}</textarea>
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
                         </div>
                         <!-- /.form-group -->
                         <!-- /.form-group -->
                         <div class="form-group">
                             <label>Hình ảnh</label>
-                            <img class="img-responsive pad" src="{{ $chude->hinhanh }}">
+                            <img class="img-responsive pad" src="upload/{{ $chude->hinhanh }}" alt="{{ $chude->tenchude }}">
                             <input type="file" name="hinhanh">
                         </div>
                     </form>
@@ -37,36 +45,67 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default " data-dismiss="modal">Đóng</button>
-            <button type="button" class="btn btn-success pull-left" onclick="CapNhatChuDe({{ $chude->id }})">Cập nhật</button>
+            <div class="center">
+                <button type="button" class="btn btn-success" onclick="CapNhatChuDe({{ $chude->id }})">Cập nhật</button>
+                <button type="button" class="btn btn-default " data-dismiss="modal">Đóng</button>
+            </div>
         </div>
     </div>
     <!-- /.modal-content -->
 </div>
 <!-- /.modal-dialog -->
 <script>
-var CapNhatChuDe = function(id){
-    var data = $("#frm-capnhat").serialize();
-    var post = $("#frm-capnhat").attr('method');
-    var url = $("#frm-capnhat").attr('action');
-    $.ajaxSetup({
-     headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-    });
-    $.ajax({
-        type: post,
-        url: url,
-        contentType:'application/json',
-        dataType:'json',
-        data: data,
-        success: function(rs) {
-            $.notify(rs.noidung, "success");
-        },
-        error:function()
-        {
-            $.notify("Cap nhat that bai", "error");
+$("#frm-capnhat").submit(function() {
+    var valid = checkForm("frm-capnhat");
+    if (valid) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var dataString;
+        event.preventDefault();
+        var contentType1 = false;
+        var action = $("#frm-capnhat").attr("action");
+        if ($("#frm-capnhat").attr("enctype") == "multipart/form-data") {
+            //this only works in some browsers.
+            //purpose? to submit files over ajax. because screw iframes.
+            //also, we need to call .get(0) on the jQuery element to turn it into a regular DOM element so that FormData can use it.
+            dataString = new FormData($("#frm-capnhat").get(0));
+            contentType1 = false;
+            processData = false;
+        } else {
+            // regular form, do your own thing if you need it
         }
-    });
+        $.ajax({
+            type: "POST",
+            url: action,
+            data: dataString,
+            dataType: "json", //change to your own, else read my note above on enabling the JsonValueProviderFactory in MVC
+            contentType: false,
+            processData: false,
+            success: function(mss) {
+
+                if (mss.status) {
+
+                    $.notify(mss.message, "success");
+                    // console.log(mss.noidung);
+                    //
+                    $("#modal-default").modal("hide");
+                    reloadAction();
+                } else {
+                    $.notify(mss.message, "error");
+                }
+            },
+            error: function() {
+                $.notify("Loi. Them that bai", "error");
+            }
+        });
+    }
+
+})
+
+var CapNhatChuDe = function(id) {
+    $("#frm-capnhat").submit();
 }
 </script>

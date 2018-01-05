@@ -22,6 +22,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/hinhanh', 'HinhAnhController@index');
 
 	Route::get('/chude', 'ChuDeController@index');
+	Route::post('/chude/search', 'ChuDeController@search');
+	Route::get('/chude/reload', 'ChuDeController@reload');
 	Route::get('/chude/list', 'ChuDeController@chudes');
 	Route::post('/chude/store', 'ChuDeController@store');
 	Route::get('/chude/edit/{id}', 'ChuDeController@edit');

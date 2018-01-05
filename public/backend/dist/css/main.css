@@ -1,0 +1,47 @@
+
+.center{
+	text-align: center;
+}
+
+.background-none
+{
+	background-color: transparent !important;
+}
+
+.padding-10
+{
+	padding: 10px;
+}
+
+.margin-10
+{
+	margin: 10px;
+}
+.nomargin{
+	margin: 0px !important;
+}
+.nopadding
+{
+	padding: 0px !important;
+}
+.width-30{
+	width: 30px;
+}
+.note-error {
+    padding: 0 1px;
+    font-size: 11px;
+    line-height: 15px;
+    height: 15px;
+}
+
+.mes-note-error {
+    display: none;
+    color: #e08374 !important;
+}
+.red{
+	color: red;
+}
+.requireTxt{
+	color: red;
+	font-weight: bold;
+}

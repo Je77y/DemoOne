@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="backend/bower_components/Ionicons/css/ionicons.min.css">
   <!--  -->
   <link rel="stylesheet" href="backend/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" type="text/css" href="backend/dist/css/main.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
@@ -239,5 +240,6 @@
 @yield('js')
 
 <script src="backend/dist/js/notify.min.js" type="text/javascript" charset="utf-8" async defer></script>
+<script src="backend/dist/js/validateProvider.js"></script>
 </body>
 </html>

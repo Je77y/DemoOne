@@ -9,19 +9,41 @@ use App\Message;
 
 class ChuDeController extends Controller
 {
-    public function chudes()
+    public function search(Request $request) 
     {
-        $dschude = ChuDe::all();
-        return view('backend/chude/list', compact('dschude'));
+        $tukhoa = $request->get('tukhoa');
+        $loai = $request->get('loai');
+        $chude = ChuDe::where('id', '>', 0);
+        if($loai != -1)
+        {
+           $chude = $chude->where('duan', $loai);
+        }
+        if (!empty($tukhoa)) {
+            $chude = $chude->where('tenchude', 'like', '%'.$tukhoa.'%');
+            # code...
+        }
+        return response(json_encode($chude->orderBy('id', 'desc')->get()));
     }
+
+    // public function chudes()
+    // {
+    //     return view('backend/chude/list');
+    // }
 
     public function index()
     {
-        return view('backend/chude/index');
+        $dschude6 = ChuDe::orderBy('id', 'desc')->get();
+        $dschude = json_encode($dschude6);
+        return view('backend/chude/index', compact('dschude'));
     }
-
+    public function reload()
+    {
+        $dschude = ChuDe::orderBy('id', 'desc')->get();
+        return response(json_encode($dschude));
+    }
     public function store(Request $request)
     {
+        $mss = new Message(true, 'Thêm mới chủ đề thành công');
         if($request->ajax())
         {
             $chude = new ChuDe;
@@ -31,11 +53,11 @@ class ChuDeController extends Controller
 
             if($request->hasFile('hinhanh'))
             {
+                
                 $file = $request->file('hinhanh');
                 $duoi = $file->getClientOriginalExtension();
                 if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
                 {
-                    $mss = new Message('Loi', 'Sai dinh dang anh');
                     return response(json_encode($mss));
                 }
 
@@ -52,9 +74,15 @@ class ChuDeController extends Controller
             {
                 $chude->hinhanh = "notfoundimg.png";
             }
+            try {
             $chude->save();
-            $mss = new Message('Thanh cong', 'Them thanh cong');
-            return response()->json($mss);
+                
+            } catch (Exception $e) {
+                $mss->status = false;
+                $mss->message = "Lỗi. Thêm mới thất bại";
+            }
+            
+            return response(json_encode($mss));
         }
     }
 
@@ -72,6 +100,7 @@ class ChuDeController extends Controller
 
     public function update(Request $request)
     {
+         $mss = new Message(true, 'Cập nhật chủ đề thành công');
         if($request->ajax())
         {
             $id = $request->get('id');
@@ -98,22 +127,28 @@ class ChuDeController extends Controller
                 }
                 $file->move("upload", $Hinh);
                 $chude->hinhanh = $Hinh;
+
             }
-            else 
-            {
-                $chude->hinhanh = $request->get('hinhanh');
-            }
+           
+            try {
             $chude->save();
-            $mss = new Message('Thanh cong', 'Them thanh cong');
-            return response()->json($mss);
+                
+            } catch (Exception $e){
+               $mss->status = false;
+               $mss->message = "Không lưu được dữ liệu";
+
+            }
+           
+            return response(json_encode($mss));
+            // return response($request->all());
         }
     }
 
     public function destroy($id)
     {
         $chude = Chude::find($id);
-        $chude->destroy();
-        $mss = new Message("Thanh cong", "Xoa thanh cong" );
-        return response()->json($mss);
+        Chude::destroy($id);
+        $mss = new Message(true, "Xóa chủ đề thành công" );
+        return response(json_encode($mss));
     }
 }
