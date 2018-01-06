@@ -1,23 +1,6 @@
-@extends('backend/layout/base') @section('css')
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="backend/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="backend/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <!-- iCheck for checkboxes and radio inputs -->
-    <link rel="stylesheet" href="backend/plugins/iCheck/all.css">
-    <!-- Bootstrap Color Picker -->
-    <link rel="stylesheet" href="backend/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css">
-    <!-- Bootstrap time Picker -->
-    <link rel="stylesheet" href="backend/plugins/timepicker/bootstrap-timepicker.min.css">
-    <!-- Select2 -->
-    <link rel="stylesheet" href="backend/bower_components/select2/dist/css/select2.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-           folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="backend/dist/css/skins/_all-skins.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="backend/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="backend/dist/css/AdminLTE.min.css"> @endsection @section('title', 'Home ') @section('content')
+@extends('backend/layout/base')
+@section('title', 'Home ')
+@section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -158,38 +141,7 @@
         </div>
     </div>
 @endsection @section('js')
-    <!-- jQuery 3 -->
-    <script src="backend/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="backend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Select2 -->
-    <script src="backend/bower_components/select2/dist/js/select2.full.min.js"></script>
-    <!-- InputMask -->
-    <script src="backend/plugins/input-mask/jquery.inputmask.js"></script>
-    <script src="backend/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-    <script src="backend/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-    <!-- date-range-picker -->
-    <script src="backend/bower_components/moment/min/moment.min.js"></script>
-    <script src="backend/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- bootstrap datepicker -->
-    <script src="backend/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <!-- bootstrap color picker -->
-    <script src="backend/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-    <!-- bootstrap time picker -->
-    <script src="backend/plugins/timepicker/bootstrap-timepicker.min.js"></script>
-    <!-- SlimScroll -->
-    <script src="backend/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- iCheck 1.0.1 -->
-    <script src="backend/plugins/iCheck/icheck.min.js"></script>
-    <!-- FastClick -->
-    <script src="backend/bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="backend/dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="backend/dist/js/demo.js"></script>
-    <!-- DataTables -->
-    <script src="backend/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-    <script src="backend/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
     <script>
         // $.ajax({
         //     type: 'GET',
