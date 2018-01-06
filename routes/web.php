@@ -51,3 +51,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 	Route::get('/tailieu', 'TaiLieuController@index');
 });
+Route::group(['namespace' => 'Client'], function() {
+    Route::get('/home', 'HomeController@index');
+
+});
