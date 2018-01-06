@@ -17,22 +17,22 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active">
-                <a href="#">
+                <a href="/admin">
                     <i class="fa fa-dashboard"></i> <span>Trang chu</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/album">
                     <i class="fa fa-files-o"></i><span>Album</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/banner">
                     <i class="fa fa-th"></i> <span>Banner</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/blockcontent">
                     <i class="fa fa-pie-chart"></i><span>BlockContent</span>
                 </a>
             </li>
@@ -42,32 +42,32 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/danhmuc">
                     <i class="fa fa-edit"></i> <span>Danh mục</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/hinhanh">
                     <i class="fa fa-table"></i> <span>Hình ảnh</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-envelope"></i> <span>Liên hệ</span>
+                <a href="/admin/dangkyemail">
+                    <i class="fa fa-envelope"></i> <span>Đăng ký Email</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/baiviet">
                     <i class="fa fa-folder"></i> <span>Bài viết</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/slide">
                     <i class="fa fa-share"></i> <span>Slide</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="/admin/tailieu">
                     <i class="fa fa-share"></i> <span>Tài liệu</span>
                 </a>
             </li>

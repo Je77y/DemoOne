@@ -8,8 +8,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index');
 	Route::get('/dangnhap', 'UserController@login');
 
-	Route::get('/baiviet', 'PostController@index');
-	Route::get('/baiviet/them', 'PostController@create');
+	Route::get('/baiviet', 'PostController@Index');
+	Route::get('/baiviet/create', 'PostController@Create');
+	Route::post('/baiviet/store', 'PostController@Store');
+	Route::get('/baiviet/edit/{id}', 'PostController@Edit');
+	Route::post('/baiviet/update', 'PostController@Update');
+	Route::get('/baiviet/delete/{id}', 'PostController@Delete');
+	Route::get('/baiviet/destroy/{id}', 'PostController@Destroy');
 
 	Route::get('/danhmuc', 'DanhMucController@index');
 
