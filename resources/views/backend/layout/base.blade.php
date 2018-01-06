@@ -254,7 +254,7 @@
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
-@yield('js')
+
 <script src="backend/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="backend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -288,5 +288,6 @@
 <script src="backend/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="backend/dist/js/notify.min.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="backend/dist/js/validateProvider.js"></script>
+@yield('js')
 </body>
 </html>
