@@ -71,6 +71,11 @@
                     <i class="fa fa-share"></i> <span>Tài liệu</span>
                 </a>
             </li>
+            <li>
+                <a href="/admin/nguoidung">
+                    <i class="fa fa-share"></i> <span>Người dùng</span>
+                </a>
+            </li>
             
         </ul>
     </section>
