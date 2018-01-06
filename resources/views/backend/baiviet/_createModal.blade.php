@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label> <span class="requireTxt">(*)</span>
-                            <textarea name="noidung" class="form-control required" row="8" placeholder="Nội dung" required></textarea>
+                            <textarea id="editor1" name="noidung" class="form-control " row="8" placeholder="Nội dung" ></textarea>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
@@ -69,7 +69,17 @@
         </div>
     </div>
 </div>
+
 <script>
+
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1')
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
+    })
+
     $("#frm-themmoi").submit(function() {
         event.preventDefault();
         var valid = checkForm("frm-themmoi");
@@ -108,7 +118,7 @@
                     $("#modal-create").modal("hide");
                     $("#modal-create").empty();
                     //-----------------------------------
-                    //reloadAction();
+                    reloadAction();
                 },
                 error: function() {
                     $.notify("Loi. Them that bai", "error");

@@ -60,20 +60,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <table id="tblChuDe" class="table table-bordered table-striped" style="width:100%;">
+                            <table id="tblBaiViet" class="table table-bordered table-striped" style="width:100%;">
                                 <thead>
                                 <tr>
                                     <th class="width-30">Id</th>
                                     <th>Hình ảnh</th>
                                     <th>Tên bài viết</th>
-                                    <th>Chủ đề</th>
                                     <th>Hiển thị</th>
                                     <th>Slub</th>
                                     <th></th>
                                 </tr>
                                 </thead>
                                 <tbody id="baiviet-info">
-                                @include('backend/baiviet/_listTable')
+                                {{--@include('backend/baiviet/_listTable')--}}
                                 </tbody>
                             </table>
                         </div>
@@ -90,6 +89,14 @@
 @endsection
 @section('js')
     <script>
+        var dataObj = '<?php echo $dsbaiviet; ?>';
+
+        var jsdata = JSON.parse(dataObj);
+        $(document).ready(function () {
+            loadDataTable(jsdata);
+        })
+
+
         var createBaiViet = function(){
             $.ajax({
                 type: 'get',
@@ -97,47 +104,137 @@
                 success: function(data){
                     $("#modal-create").html(data);
                     $("#modal-create").modal("show");
+
                 }
             })
         }
-
-        var editBaiViet = function(id){
+        var editBaiViet = function(id) {
             $.ajax({
                 type: 'get',
                 url: '/admin/baiviet/edit/'+id,
                 success: function(data) {
                     $("#modal-edit").html(data);
                     $("#modal-edit").modal("show");
-                }
-            })
-        }
-
-        var deleteBaiViet = function(id) {
-            $.ajax({
-                type: 'get',
-                url: '/admin/baiviet/delete/'+id,
-                success: function(data) {
-                    $("#modal-delete").html(data);
-                    $("#modal-delete").modal("show");
+                    reloadAction();
                 },
                 error: function() {
                     console.log('Lỗi')
                 }
             })
         }
-//        function reloadAction() {
-//            $.ajax({
-//                type: "get",
-//                url: '/admin/baiviet/reload',
-//                dataType: 'json',
-//                success: function(mss) {
-//                    loadDataTable(mss);
-//                },
-//                error: function() {
-//                    $.notify("Lỗi. Không thực hiện được thao tác", "error");
-//                }
-//            })
-//        }
+        function deleteBaiViet(id) {
+            $.confirm({
+                'title': 'Xác nhận xóa',
+                'message': 'Bạn có chắc chắn muốn xóa?',
+                'buttons': {
+                    'Đồng ý': {
+                        'class': 'btn-confirm-yes btn-info',
+                        'action': function () {
+                            $.ajax({
+                                type: 'GET',
+                                url: '/admin/baiviet/destroy/'+id,
+                                dataType: 'json',
+                                success: function(mss) {
+                                    if(mss.status){
+                                        $.notify("Xóa bài viết thành công", "success");
+                                        $("#modal-delete").modal("hide");
+                                        reloadAction();
+                                    }
+                                    else {
+                                        $.notify(mss.message, "error");
+                                    }
+                                },
+                                error: function() {
+                                    $.notify("Lỗi. không thực hiện được thao tác", "error");
+                                }
+                            })
+                        }
+                    },
+                    'Hủy bỏ': {
+                        'class': 'btn-danger',
+                        'action': function () { }
+                    }
+                }
+            });
+        }
+
+        function reloadAction() {
+            $.ajax({
+                type: "get",
+                url: '/admin/baiviet/reload',
+                dataType: 'json',
+                success: function(mss) {
+                    loadDataTable(mss);
+                },
+                error: function() {
+                    $.notify("Lỗi. Không thực hiện được thao tác", "error");
+                }
+            })
+        }
+
+        var loadDataTable = function(item) {
+            var table = $('#tblBaiViet').DataTable({
+
+                "data": item,
+                "bDestroy": true,
+                "iDisplayLength": 20,
+                paging: true,
+                "aoColumns": [{
+                    "orderable": false,
+                    "sClass": "center",
+                    "mData": function(data, type, dataToSet) {
+                        return '<input class="global_" type="checkbox" name="ids" value="' + data.id + '" />';
+                    },
+                    "orderable": false,
+                },
+
+                    //{
+                    //    "class": 'details-control',
+                    //    "orderable": false,
+                    //    "data": null,
+                    //    "defaultContent": ''
+                    //},
+                    {
+                        "mData": function(data, type, dataToSet) {
+                            var str = '<img class="attachment-img center" alt="' + data.tenbaiviet + '" src="/upload/' + data.hinhanh + '" style="width: 50px; height: 50px">';
+                            return str;
+                        },
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+                            return data.tenbaiviet;
+                        },
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+                            var str = data.hienthi === 0 ? '<span class=" badge bg-aqua">Không</span>' : '<span class=" badge bg-green">Có</span>';
+                            return str;
+                        },
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+                            return data.slug;
+                        },
+                    },
+                    {
+                        "orderable": false,
+                        "sClass": "center",
+                        "mData": function(data, type, dataToSet) {
+                            var str = '<a href="javascript:void(0)" onclick="editBaiViet(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>';
+                            str += '<a href="javascript:void(0)" onclick="deleteBaiViet(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+                            return str;
+                        },
+
+                    },
+
+                ],
+                //"order": [[1, 'asc']],
+                "fnDrawCallback": function(oSettings) {
+
+                    //runAllCharts()
+                }
+            });
+        }
 
     </script>
 @endsection

@@ -9,6 +9,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/dangnhap', 'UserController@login');
 
 	Route::get('/baiviet', 'PostController@Index');
+	Route::get('/baiviet/reload', 'PostController@Reload');
 	Route::get('/baiviet/create', 'PostController@Create');
 	Route::post('/baiviet/store', 'PostController@Store');
 	Route::get('/baiviet/edit/{id}', 'PostController@Edit');

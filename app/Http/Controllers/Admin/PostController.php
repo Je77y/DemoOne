@@ -17,8 +17,8 @@ class PostController extends Controller
 
     public function Index()
     {
-        $dsbaiviet = BaiViet::orderBy('created_at', 'desc')->get();
-//        $dsbaiviet = json_encode($dsbaiviet1);
+        $dsbaiviet1 = BaiViet::orderBy('created_at', 'desc')->get();
+        $dsbaiviet = json_encode($dsbaiviet1);
         return view('backend/baiviet/danhsach', compact('dsbaiviet'));
     }
 
@@ -117,10 +117,6 @@ class PostController extends Controller
                 }
                 $file->move("upload", $Hinh);
                 $baiviet->hinhanh = $Hinh;
-            }
-            else
-            {
-                $baiviet->hinhanh = "notfoundimg.png";
             }
             try {
                 $baiviet->save();

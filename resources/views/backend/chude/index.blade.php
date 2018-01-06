@@ -213,16 +213,40 @@
         //     })
         // })
 
-        var xoachude = function(id) {
-            $.ajax({
-                type: 'GET',
-                url: 'admin/chude/show/' + id,
-                data: { 'id': id },
-                success: function(rs) {
-                    $("#modal-delete").html(rs);
-                    $("#modal-delete").modal("show");
+        function xoachude(id) {
+            $.confirm({
+                'title': 'Xác nhận xóa',
+                'message': 'Bạn có chắc chắn muốn xóa?',
+                'buttons': {
+                    'Đồng ý': {
+                        'class': 'btn-confirm-yes btn-info',
+                        'action': function () {
+                            $.ajax({
+                                type: 'GET',
+                                url: '/admin/chude/destroy/'+id,
+                                dataType: 'json',
+                                success: function(mss) {
+                                    if(mss.status){
+                                        $.notify("Xóa bài viết thành công", "success");
+                                        $("#modal-delete").modal("hide");
+                                        reloadAction();
+                                    }
+                                    else {
+                                        $.notify(mss.message, "error");
+                                    }
+                                },
+                                error: function() {
+                                    $.notify("Lỗi. không thực hiện được thao tác", "error");
+                                }
+                            })
+                        }
+                    },
+                    'Hủy bỏ': {
+                        'class': 'btn-danger',
+                        'action': function () { }
+                    }
                 }
-            })
+            });
         }
         var suachude = function(id) {
             $.ajax({
@@ -251,8 +275,7 @@
                 }
             })
         })
-    </script>
-    <script>
+
         $(function() {
             $('#example1').DataTable()
             $('#example2').DataTable({
@@ -264,42 +287,8 @@
                 'autoWidth': false
             })
         })
-    </script>
-    <!-- Page script -->
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
 
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-            //Money Euro
-            $('[data-mask]').inputmask()
 
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-            //Date range as a button
-            $('#daterange-btn').daterangepicker({
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                    },
-                    startDate: moment().subtract(29, 'days'),
-                    endDate: moment()
-                },
-                function(start, end) {
-                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-                }
-            )
-        });
 
         $("#frm-themmoi").submit(function() {
             event.preventDefault();
@@ -343,47 +332,9 @@
                         $.notify("Loi. Them that bai", "error");
                     }
                 });
-
             }
-
             return false;
-
-
         });
-
-
-
-
-        //Date picker
-        $('#datepicker').datepicker({
-            autoclose: true
-        })
-
-        //iCheck for checkbox and radio inputs
-        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-            checkboxClass: 'icheckbox_minimal-blue',
-            radioClass: 'iradio_minimal-blue'
-        })
-        //Red color scheme for iCheck
-        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-            checkboxClass: 'icheckbox_minimal-red',
-            radioClass: 'iradio_minimal-red'
-        })
-        //Flat red color scheme for iCheck
-        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-            checkboxClass: 'icheckbox_flat-green',
-            radioClass: 'iradio_flat-green'
-        })
-
-        //Colorpicker
-        $('.my-colorpicker1').colorpicker()
-        //color picker with addon
-        $('.my-colorpicker2').colorpicker()
-
-        //Timepicker
-        $('.timepicker').timepicker({
-            showInputs: false
-        })
 
         var loadDataTable = function(item) {
             var table = $('#tblChuDe').DataTable({
@@ -418,7 +369,7 @@
                         "orderable": false,
                         "mData": function(data, type, dataToSet) {
 
-                            var str = '<img class="attachment-img center" alt="' + data.tenchude + '" src="upload/' + data.hinhanh + '" style="width: 50px; height: 50px">';
+                            var str = '<img class="attachment-img center" alt="' + data.tenchude + '" src="' + data.hinhanh + '" style="width: 50px; height: 50px">';
                             return str;
                         },
 

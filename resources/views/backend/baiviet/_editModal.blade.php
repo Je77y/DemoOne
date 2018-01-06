@@ -36,7 +36,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label> <span class="requireTxt">(*)</span>
-                            <textarea name="noidung" class="form-control required" row="8" placeholder="Nội dung" required>{{ $baiviet->noidung }}</textarea>
+                            <textarea name="noidung" id="editor1" class="form-control" row="8" placeholder="Nội dung" required>{{ $baiviet->noidung }}</textarea>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
@@ -54,7 +54,7 @@
                         <div class="form-group">
                             <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
                             <img class="img-responsive pad" src="upload/{{ $baiviet->hinhanh }}" alt="{{ $baiviet->tenbaiviet }}">
-                            <input class="required" type="file" name="hinhanh" required>
+                            <input type="file" name="hinhanh" required>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
@@ -72,6 +72,13 @@
     </div>
 </div>
 <script>
+    $(function () {
+        // Replace the <textarea id="editor1"> with a CKEditor
+        // instance, using default configuration.
+        CKEDITOR.replace('editor1')
+        //bootstrap WYSIHTML5 - text editor
+        $('.textarea').wysihtml5()
+    })
     $("#frm-capnhat").submit(function() {
         event.preventDefault();
         var valid = checkForm("frm-capnhat");
@@ -110,7 +117,7 @@
                     $("#modal-edit").modal("hide");
                     $("#modal-edit").empty();
                     //-----------------------------------
-                    //reloadAction();
+                    reloadAction();
                 },
                 error: function() {
                     $.notify("Loi. Them that bai", "error");
