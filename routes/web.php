@@ -21,6 +21,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 	Route::get('/hinhanh', 'HinhAnhController@index');
 
+	//Begin CHUDE
 	Route::get('/chude', 'ChuDeController@index');
 	Route::post('/chude/search', 'ChuDeController@search');
 	Route::get('/chude/reload', 'ChuDeController@reload');
@@ -31,6 +32,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/chude/show/{id}', 'ChuDeController@show');
 	Route::get('/chude/destroy/{id}', 'ChuDeController@destroy');
 
+	//End CHUDE
 	Route::get('/lienhe', 'LienHeController@index');
 
 	Route::get('/slide', 'SlideController@index');

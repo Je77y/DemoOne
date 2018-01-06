@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <form action="/admin/chude/update" role="form" enctype="multipart/form-data" method="POST" id="frm-capnhat">
+                        <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
                         <input type="hidden" name="id" value="{{ $chude->id }}">
                         <div class="form-group">
                             <label>Loại</label>
@@ -56,15 +57,11 @@
 <!-- /.modal-dialog -->
 <script>
 $("#frm-capnhat").submit(function() {
+    event.preventDefault();
     var valid = checkForm("frm-capnhat");
     if (valid) {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
         var dataString;
-        event.preventDefault();
+
         var contentType1 = false;
         var action = $("#frm-capnhat").attr("action");
         if ($("#frm-capnhat").attr("enctype") == "multipart/form-data") {
@@ -102,7 +99,7 @@ $("#frm-capnhat").submit(function() {
             }
         });
     }
-
+    return false;
 })
 
 var CapNhatChuDe = function(id) {
