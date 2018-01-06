@@ -33,6 +33,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/chude/destroy/{id}', 'ChuDeController@destroy');
 
 	//End CHUDE
+
+    //Begin USER
+    Route::get('/nguoidung', 'UserController@Index');
+
+    //End USER
 	Route::get('/lienhe', 'LienHeController@index');
 
 	Route::get('/slide', 'SlideController@index');
