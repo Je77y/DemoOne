@@ -46,110 +46,171 @@
         <div class="modal fade" id="modal-edit">
         </div>
         <div class="modal fade" id="modal-delete">
+
+
         </div>
         <div class="modal fade" id="modal-create">
         </div>
     </div>
 @endsection
 @section('js')
-<script>
+    <script>
 
-    var dataObj = '<?php echo $data; ?>';
+        var dataObj = '<?php echo $data; ?>';
 
-    var jsdata = JSON.parse(dataObj);
-    $(document).ready(function () {
-        loadDataTable(jsdata);
-    })
-    function CreateAction() {
-         $.ajax({
-             type: 'GET',
-             url: 'admin/nguoidung/create',
-             success: function(rs) {
-                $("#modal-create").html(rs);
-                $("#modal-create").modal("show");
-             },
-             error: function() {
-                 $.notify("Lỗi. Không thực hiện được thao tác","error");
-             }
-         });
-    }
-
-    function ReloadAction() {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $.ajax({
-            type: 'POST',
-            url: 'admin/nguoidung/reload',
-            dataType:'json',
-            success: function(rs) {
-                loadDataTable(rs);
-            },
-            error: function() {
-                $.notify("Lỗi. Không thực hiện được thao tác","error");
-            }
-        });
-    }
-
-    var loadDataTable = function(item) {
-        var table = $('#tblNguoiDung').DataTable({
-
-            "data": item,
-            "bDestroy": true,
-            "iDisplayLength": 20,
-            paging: true,
-            "aoColumns": [{
-                "orderable": false,
-                "sClass": "center",
-                "mData": function(data, type, dataToSet) {
-                    return '<input class="global_" type="checkbox" name="ids" value="' + data.id + '" />';
+        var jsdata = JSON.parse(dataObj);
+        $(document).ready(function () {
+            loadDataTable(jsdata);
+        })
+        function CreateAction() {
+            $.ajax({
+                type: 'GET',
+                url: 'admin/nguoidung/create',
+                success: function(rs) {
+                    $("#modal-create").html(rs);
+                    $("#modal-create").modal("show");
                 },
-                "orderable": false,
-            },
+                error: function() {
+                    $.notify("Lỗi. Không thực hiện được thao tác","error");
+                }
+            });
+        }
 
-                //{
-                //    "class": 'details-control',
-                //    "orderable": false,
-                //    "data": null,
-                //    "defaultContent": ''
-                //},
-                {
+        function EditAction(id) {
+            $.ajax({
+                type: 'GET',
+                url: 'admin/nguoidung/edit/'+id,
+                success: function(rs) {
+                    $("#modal-edit").html(rs);
+                    $("#modal-edit").modal("show");
+                },
+                error: function() {
+                    $.notify("Lỗi. Không thực hiện được thao tác","error");
+                }
+            });
+        }
 
-                    "orderable": false,
-                    "mData": function(data, type, dataToSet) {
-                        return data.name;
+        function DeleteAction(id) {
+            $.confirm({
+                'title': 'Xác nhận xóa',
+                'message': 'Bạn có chắc chắn muốn xóa?',
+                'buttons': {
+                    'Đồng ý': {
+                        'class': 'btn-confirm-yes btn-info',
+                        'action': function () {
+
+                            $.ajaxSetup({
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                }
+                            });
+                            $.ajax({
+                                type: 'POST',
+                                url: '/admin/nguoidung/delete',
+                                data:{'id':id},
+                                dataType: 'json',
+                                success: function(mss) {
+                                    if(mss.status){
+                                        $.notify("Xóa người dùng thành công", "success");
+                                        $("#modal-delete").modal("hide");
+                                        ReloadAction();
+                                    }
+                                    else {
+                                        $.notify(mss.message, "error");
+                                    }
+
+                                },
+                                error: function() {
+                                    $.notify("Lỗi. không thực hiện được thao tác", "error");
+                                }
+                            })
+                        }
                     },
+                    'Hủy bỏ': {
+                        'class': 'btn-danger',
+                        'action': function () { }
+                    }
+                }
+            });
 
+
+        }
+        function ReloadAction() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                type: 'POST',
+                url: 'admin/nguoidung/reload',
+                dataType:'json',
+                success: function(rs) {
+                    loadDataTable(rs);
                 },
-                {
-                    "mData": function(data, type, dataToSet) {
+                error: function() {
+                    $.notify("Lỗi. Không thực hiện được thao tác","error");
+                }
+            });
+        }
 
-                        return data.email;
-                    },
+        var loadDataTable = function(item) {
+            var table = $('#tblNguoiDung').DataTable({
 
-                },
-
-                {
+                "data": item,
+                "bDestroy": true,
+                "iDisplayLength": 20,
+                paging: true,
+                "aoColumns": [{
                     "orderable": false,
                     "sClass": "center",
                     "mData": function(data, type, dataToSet) {
-                        var str = '<a href="javascript:void(0)" onclick="suachude(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> ';
-                        str += '<a href="javascript:void(0)" onclick="xoachude(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
-                        return str;
+                        return '<input class="global_" type="checkbox" name="ids" value="' + data.id + '" />';
                     },
-
+                    "orderable": false,
                 },
 
-            ],
-            //"order": [[1, 'asc']],
-            "fnDrawCallback": function(oSettings) {
+                    //{
+                    //    "class": 'details-control',
+                    //    "orderable": false,
+                    //    "data": null,
+                    //    "defaultContent": ''
+                    //},
+                    {
 
-                //runAllCharts()
-            }
-        });
-    }
+                        "orderable": false,
+                        "mData": function(data, type, dataToSet) {
+                            return data.name;
+                        },
 
-</script>
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+
+                            return data.email;
+                        },
+
+                    },
+
+                    {
+                        "orderable": false,
+                        "sClass": "center",
+                        "mData": function(data, type, dataToSet) {
+                            var str = '<a href="javascript:void(0)" onclick="EditAction(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> ';
+                            str += '<a href="javascript:void(0)" onclick="DeleteAction(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+                            return str;
+                        },
+
+                    },
+
+                ],
+                //"order": [[1, 'asc']],
+                "fnDrawCallback": function(oSettings) {
+
+                    //runAllCharts()
+                }
+            });
+        }
+
+    </script>
 @endsection

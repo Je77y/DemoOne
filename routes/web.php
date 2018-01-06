@@ -36,7 +36,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
     //Begin USER
     Route::get('/nguoidung', 'UserController@Index');
-
+    Route::get('/nguoidung/create', 'UserController@Create');
+    Route::post('/nguoidung/create', 'UserController@SaveCreate');
+    Route::post('/nguoidung/checkexist', 'UserController@CheckExist');
+    Route::post('/nguoidung/reload', 'UserController@Reload');
+    Route::get('/nguoidung/edit/{id}', 'UserController@Edit');
+    Route::post('/nguoidung/edit', 'UserController@SaveEdit');
+    Route::get('/nguoidung/delete/{id}', 'UserController@Delete');
+    Route::post('/nguoidung/delete', 'UserController@Remove');
     //End USER
 	Route::get('/lienhe', 'LienHeController@index');
 

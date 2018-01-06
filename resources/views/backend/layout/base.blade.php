@@ -39,6 +39,8 @@
   <link rel="stylesheet" href="backend/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="backend/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="backend/dist/css/jquery-confirm.css">
+
   @yield('css')
 
 </head>
@@ -288,6 +290,7 @@
 <script src="backend/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 <script src="backend/dist/js/notify.min.js" type="text/javascript" charset="utf-8" async defer></script>
 <script src="backend/dist/js/validateProvider.js"></script>
+<script src="backend/dist/js/jquery-confirm.js"></script>
 @yield('js')
 </body>
 </html>
