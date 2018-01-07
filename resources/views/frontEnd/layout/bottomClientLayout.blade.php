@@ -3,6 +3,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4 col-lg-3">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3724.227547005711!2d105.8528667!3d21.0235794!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135abec88e5a561%3A0x8c69c08ffca9884d!2zVMOyYSBuaMOgIFN1biBDaXR5!5e0!3m2!1svi!2s!4v1515339029714" width="300" height="260" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
                 <div class="col-xs-12 col-sm-8 col-lg-8 col-lg-offset-1">
                     <div class="row">
@@ -45,7 +46,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="footer-copyright">© Bản quyền website thuộc về Tập đoàn Titan Group</div>
+                        <div class="footer-copyright">© Bản quyền website thuộc về Bất Động Sản The Life Group</div>
                     </div>
                 </div>
             </div>
