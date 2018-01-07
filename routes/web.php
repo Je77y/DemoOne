@@ -52,13 +52,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/nguoidung/delete/{id}', 'UserController@Delete');
     Route::post('/nguoidung/delete', 'UserController@Remove');
     //End USER
-	Route::get('/lienhe', 'LienHeController@index');
+
+
 
 	Route::get('/slide', 'SlideController@index');
+    Route::get('/lienhe', 'LienHeController@index');
 
 	Route::get('/tailieu', 'TaiLieuController@index');
 });
 Route::group(['namespace' => 'Client'], function() {
     Route::get('/home', 'HomeController@index');
+//Begin BAIVIET CLIENT
+    Route::get('/post/{id}', 'BaiVietController@index');
 
+    #End BAIVIET
 });

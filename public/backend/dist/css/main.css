@@ -47,6 +47,7 @@
 }
 .contactDiv
 {
+	font-family: Tahoma;
 	color: white;
 	font-size: 18px;
 	height: 70px;
@@ -152,6 +153,7 @@
 .navbar-header
 {
 	height:70px;
+	font-family: Tahoma;
 }
 .navbar-nav>li>a {
 	padding-top: 15px;
@@ -287,3 +289,80 @@
 	height: 50px;
 	color: rgba(236, 240, 241,1.0);
 }
+.mainbox{
+	margin-top: 30px;
+}
+.box-body .baiviet-title{
+	color:#055699;
+	font-size: 25px;
+	font-weight: bold;
+	font-family: Tahoma;
+}
+.baiviet-time
+{
+	margin: 10px 0px;
+	color: rgba(189, 195, 199,1.0);
+	font-style: italic;
+}
+.baiviet-chude{
+	margin: 10px 0px;
+	font-size: 18px;
+	font-family: Tahoma;
+}
+.baiviet-chude span{
+	font-weight: bold;
+}
+.baiviet-content{
+	text-align: justify;
+	line-height: 1.5;
+	font-size: 17px;
+}
+.container-common {
+	clear: both;
+	display: inline-block;
+	width: 100%;
+}
+.box-header {
+	background: none repeat scroll 0 0 #055699;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	width: 100%;
+	height: 30px;
+}
+.name_tit {
+	font-weight: bold;
+	color: #fff;
+	text-transform: uppercase;
+	font-size: 13px;
+	cursor: default;
+	font-family: Tahoma;
+}
+.name_tit h2{
+	font-family: Tahoma;
+	font-size: 12px;
+	margin: 0;
+	text-decoration: none;
+}
+
+.bor_box {
+	border: solid 1px #999;
+	border-left: 1px solid #999;
+	border-right: 1px solid #999;
+	border-bottom: 1px solid #999;
+	padding-bottom: 4px;
+}
+.bor_box .list{
+	padding: 10px;
+}
+
+.bor_box .list ul{
+	padding: 0px;
+}
+.bor_box .list ul li{
+	color: #055699;;
+	list-style: none;
+	margin: 5px 0px;
+}
+.bor_box .list ul li i{
+	 margin-right:5px;
+ }

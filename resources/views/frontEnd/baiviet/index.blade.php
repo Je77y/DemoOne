@@ -1,0 +1,60 @@
+@extends('frontEnd/layout/baseClient')
+
+@section('content')
+    <div class="content-wrapper" >
+        <div class="container">
+            <div class="row mainbox">
+                <div class="col-sm-9">
+                    <div class="box box-primary">
+                        <div class="box-body box-profile">
+                           <div class="baiviet-title">{{$baiViet->tenbaiviet}}</div>
+
+                           <div class="baiviet-time">{{$baiViet->created_at}}</div>
+                            <div class="baiviet-chude">
+                                <span>Chủ đề </span><a href="">{{$chude->tenchude}}</a>
+                            </div>
+
+                           <div class="baiviet-content">
+                               {!!$baiViet->noidung!!}
+                           </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="container-common">
+                        <div id="ctl27_HeaderContainer" class="box-header">
+                            <div class="name_tit" align="center">
+                                <div style="color: White;">
+                                    BÀI VIẾT CÙNG CHỦ ĐỀ</div>
+                            </div>
+                        </div>
+                        <div class="bor_box">
+                            <div class="list">
+                                <div class="list-item">
+                                    <ul>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a>
+                                        </li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="padding-left: 20px;padding-right: 5px; padding-top: 5px; border-top: 1px solid #ccc; margin-top: 10px; text-align: right;">
+
+                                <a href="/chu-de-trong-chu-de-ve-thong-tin-thi-truong" class="linktoall " style="font-weight: bold;"  > Xem thêm</a>
+
+                            </div>
+                        </div>
+                        <div id="ctl27_FooterContainer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+@endsection

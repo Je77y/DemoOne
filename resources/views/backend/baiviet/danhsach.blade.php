@@ -90,12 +90,12 @@
 @section('js')
     <script>
         var idchude = '<?php echo $idchude; ?>';
-        var dataObj = '<?php echo $dsbaiviet; ?>';
 
-        var jsdata = JSON.parse(dataObj);
-        $(document).ready(function () {
-            loadDataTable(jsdata);
-        })
+
+        {{--var jsdata = JSON.parse(dataObj);--}}
+        {{--$(document).ready(function () {--}}
+            {{--loadDataTable(jsdata);--}}
+        {{--})--}}
 
 
         var createBaiViet1 = function(id){
