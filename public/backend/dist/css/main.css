@@ -163,3 +163,127 @@
 .navbar-form{
 	margin-top: 15px;
 }
+.block{
+	width: 100%;
+}
+.block-header{
+	margin-bottom: 5px;
+}
+.block-header .block-title{
+	background: #055699;
+	padding: 5px 25px;
+	color: white;
+	font-size: 15px;
+	border-top-left-radius: 10px;
+
+}
+#tinDauTrang{
+	margin-top: 30px;
+}
+.block .block-body
+{
+	border:1px solid #055699;
+	padding: 10px 5px;
+}
+.content-img img
+{
+	max-width: 200px;
+}
+.block .block-body .content-text
+ {
+
+ }
+.block .block-body .content-text .block-title
+{
+
+}
+
+
+.block-content .content-text .content-title
+{
+	font-size: 18px;
+	color: #055699;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.block-content ul
+{
+	margin: 10px 0px;
+}
+.block-content ul li
+{
+	list-style: none;
+	margin: 10px 0px;
+	color: #055699;
+	font-weight: bold;
+}
+
+
+.block-content ul li i
+{
+	margin-right: 10px;
+}
+
+.duan-item{
+	/*padding: 10px;*/
+	margin-bottom: 20px;
+}
+.duan-item .duan-item-img img
+{
+	max-width: 120px;
+}
+.duan-item .duan-item-img
+{
+	text-align: center;
+}
+
+.duan-item .duan-item-name
+{
+	color: #055699;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#tinMoi .block-body{
+	height: 400px;
+}
+#duAnNoiBat .block-body
+{
+	height: 400px;
+	overflow-y: scroll;
+}
+
+#dangKyEmail{
+	margin-top: 50px;
+	background-image: url("/upload/technical_support_services.jpg");
+	background-repeat: no-repeat;
+	min-height: 600px;
+	padding: 50px 100px;
+}
+.form-email
+{
+	margin: 50px 50px;
+	background-color: rgba(52, 73, 94,0.6);
+	padding:100px;
+}
+.form-email .title
+{
+	font-size: 40px;
+	color: white;
+	text-align: center;
+	font-weight: bold;
+}
+
+.form-email label
+{
+	font-size: 20px;
+	color: white;
+	font-weight: bold;
+}
+.form-email input[type=text]{
+	background-color: transparent;
+	font-size: 25px;
+	padding: 10px;
+	height: 50px;
+	color: rgba(236, 240, 241,1.0);
+}
