@@ -47,8 +47,8 @@ class ChuDeController extends Controller
             $tenchude = $request->get('tenchude');
             $tomtat = $request->get('tomtat');
             $duan = $request->get('loai');
-            $noibat = $request->get('noibat');
-            $trongtam = $request->get('trongtam');
+            $noibat = $request->get('noibat') == 1 ? 1 : 0;
+            $trongtam = $request->get('trongtam') == 1 ? 1 : 0;
 
             if($request->hasFile('hinhanh'))
             {
@@ -84,7 +84,7 @@ class ChuDeController extends Controller
                     {
                         $block = new BlockContent;
                         $block->chudeid = $idchude;
-                        $block->tenblock = $loaiblock->ten;
+                        $block->tenblock = "Bạn chưa tạo nội dung";
                         $block->tomtat = "Bạn chưa tạo nội dung";
                         $block->noidung = "Bạn chưa tạo nội dung";
                         $block->subtitle = changeTitle($loaiblock->ten);

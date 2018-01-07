@@ -37,11 +37,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/blockcontent/create/{id}', 'BlockContentController@Create');
     Route::get('/blockcontent/show/{id}', 'BlockContentController@Show');
     Route::get('/blockcontent/reload/{id}', 'BlockContentController@Reload');
-//    Route::post('/blockcontent/store', 'BlockContentController@Store');
     Route::get('/blockcontent/edit/{id}', 'BlockContentController@Edit');
     Route::post('/blockcontent/update', 'BlockContentController@Update');
-//    Route::get('/blockcontent/delete/{id}', 'BlockContentController@Delete');
-//    Route::get('/blockcontent/destroy/{id}', 'BlockContentController@Destroy');
     // End BlockContent
 
 	Route::get('/hinhanh', 'HinhAnhController@index');

@@ -12,31 +12,30 @@
             <div class="row">
                 <form action="/admin/blockcontent/update" role="form" method="POST" id="frm-capnhat">
                     <div class="col-md-12">
-                        <input type="hidden" name="idchude" value="{{ $idduan }}">
+                        <input type="hidden" name="id" value="{{ $blockcontent->id  }}">
                         <div class="form-group">
                             <label>Tên BlockContent</label> <span class="requireTxt">(*)</span>
-                            <input name="tenblock" type="text" class="form-control required" placeholder="Tên BlockContent" required>
+                            <input name="tenblock" type="text" class="form-control required" placeholder="Tên BlockContent" required value="{{ $blockcontent->tenblock }}">
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Thứ tự</label> <span class="requireTxt">(*)</span>
-                            <input name="thutu" class="form-control required" row="8" placeholder="Thứ tự" required>
-                            <div class="note-error">
-                                <span class="error mes-note-error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Nội dung</label> <span class="requireTxt">(*)</span>
-                            <textarea id="editor1" name="noidung" class="form-control " row="8" placeholder="Nội dung" ></textarea>
+                            <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
+                            <textarea name="tomtat" class="form-control required" style="height: 150px" placeholder="Tóm tắt" >{{ $blockcontent->tomtat }}</textarea>
                             <div class="note-error">
                                 <span class="error mes-note-error" id="errNoiDung"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>SubTitle</label>
-                            <input name="subtitle" type="text" class="form-control required" placeholder="Đường dẫn" required>
+                            <label>Nội dung</label> <span class="requireTxt">(*)</span>
+                            <textarea id="editor1" name="noidung" class="form-control required" row="8" placeholder="Nội dung" >{{ $blockcontent->noidung }}</textarea>
+                            <div class="note-error">
+                                <span class="error mes-note-error" id="errNoiDung"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($blockcontent->hienthi == 1) {{'checked'}} @endif name="hienthi">Hiện thị</label>
                         </div>
                     </div>
                 </form>
@@ -59,54 +58,32 @@
         $('.textarea').wysihtml5()
     })
     $("#frm-capnhat").submit(function() {
-        event.preventDefault();
-        var valid = checkForm("frm-capnhat");
-        var valueArea = CKEDITOR.instances['editor1'].getData();
-        var err=0;
-        if (valueArea.length==0)
-        {
-            $("#errNoiDung").html("Vui lòng nhập thông tin này");
-            $("#errNoiDung").css("display","inline");
-            err+=1;
-        }else {
-            $("#errNoiDung").css("display","none");
-            $("#editor1").html(valueArea);
-        }
-        err += checkForm("frm-themmoi")?0:1;
-        if (err) {
-            return false;
-        }
-        if (!valid) {
-            return false;
-        } else {
+        var data = $(this).serialize();
+        var action = $(this).attr('action');
+        var method = $(this).attr('method');
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+        $.ajax({
+            type: 'POST',
+            url: 'admin/blockcontent/update',
+            data: data,
+            dataType: "json", //change to your own, else read my note above on enabling the JsonValueProviderFactory in MVC
+            success: function(mss) {
 
-            $.ajax({
-                type: "POST",
-                url: action,
-                data: $("#frm-capnhat").serialize(),
-                dataType: "json", //change to your own, else read my note above on enabling the JsonValueProviderFactory in MVC
-                contentType: false,
-                processData: false,
-                success: function(mss) {
-
-                    $.notify(mss.message, "success");
-                    // console.log(mss.noidung);
-                    $("#modal-edit").modal("hide");
-                    $("#modal-edit").empty();
-                    //-----------------------------------
-                    reloadAction();
-                },
-                error: function() {
-                    $.notify("Lỗi. Cập nhật thất bại", "error");
-                }
-            });
-        }
+                $.notify(mss.message, "success");
+                $("#modal-edit").modal("hide");
+                $("#modal-edit").empty();
+                //-----------------------------------
+                reloadAction();
+            },
+            error: function() {
+                $.notify("Lỗi. Cập nhật thất bại", "error");
+            }
+        });
         return false;
     });
 
