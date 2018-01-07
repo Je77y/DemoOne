@@ -233,7 +233,7 @@
                 data: $(this).serialize(),
                 dataType: 'json',
                 success: function(rs) {
-                        loadDataTable(rs);
+                    loadDataTable(rs);
                 },
                 error: function() {
                     $.notify("Lỗi. Không thực hiện được thao tác", 'error');
@@ -287,11 +287,17 @@
                     contentType: false,
                     processData: false,
                     success: function(mss) {
+                        if(mss.status)
+                        {
+                            $.notify("Thêm mới thành công", "success");
+                            $("#modal-create").modal("hide");
+                            reloadAction();
+                        }else {
+                            $.notify(mss.message, "err");
+                        }
 
-                        $.notify(mss, "success");
                         // console.log(mss.noidung);
-                        $("#modal-create").modal("hide");
-                        reloadAction();
+
                     },
                     error: function() {
                         $.notify("Loi. Them that bai", "error");

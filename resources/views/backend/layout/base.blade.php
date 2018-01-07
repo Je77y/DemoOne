@@ -9,7 +9,7 @@
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-  <base href="{{ asset('') }}" target="_blank, _self, _parent, _top">
+  <base href="{{ asset('') }}" >
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="backend/bower_components/bootstrap/dist/css/bootstrap.min.css">
   <!-- Font Awesome -->

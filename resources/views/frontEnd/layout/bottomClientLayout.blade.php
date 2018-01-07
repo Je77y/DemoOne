@@ -1,4 +1,4 @@
-<footer id="colophon" class="site-footer">
+<footer id="colophon" class="site-footer" style="font-family: tahoma;">
     <div class="site-footer-inner">
         <div class="container">
             <div class="row">
