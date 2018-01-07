@@ -52,6 +52,37 @@
                         <div id="ctl27_FooterContainer">
                         </div>
                     </div>
+
+                    <div class="container-common">
+                        <div id="ctl27_HeaderContainer" class="box-header">
+                            <div class="name_tit" align="center">
+                                <div style="color: White;">
+                                    BÀI VIẾT MỚI</div>
+                            </div>
+                        </div>
+                        <div class="bor_box">
+                            <div class="list">
+                                <div class="list-item">
+                                    <ul>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a>
+                                        </li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div style="padding-left: 20px;padding-right: 5px; padding-top: 5px; border-top: 1px solid #ccc; margin-top: 10px; text-align: right;">
+
+                                <a href="/chu-de-trong-chu-de-ve-thong-tin-thi-truong" class="linktoall " style="font-weight: bold;"  > Xem thêm</a>
+
+                            </div>
+                        </div>
+                        <div id="ctl27_FooterContainer">
+                        </div>
+                    </div>
                 </div>
             </div>
 

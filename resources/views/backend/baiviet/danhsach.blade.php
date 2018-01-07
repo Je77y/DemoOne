@@ -89,13 +89,12 @@
 @endsection
 @section('js')
     <script>
-        var idchude = '<?php echo $idchude; ?>';
-
-
-        {{--var jsdata = JSON.parse(dataObj);--}}
-        {{--$(document).ready(function () {--}}
-            {{--loadDataTable(jsdata);--}}
-        {{--})--}}
+        {{--var dataObj = '{!! $dsbaiviet!!}';--}}
+        var dataObj = decodeURIComponent("<?php echo rawurlencode($dsbaiviet); ?>");
+        var jsdata = JSON.parse(dataObj);
+        $(document).ready(function () {
+            loadDataTable(jsdata);
+        })
 
 
         var createBaiViet1 = function(id){

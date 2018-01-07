@@ -18,6 +18,10 @@ class PostController extends Controller
     public function Index($idchude)
     {
         $dsbaiviet1 = BaiViet::where('chudeid', '=', $idchude)->orderBy('created_at', 'desc')->get();
+//        foreach ( $dsbaiviet1 as $item)
+//        {
+//            $item->noidung="";
+//        }
         $dsbaiviet = json_encode($dsbaiviet1);
         return view('backend/baiviet/danhsach', compact('dsbaiviet', 'idchude'));
     }

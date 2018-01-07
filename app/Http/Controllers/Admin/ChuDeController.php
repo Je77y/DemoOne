@@ -33,6 +33,8 @@ class ChuDeController extends Controller
     public function index()
     {
         $dschude6 = ChuDe::orderBy('id', 'desc')->get();
+
+
         $dschude = json_encode($dschude6);
         return view('backend/chude/index', compact('dschude'));
     }

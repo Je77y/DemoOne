@@ -143,9 +143,10 @@
 @endsection @section('js')
 
     <script>
-        // var dataObj= '<?php echo str_replace("\u0022","\\\\\"",json_encode( $dschude,JSON_HEX_QUOT));?>';
-        var dataObj = '<?php echo $dschude;?>';
-        // var dataObj = '<?php echo json_encode($dschude,JSON_HEX_APOS); ?>';
+
+
+        var dataObj = decodeURIComponent("<?php echo rawurlencode($dschude); ?>");
+
 
         var js_obj_data = eval(dataObj);
         $(document).ready(function() {
