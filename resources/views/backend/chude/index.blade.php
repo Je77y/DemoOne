@@ -300,7 +300,7 @@
 
                     },
                     error: function() {
-                        $.notify("Lỗi. Thêm thất bại", "error");
+                        $.notify("Loi. Them that bai", "error");
                     }
                 });
             }
