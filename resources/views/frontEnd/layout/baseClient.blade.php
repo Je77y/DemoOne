@@ -56,6 +56,7 @@
 <script src="backend/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="backend/dist/js/demo.js"></script>
+<script src="backend/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 @yield('js')
 </body>
 </html>

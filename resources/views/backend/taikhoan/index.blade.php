@@ -61,6 +61,7 @@
         var jsdata = JSON.parse(dataObj);
         $(document).ready(function () {
             loadDataTable(jsdata);
+
         })
         function CreateAction() {
             $.ajax({
