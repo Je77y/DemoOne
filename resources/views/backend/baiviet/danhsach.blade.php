@@ -89,7 +89,7 @@
 @endsection
 @section('js')
     <script>
-        {{--var dataObj = '{!! $dsbaiviet!!}';--}}
+        var idchude = '<?php echo $idchude; ?>';
         var dataObj = decodeURIComponent("<?php echo rawurlencode($dsbaiviet); ?>");
         var jsdata = JSON.parse(dataObj);
         $(document).ready(function () {

@@ -49,7 +49,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="checkbox-inline"><input type="checkbox" value="{{ $baiviet->hienthi }}" @if ($baiviet->hienthi ==1) {{ 'checked' }} @endif name="hienthi">Hiển thị</label>
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if ($baiviet->hienthi ==1) {{ 'checked' }} @endif name="hienthi">Hiển thị</label>
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
