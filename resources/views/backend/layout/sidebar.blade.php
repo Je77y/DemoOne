@@ -18,7 +18,7 @@
             <li class="header">MAIN NAVIGATION</li>
             <li class="active">
                 <a href="/admin">
-                    <i class="fa fa-dashboard"></i> <span>Trang chu</span>
+                    <i class="fa fa-dashboard"></i> <span>Trang chủ</span>
                 </a>
             </li>
             <li>
@@ -29,11 +29,6 @@
             <li>
                 <a href="/admin/banner">
                     <i class="fa fa-th"></i> <span>Banner</span>
-                </a>
-            </li>
-            <li>
-                <a href="/admin/blockcontent">
-                    <i class="fa fa-pie-chart"></i><span>BlockContent</span>
                 </a>
             </li>
             <li>

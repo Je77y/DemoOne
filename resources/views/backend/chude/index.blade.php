@@ -61,11 +61,13 @@
                             <table id="tblChuDe" class="table table-bordered table-striped" style="width:100%;">
                                 <thead>
                                 <tr>
-                                    <th class="width-30">Id</th>
-                                    <th>Hinh anh</th>
-                                    <th>Ten chu de</th>
-                                    <th>The loai</th>
-                                    <th>Tom tat</th>
+                                    <th class="width-30">#</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên chủ đề</th>
+                                    <th>Thể loại</th>
+                                    <th>Tóm tắt</th>
+                                    <th>Trọng tâm</th>
+                                    <th>Nổi bật</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -114,10 +116,16 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
-                                        <textarea name="tomtat" class="form-control required" row="8" placeholder="Tóm tắt" required></textarea>
+                                        <textarea name="tomtat" class="form-control required" style="height: 150px" placeholder="Tóm tắt" required></textarea>
                                         <div class="note-error">
                                             <span class="error mes-note-error"></span>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" value="1" name="trongtam">Trọng tâm</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="checkbox-inline"><input type="checkbox" value="1" name="noibat">Nổi bật</label>
                                     </div>
                                     <div class="form-group">
                                         <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
@@ -355,10 +363,27 @@
                     },
                     {
                         "orderable": false,
+                        "mData": function(data, type, dataToSet) {
+                            var str = data.trongtam == 0 ? '<span class=" badge bg-aqua">Không</span>' : '<span class=" badge bg-green">Có</span>';
+                            return str;
+                        },
+
+                    },
+                    {
+                        "orderable": false,
+                        "mData": function(data, type, dataToSet) {
+                            var str = data.noibat == 0 ? '<span class=" badge bg-aqua">Không</span>' : '<span class=" badge bg-green">Có</span>';
+                            return str;
+                        },
+
+                    },
+                    {
+                        "orderable": false,
                         "sClass": "center",
                         "mData": function(data, type, dataToSet) {
                             var str = '<a href="javascript:void(0)" onclick="suachude(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> ';
                             str += '<a href="javascript:void(0)" onclick="xoachude(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+                            str += data.duan == 1 ? ('<a href="/admin/blockcontent/' + data.id + '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>') : ' ';
                             return str;
                         },
 

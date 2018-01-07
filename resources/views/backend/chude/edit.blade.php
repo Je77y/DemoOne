@@ -14,13 +14,6 @@
                         <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
                         <input type="hidden" name="id" value="{{ $chude->id }}">
                         <div class="form-group">
-                            <label>Loại</label>
-                            <select name="loai" class="form-control select2" style="width: 100%;">
-                                <option value="0" @if ($chude->duan == 0) {{ 'selected' }} @endif>Chủ đề</option>
-                                <option value="1" @if ($chude->duan == 1) {{ 'selected' }} @endif>Dự án</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label>Tên chủ đề</label> <span class="requireTxt">(*)</span>
                             <input name="tenchude" type="text" class="form-control required" placeholder="Tên chủ đề" value="{{ $chude->tenchude }}">
                             <div class="note-error">
@@ -29,13 +22,17 @@
                         </div>
                         <div class="form-group">
                             <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
-                            <textarea name="tomtat" class="form-control required" row="8" placeholder="Tóm tắt">{{ $chude->tomtat }}</textarea>
+                            <textarea name="tomtat" class="form-control required" style="height: 150px" placeholder="Tóm tắt">{{ $chude->tomtat }}</textarea>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
                         </div>
-                        <!-- /.form-group -->
-                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($chude->trongtam == 1) {{'checked'}} @endif  name="trongtam">Trọng tâm</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($chude->noibat == 1) {{'checked'}} @endif name="noibat">Nổi bật</label>
+                        </div>
                         <div class="form-group">
                             <label>Hình ảnh</label>
                             <img class="img-responsive pad" src="upload/{{ $chude->hinhanh }}" alt="{{ $chude->tenchude }}">

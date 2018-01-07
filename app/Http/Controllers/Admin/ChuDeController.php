@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\ChuDe;
 use App\Message;
+use App\LoaiBlock;
+use App\BlockContent;
 
 class ChuDeController extends Controller
 {
@@ -25,16 +28,9 @@ class ChuDeController extends Controller
         return response(json_encode($chude->orderBy('id', 'desc')->get()));
     }
 
-    // public function chudes()
-    // {
-    //     return view('backend/chude/list');
-    // }
-
     public function index()
     {
         $dschude6 = ChuDe::orderBy('id', 'desc')->get();
-
-
         $dschude = json_encode($dschude6);
         return view('backend/chude/index', compact('dschude'));
     }
@@ -48,10 +44,11 @@ class ChuDeController extends Controller
         $mss = new Message(true, 'Thêm mới chủ đề thành công');
         if($request->ajax())
         {
-            $chude = new ChuDe;
-            $chude->tenchude = $request->get('tenchude');
-            $chude->tomtat = $request->get('tomtat');
-            $chude->duan = $request->get('loai');
+            $tenchude = $request->get('tenchude');
+            $tomtat = $request->get('tomtat');
+            $duan = $request->get('loai');
+            $noibat = $request->get('noibat');
+            $trongtam = $request->get('trongtam');
 
             if($request->hasFile('hinhanh'))
             {
@@ -70,15 +67,33 @@ class ChuDeController extends Controller
                     $Hinh = str_random(4)."_". $name;
                 }
                 $file->move("upload", $Hinh);
-                $chude->hinhanh = $Hinh;
+                $hinhanh = $Hinh;
             }
             else 
             {
-                $chude->hinhanh = "notfoundimg.png";
+                $hinhanh = "notfoundimg.png";
             }
             try {
-            $chude->save();
-                
+                $idchude = DB::table('ChuDe')->insertGetId(
+                    ['tenchude' => $tenchude, 'tomtat' => $tomtat, 'duan' => $duan, 'hinhanh' => $hinhanh, 'noibat' => $noibat, 'trongtam' => $trongtam]
+                );
+                if ($duan == 1)
+                {
+                    $dsloaiblock = LoaiBlock::all();
+                    foreach($dsloaiblock as $loaiblock)
+                    {
+                        $block = new BlockContent;
+                        $block->chudeid = $idchude;
+                        $block->tenblock = $loaiblock->ten;
+                        $block->tomtat = "Bạn chưa tạo nội dung";
+                        $block->noidung = "Bạn chưa tạo nội dung";
+                        $block->subtitle = changeTitle($loaiblock->ten);
+                        $block->loaiblockid = $loaiblock->id;
+                        $block->hienthi = 1;
+                        $block->save();
+                    }
+                }
+
             } catch (Exception $e) {
                 $mss->status = false;
                 $mss->message = "Lỗi. Thêm mới thất bại";
@@ -109,7 +124,8 @@ class ChuDeController extends Controller
             $chude = ChuDe::find($id);
             $chude->tenchude = $request->get('tenchude');
             $chude->tomtat = $request->get('tomtat');
-            $chude->duan = $request->get('loai');
+            $chude->noibat = $request->get('noibat') == 1 ? 1 : 0;
+            $chude->trongtam = $request->get('trongtam') == 1 ? 1 : 0;
 
             if($request->hasFile('hinhanh'))
             {

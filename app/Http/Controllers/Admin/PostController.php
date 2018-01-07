@@ -101,7 +101,6 @@ class PostController extends Controller
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             $baiviet->slug = $request->get('slug');
-//            $baiviet->chudeid = $this->id;
 
             if($request->hasFile('hinhanh'))
             {
@@ -132,11 +131,6 @@ class PostController extends Controller
 
             return response(json_encode($mss));
         }
-    }
-
-    public function Delete($id)
-    {
-        return view('backend/baiviet/_deleteModal', compact('id'));
     }
 
     public function Destroy($id)
