@@ -1,9 +1,17 @@
 <?php
+Route::group(['namespace' => 'Client'], function() {
+    Route::get('/home', 'HomeController@index');
+//Begin BAIVIET CLIENT
+    Route::get('/post/{id}', 'BaiVietController@index');
 
-Route::get('/', function () {
-    return view('welcome');
+    #End BAIVIET
+    //Begin GioiThieu du an CLIENT
+    Route::get('/duan/{id}', 'DuAnController@index');
+
+    #End GioiThieu du an
+
+
 });
-
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index');
 	Route::get('/dangnhap', 'UserController@login');
@@ -69,11 +77,4 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/lienhe', 'LienHeController@index');
 
 	Route::get('/tailieu', 'TaiLieuController@index');
-});
-Route::group(['namespace' => 'Client'], function() {
-    Route::get('/home', 'HomeController@index');
-//Begin BAIVIET CLIENT
-    Route::get('/post/{id}', 'BaiVietController@index');
-
-    #End BAIVIET
 });

@@ -181,7 +181,7 @@
 @section("js")
     <script>
         $("#slimScrollDiv").slimScroll({
-            height: '400px'
+            height: '350px'
         });
     </script>
 @endsection
