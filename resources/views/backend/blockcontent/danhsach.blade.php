@@ -1,135 +1,54 @@
-@extends('backend/layout/base') @section('title', 'Quản lý bài viết') @section('content')
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Block Content</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="/admin/baiviet/them" class="btn btn-primary">Tạo BlockContent</a>
-                    </div>
-                    <div class="col-md-6">
-                        <form action="#" method="get" accept-charset="utf-8">
-                            <div class="col-md-offset-4 col-md-8">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" placeholder="Từ khóa ...">
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <th>ID</th>
-                                <th>Tên Block</th>
-                                <th>Thứ tự</th>
-                                <th>Chủ đề</th>
-                                <th>subTitle</th>
-                                <th></th>
-                            </thead>
-                            <tbody>
+@extends('backend/layout/base')
+@section('css')
+
+@endsection
+@section('title', 'Quản lý BlockContent')
+@section('content')
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Danh sách BlockContent
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                <li class="active">BlockContent</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- /.row -->
+            <div class="row nomargin nopadding" style="margin:0px; padding: 0px">
+                <div class="col-xs-12">
+                    <div class="box">
+
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <table id="tblBlockContent" class="table table-bordered table-striped" style="width:100%;">
+                                <thead>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
+                                    <th class="width-30">Id</th>
+                                    <th>Tên </th>
+                                    <th>Tóm tắt</th>
+                                    <th>Nội dung</th>
+                                    <th>Hiển thị</th>
+                                    <th></th>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="blockcontent-info">
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- /.content -->
+        <div class="modal fade" id="modal-edit"></div>
     </div>
-</div>
+@endsection
+@section('js')
+
 @endsection
