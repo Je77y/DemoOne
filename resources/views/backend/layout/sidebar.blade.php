@@ -57,11 +57,6 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/baiviet">
-                    <i class="fa fa-folder"></i> <span>Bài viết</span>
-                </a>
-            </li>
-            <li>
                 <a href="/admin/slide">
                     <i class="fa fa-share"></i> <span>Slide</span>
                 </a>

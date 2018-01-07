@@ -23,7 +23,7 @@
                     <div class="box">
                         <div class="box-header">
                             <div class="row nomargin nopadding">
-                                <button class="btn btn-primary pull-right margin-10"  onclick="createBaiViet()"><i class="fa fa-plus"></i> Thêm mới</button>
+                                <button class="btn btn-primary pull-right margin-10"  onclick="createBaiViet1({{ $idchude  }})"><i class="fa fa-plus"></i> Thêm mới</button>
                                 <button class="btn btn-primary pull-right margin-10" data-toggle="collapse" data-target="#timkiembox"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm</button>
                             </div>
                         </div>
@@ -89,6 +89,7 @@
 @endsection
 @section('js')
     <script>
+        var idchude = '<?php echo $idchude; ?>';
         var dataObj = '<?php echo $dsbaiviet; ?>';
 
         var jsdata = JSON.parse(dataObj);
@@ -97,15 +98,19 @@
         })
 
 
-        var createBaiViet = function(){
+        var createBaiViet1 = function(id){
             $.ajax({
                 type: 'get',
-                url: '/admin/baiviet/create',
+                url: '/admin/baiviet/create/'+id,
+
                 success: function(data){
                     $("#modal-create").html(data);
                     $("#modal-create").modal("show");
-
+                },
+                error: function() {
+                    console.log('Lỗi khi gọi button thêm bài viết')
                 }
+
             })
         }
         var editBaiViet = function(id) {
@@ -115,13 +120,15 @@
                 success: function(data) {
                     $("#modal-edit").html(data);
                     $("#modal-edit").modal("show");
-                    reloadAction();
+
+
                 },
                 error: function() {
                     console.log('Lỗi')
                 }
             })
         }
+
         function deleteBaiViet(id) {
             $.confirm({
                 'title': 'Xác nhận xóa',
@@ -161,7 +168,7 @@
         function reloadAction() {
             $.ajax({
                 type: "get",
-                url: '/admin/baiviet/reload',
+                url: '/admin/baiviet/reload/'+idchude,
                 dataType: 'json',
                 success: function(mss) {
                     loadDataTable(mss);
@@ -220,8 +227,10 @@
                         "orderable": false,
                         "sClass": "center",
                         "mData": function(data, type, dataToSet) {
-                            var str = '<a href="javascript:void(0)" onclick="editBaiViet(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>';
+                            var str = '<a href="/admin/baiviet/show/' + data.id + '" ><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a> ';
+                            str += '<a href="javascript:void(0)" onclick="editBaiViet(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>';
                             str += '<a href="javascript:void(0)" onclick="deleteBaiViet(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+
                             return str;
                         },
 

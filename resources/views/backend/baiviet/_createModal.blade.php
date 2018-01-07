@@ -12,13 +12,7 @@
             <div class="row">
                 <form action="/admin/baiviet/store" role="form" enctype="multipart/form-data" method="POST" id="frm-themmoi">
                     <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Loại</label>
-                            <select name="loai" class="form-control" style="width: 100%;">
-                                <option selected="selected" value="0">Chủ đề</option>
-                                <option value="1">Dự án</option>
-                            </select>
-                        </div>
+                        <input type="hidden" name="idchude" value="{{ $idchude }}">
                         <div class="form-group">
                             <label>Tên bài viết</label> <span class="requireTxt">(*)</span>
                             <input name="tenbaiviet" type="text" class="form-control required" placeholder="Tên bài viết" required>
@@ -37,7 +31,7 @@
                             <label>Nội dung</label> <span class="requireTxt">(*)</span>
                             <textarea id="editor1" name="noidung" class="form-control " row="8" placeholder="Nội dung" ></textarea>
                             <div class="note-error">
-                                <span class="error mes-note-error"></span>
+                                <span class="error mes-note-error" id="errNoiDung"></span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -82,6 +76,23 @@
 
     $("#frm-themmoi").submit(function() {
         event.preventDefault();
+        var valueArea = CKEDITOR.instances['editor1'].getData();
+        var err=0;
+        if (valueArea.length==0)
+        {
+            $("#errNoiDung").html("Vui lòng nhập thông tin này");
+            $("#errNoiDung").css("display","inline");
+            err+=1;
+        }else {
+            $("#errNoiDung").css("display","none");
+            $("#editor1").html(valueArea);
+        }
+        err += checkForm("frm-themmoi")?0:1;
+        if (err) {
+            return false;
+        } else {
+
+        }
         var valid = checkForm("frm-themmoi");
         if (!valid) {
             return false;
@@ -104,6 +115,9 @@
                 contentType1 = false;
                 processData = false;
             }
+//            console.log(dataString);
+
+//            dataString.noidung = value;
             $.ajax({
                 type: "POST",
                 url: action,

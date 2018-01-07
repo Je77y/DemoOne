@@ -143,19 +143,6 @@
 @endsection @section('js')
 
     <script>
-        // $.ajax({
-        //     type: 'GET',
-        //     url: 'admin/chude/list',
-        //     success: function(data) {
-        //         $("#chude-info").empty().html(data);
-        //     },
-        //     error: function() {
-        //         console.log("loi");
-        //     }
-        // });
-        //
-        //
-
         // var dataObj= '<?php echo str_replace("\u0022","\\\\\"",json_encode( $dschude,JSON_HEX_QUOT));?>';
         var dataObj = '<?php echo $dschude;?>';
         // var dataObj = '<?php echo json_encode($dschude,JSON_HEX_APOS); ?>';
@@ -165,9 +152,6 @@
             loadDataTable(js_obj_data);
         })
 
-        function closeTimKiem() {
-            $("#timkiembox").collapse("hide")
-        }
         var createbtnaction = function() {
             $("#frm-themmoi").submit();
         }
@@ -185,34 +169,6 @@
                 }
             })
         }
-        // $("#frm-themmoi").submit(function(e) {
-        //     $.ajaxSetup({
-        //         headers: {
-        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //         }
-        //     });
-        //     e.preventDefault();
-        //     var data = $(this).serialize();
-        //     var url = $(this).attr('action');
-        //     var post = $(this).attr('method');
-
-        //     $.ajax({
-        //         type: post,
-        //         url: url,
-        //         data: data,
-        //         success: function(mss) {
-
-        //             $.notify(mss, "success");
-        //             // console.log(mss.noidung);
-        //             $("#modal-create").modal("hide");
-        //         },
-        //         error: function() {
-        //             $.notify("Loi. Them that bai", "error");
-        //         }
-
-        //     })
-        // })
-
         function xoachude(id) {
             $.confirm({
                 'title': 'Xác nhận xóa',
@@ -376,8 +332,8 @@
                     },
                     {
                         "mData": function(data, type, dataToSet) {
-
-                            return data.tenchude;
+                            var str = '<a href="/admin/baiviet/' + data.id + '">' + data.tenchude + '</a>';
+                            return str;
                         },
 
                     },

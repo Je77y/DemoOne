@@ -9,22 +9,22 @@ use App\Message;
 
 class PostController extends Controller
 {
-    public function Reload()
+    public function Reload($id)
     {
-        $dsbaiviet = BaiViet::orderBy('id', 'desc')->get();
+        $dsbaiviet = BaiViet::where('chudeid', '=', $id)->orderBy('id', 'desc')->get();
         return response(json_encode($dsbaiviet));
     }
 
-    public function Index()
+    public function Index($idchude)
     {
-        $dsbaiviet1 = BaiViet::orderBy('created_at', 'desc')->get();
+        $dsbaiviet1 = BaiViet::where('chudeid', '=', $idchude)->orderBy('created_at', 'desc')->get();
         $dsbaiviet = json_encode($dsbaiviet1);
-        return view('backend/baiviet/danhsach', compact('dsbaiviet'));
+        return view('backend/baiviet/danhsach', compact('dsbaiviet', 'idchude'));
     }
 
-    public function Create()
+    public function Create($idchude)
     {
-        return view('backend/baiviet/_createModal');
+        return view('backend/baiviet/_createModal', compact('idchude'));
     }
 
     public function Store(Request $request)
@@ -38,7 +38,7 @@ class PostController extends Controller
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             $baiviet->slug = $request->get('slug');
-            $baiviet->chudeid = $request->get('loai');
+            $baiviet->chudeid = $request->get('idchude');
 
             if($request->hasFile('hinhanh'))
             {
@@ -77,7 +77,7 @@ class PostController extends Controller
 
     public function Show($id)
     {
-        //
+        return view('backend/baiviet/_showBaiViet');
     }
 
     public function Edit($id)
@@ -97,7 +97,7 @@ class PostController extends Controller
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             $baiviet->slug = $request->get('slug');
-//            $baiviet->chudeid = $request->get('loai');
+//            $baiviet->chudeid = $this->id;
 
             if($request->hasFile('hinhanh'))
             {

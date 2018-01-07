@@ -82,6 +82,21 @@
     $("#frm-capnhat").submit(function() {
         event.preventDefault();
         var valid = checkForm("frm-capnhat");
+        var valueArea = CKEDITOR.instances['editor1'].getData();
+        var err=0;
+        if (valueArea.length==0)
+        {
+            $("#errNoiDung").html("Vui lòng nhập thông tin này");
+            $("#errNoiDung").css("display","inline");
+            err+=1;
+        }else {
+            $("#errNoiDung").css("display","none");
+            $("#editor1").html(valueArea);
+        }
+        err += checkForm("frm-themmoi")?0:1;
+        if (err) {
+            return false;
+        }
         if (!valid) {
             return false;
         } else {

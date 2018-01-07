@@ -355,6 +355,9 @@
     $('.timepicker').timepicker({
         showInputs: false
     })
+    function closeTimKiem() {
+        $("#timkiembox").collapse("hide")
+    }
 </script>
 @yield('js')
 </body>
