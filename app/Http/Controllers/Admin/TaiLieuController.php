@@ -4,40 +4,42 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\TaiLieuDuAn;
+use App\Message;
 
 class TaiLieuController extends Controller
 {
-    public function index()
+    public function Index()
     {
         return view('backend/tailieu/danhsach');
     }
 
-    public function create()
+    public function Create()
+    {
+        return view('backend/tailieu/_createModal');
+    }
+
+    public function Store(Request $request)
     {
         //
     }
 
-    public function store(Request $request)
+    public function Show($id)
     {
         //
     }
 
-    public function show($id)
+    public function Edit($id)
     {
         //
     }
 
-    public function edit($id)
+    public function Update(Request $request)
     {
         //
     }
 
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
+    public function Destroy($id)
     {
         //
     }

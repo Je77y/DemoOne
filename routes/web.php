@@ -106,6 +106,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     // End Slide
 
     // Begin TaiLieu
-	Route::get('/tailieu', 'TaiLieuController@index');
+    Route::get('/tailieu/{idduan}', 'TaiLieuController@Index');
+    Route::get('/tailieu/create', 'TaiLieuController@Create');
+    Route::get('/tailieu/store', 'TaiLieuController@Store');
+    Route::get('/tailieu/show/{id}', 'TaiLieuController@Show');
+    Route::get('/tailieu/reload/{id}', 'TaiLieuController@Reload');
+    Route::get('/tailieu/edit/{id}', 'TaiLieuController@Edit');
+    Route::post('/tailieu/update', 'TaiLieuController@Update');
+    Route::get('/tailieu/destroy/{id}', 'TaiLieuController@Destroy');
 	// End TaiLieu
 });

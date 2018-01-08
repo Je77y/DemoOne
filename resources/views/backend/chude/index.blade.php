@@ -389,7 +389,7 @@
                         "mData": function(data, type, dataToSet) {
                             var str = '<a href="javascript:void(0)" onclick="suachude(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> ';
                             str += '<a href="javascript:void(0)" onclick="xoachude(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
-                            str += data.duan == 1 ? ('<a href="/admin/blockcontent/' + data.id + '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>') : ' ';
+                            str += data.duan == 1 ? ('<a href="/admin/blockcontent/' + data.id + '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>' + '<a href="/admin/tailieu/' + data.id + '"><i class="fa fa-files-o fa-lg" aria-hidden="true"></i>') : ' ';
                             return str;
                         },
 
