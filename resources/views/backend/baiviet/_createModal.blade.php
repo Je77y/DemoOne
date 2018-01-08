@@ -135,7 +135,7 @@
                     reloadAction();
                 },
                 error: function() {
-                    $.notify("Loi. Them that bai", "error");
+                    $.notify("Lỗi. Thêm thất bại", "error");
                 }
             });
         }
