@@ -49,11 +49,11 @@ class BannerController extends Controller
 //                $name = str_replace(('.'. $file), "xxx", $file->getClientOriginalName());
                 $name = $file->getClientOriginalName();
                 $Hinh = str_random(4)."_". changeTitle($name).'.'. $duoi;
-                while(file_exists("upload/".$Hinh))
+                while(file_exists("upload/hinhanh/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
-                $file->move("upload", $Hinh);
+                $file->move("upload/hinhanh", $Hinh);
                 $banner->hinhanh = $Hinh;
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $Hinh,
@@ -104,24 +104,20 @@ class BannerController extends Controller
                 {
                     return response(json_encode($mss));
                 }
-//                $name = str_replace(('.'. $file), "xxx", $file->getClientOriginalName());
                 $name = $file->getClientOriginalName();
                 $Hinh = str_random(4)."_". changeTitle($name).'.'. $duoi;
-                while(file_exists("upload/".$Hinh))
+                while(file_exists("upload/hinhanh/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
-                $file->move("upload", $Hinh);
+                $file->move("upload/hinhanh", $Hinh);
                 $banner->hinhanh = $Hinh;
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $Hinh,
                     'mota' => $banner->tenbanner
                 ]);
             }
-            else
-            {
-                $banner->hinhanh = "notfoundimg.png";
-            }
+
             try {
                 $banner->save();
 

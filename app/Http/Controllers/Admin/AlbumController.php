@@ -33,15 +33,15 @@ class AlbumController extends Controller
     public function Store(Request $request)
     {
         $mss = new Message(true, 'Thêm mới thành công');
-        if ($request->ajax())
-        {
+
             $url = $request->get('duongdan');
             $mota = $request->get('mota');
             $extension = pathinfo($url, PATHINFO_EXTENSION);
+
             $filename = str_random(4).'-'.str_slug($mota).'.'. $extension;
 
             $file = file_get_contents($url);
-            $save = file_put_contents('upload/'.$filename, $file);
+            $save = file_put_contents('upload/hinhanh/'.$filename, $file);
             if($save){
                 try {
                     $album = DB::table('Album')->insert([
@@ -51,13 +51,12 @@ class AlbumController extends Controller
                     //var_dump('file downloaded to images folder and saved to database as well.......');
                 } catch (Exception $e) {
                     //delete if no db things........
-                    File::delete('upload/'. $filename);
+
                     $mss->status = false;
                     $mss->message = "Lỗi. Thêm thất bại";
                 }
             }
 
-        }
         return response(json_encode($mss));
     }
 

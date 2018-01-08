@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label>
-                            <img class="img-responsive pad" src="upload/{{ $chude->hinhanh }}" alt="{{ $chude->tenchude }}">
+                            <img class="img-responsive pad" src="upload/hinhanh/{{ $chude->hinhanh }}" alt="{{ $chude->tenchude }}">
                             <input type="file" name="hinhanh">
                         </div>
                     </form>

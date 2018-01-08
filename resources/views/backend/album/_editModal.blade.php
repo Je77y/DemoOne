@@ -15,7 +15,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Hình ảnh</label>
-                            <img class="img-responsive pad" src="upload/{{ $album->hinhanh }}" alt="{{ $album->mota }}">
+                            <img class="img-responsive pad" src="upload/hinhanh/{{ $album->hinhanh }}" alt="{{ $album->mota }}">
                         </div>
                         <div class="form-group">
                             <label>Mô tả</label> <span class="requireTxt">(*)</span>

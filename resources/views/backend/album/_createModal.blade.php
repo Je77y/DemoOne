@@ -40,87 +40,43 @@
 </div>
 
 <script>
+
     $("#frm-themmoi").submit(function() {
         event.preventDefault();
         var valid = checkForm("frm-themmoi");
         if (!valid) {
             return false;
         }
-//        else {
-//            $.ajaxSetup({
-//                headers: {
-//                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//                }
-//            });
-//            var dataString;
-//
-//            var contentType1 = false;
-//            var action = $("#frm-themmoi").attr("action");
-//            if ($("#frm-themmoi").attr("enctype") == "multipart/form-data") {
-//                //this only works in some browsers.
-//                //purpose? to submit files over ajax. because screw iframes.
-//                //also, we need to call .get(0) on the jQuery element to turn it into a regular DOM element so that FormData can use it.
-//                dataString = new FormData($("#frm-themmoi").get(0));
-//                contentType1 = false;
-//                processData = false;
-//            }
-////            console.log(dataString);
-//
-////            dataString.noidung = value;
-//            $.ajax({
-//                type: "POST",
-//                url: action,
-//                data: dataString,
-//                dataType: "json", //change to your own, else read my note above on enabling the JsonValueProviderFactory in MVC
-//                contentType: false,
-//                processData: false,
-//                success: function(mss) {
-//                    if(mss.status)
-//                    {
-//                        $.notify(mss.message, "success");
-//                        $("#modal-create").modal("hide");
-//                        $("#modal-create").empty();
-//                        //-----------------------------------
-//                        reloadAction();
-//                    }
-//                    else
-//                    {
-//                        $.notify(mss.message, "error");
-//                    }
-//                },
-//                error: function() {
-//                    $.notify("Lỗi. Thêm thất bại o client", "error");
-//                }
-//            });
-//        }
-            var data = $(this).serialize();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        var data = $(this).serialize();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            type: "POST",
+            url: '/admin/album/store',
+            data: data,
+            dataType:'json',
+            success: function(mss) {
+                if(mss.status)
+                {
+
+                    $("#modal-create").modal("hide");
+                    $("#modal-create").empty();
+                    //-----------------------------------
+                    $.notify(mss.message,'success');
+                    reloadAction();
                 }
-            });
-            $.ajax({
-                type: "POST",
-                url: '/admin/album/store',
-                data: data,
-                success: function(mss) {
-                    if(mss.status)
-                    {
-                        $.notify(mss.message, "success");
-                        $("#modal-create").modal("hide");
-                        $("#modal-create").empty();
-                        //-----------------------------------
-                        reloadAction();
-                    }
-                    else
-                    {
-                        $.notify(mss.message, "error");
-                    }
-                },
-                error: function() {
-                    $.notify("Lỗi. Thêm thất bại o client", "error");
+                else
+                {
+                    $.notify(mss.message, "error");
                 }
-            });
+            },
+            error: function() {
+                $.notify("Lỗi. Thêm thất bại o client", "error");
+            }
+        });
         return false;
     });
 

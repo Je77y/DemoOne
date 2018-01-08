@@ -202,7 +202,7 @@
                     //},
                     {
                         "mData": function(data, type, dataToSet) {
-                            var str = '<img class="attachment-img center" alt="' + data.tenbaiviet + '" src="/upload/' + data.hinhanh + '" style="width: 50px; height: 50px">';
+                            var str = '<img class="attachment-img center" alt="' + data.tenbaiviet + '" src="/upload/hinhanh/' + data.hinhanh + '" style="width: 50px; height: 50px">';
                             return str;
                         },
                     },

@@ -14,13 +14,6 @@
                     <div class="col-md-12">
                         <input type="hidden" value="{{ $baiviet->id  }}" name="id">
                         <div class="form-group">
-                            <label>Loại</label>
-                            <select name="loai" class="form-control" style="width: 100%;">
-                                <option selected="selected" value="0">Chủ đề</option>
-                                <option value="1">Dự án</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
                             <label>Tên bài viết</label> <span class="requireTxt">(*)</span>
                             <input value="{{ $baiviet->tenbaiviet }}" name="tenbaiviet" type="text" class="form-control required" placeholder="Tên bài viết" required>
                             <div class="note-error">
@@ -53,7 +46,7 @@
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
-                            <img class="img-responsive pad" src="upload/{{ $baiviet->hinhanh }}" alt="{{ $baiviet->tenbaiviet }}">
+                            <img class="img-responsive pad" src="upload/hinhanh/{{ $baiviet->hinhanh }}" alt="{{ $baiviet->tenbaiviet }}">
                             <input type="file" name="hinhanh" required>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>

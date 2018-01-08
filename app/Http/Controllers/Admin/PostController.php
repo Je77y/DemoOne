@@ -52,11 +52,11 @@ class PostController extends Controller
                 }
                 $name = $file->getClientOriginalName();
                 $Hinh = str_random(4)."_". changeTitle($name).'.'. $duoi;
-                while(file_exists("upload/".$Hinh))
+                while(file_exists("upload/hinhanh/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
-                $file->move("upload", $Hinh);
+                $file->move("upload/hinhanh", $Hinh);
                 $baiviet->hinhanh = $Hinh;
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $Hinh,
@@ -114,11 +114,11 @@ class PostController extends Controller
                 //$file = '.'. $file;
                 $name = $file->getClientOriginalName();
                 $Hinh = str_random(4)."_". changeTitle($name);
-                while(file_exists("upload/".$Hinh))
+                while(file_exists("upload/hinhanh/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
-                $file->move("upload", $Hinh);
+                $file->move("upload/hinhanh", $Hinh);
                 $baiviet->hinhanh = $Hinh;
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $Hinh,

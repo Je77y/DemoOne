@@ -29,7 +29,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label> <span class="requireTxt">(*)</span>
-                            <textarea id="editor1" name="noidung" class="form-control required" row="8" placeholder="Nội dung" >{{ $blockcontent->noidung }}</textarea>
+                            <textarea id="editor1" name="noidung" class="form-control required" row="8" placeholder="Nội dung" > {{ $blockcontent->noidung }}</textarea>
                             <div class="note-error">
                                 <span class="error mes-note-error" id="errNoiDung"></span>
                             </div>
@@ -58,9 +58,25 @@
         $('.textarea').wysihtml5()
     })
     $("#frm-capnhat").submit(function() {
+        var valueArea = CKEDITOR.instances['editor1'].getData();
+        var err=0;
+        if (valueArea.length==0)
+        {
+            $("#errNoiDung").html("Vui lòng nhập thông tin này");
+            $("#errNoiDung").css("display","inline");
+            err+=1;
+        }else {
+            $("#errNoiDung").css("display","none");
+            $("#editor1").html(valueArea);
+        }
+        err += checkForm("frm-themmoi")?0:1;
+        if (err) {
+            return false;
+        }
         var data = $(this).serialize();
         var action = $(this).attr('action');
         var method = $(this).attr('method');
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

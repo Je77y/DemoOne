@@ -32,7 +32,7 @@
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
-                            <img class="img-responsive pad" src="upload/{{ $banner->hinhanh }}" alt="{{ $banner->tenbanner }}">
+                            <img class="img-responsive pad" src="upload/hinhanh/{{ $banner->hinhanh }}" alt="{{ $banner->tenbanner }}">
                             <input type="file" name="hinhanh" required>
                         </div>
                     </div>

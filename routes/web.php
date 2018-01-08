@@ -40,7 +40,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 	// End Album
 
-	Route::get('/banner', 'BannerController@index');
+	// Begin Banner
+    Route::get('/banner', 'BannerController@Index');
+    Route::get('/banner/create', 'BannerController@Create');
+    Route::post('/banner/store', 'BannerController@Store');
+    Route::get('/banner/show/{id}', 'BannerController@Show');
+    Route::get('/banner/reload', 'BannerController@Reload');
+    Route::get('/banner/edit/{id}', 'BannerController@Edit');
+    Route::post('/banner/update', 'BannerController@Update');
+    Route::get('/banner/destroy/{id}', 'BannerController@Destroy');
+    // End Banner
 
     // Begin BlockContent
     Route::get('/blockcontent/{idduan}', 'BlockContentController@Index');
@@ -50,7 +59,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::post('/blockcontent/update', 'BlockContentController@Update');
     // End BlockContent
 
-	Route::get('/hinhanh', 'HinhAnhController@index');
+    // Begin HinhAnh
+    Route::get('/hinhanh', 'HinhAnhController@Index');
+    Route::get('/hinhanh/create', 'HinhAnhController@Create');
+    Route::post('/hinhanh/store', 'HinhAnhController@Store');
+    Route::get('/hinhanh/show/{id}', 'HinhAnhController@Show');
+    Route::get('/hinhanh/reload', 'HinhAnhController@Reload');
+    Route::get('/hinhanh/edit/{id}', 'HinhAnhController@Edit');
+    Route::post('/hinhanh/update', 'HinhAnhController@Update');
+    Route::get('/hinhanh/destroy/{id}', 'HinhAnhController@Destroy');
+    // End HinhAnh
 
 	//Begin CHUDE
 	Route::get('/chude', 'ChuDeController@index');

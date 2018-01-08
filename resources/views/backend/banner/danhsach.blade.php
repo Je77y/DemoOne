@@ -199,7 +199,7 @@
                     //},
                     {
                         "mData": function(data, type, dataToSet) {
-                            var str = '<img class="attachment-img center" alt="not find" src="/upload/' + data.hinhanh + '" style="width: 50px; height: 50px">';
+                            var str = '<img class="attachment-img center" alt="not find" src="/upload/hinhanh/' + data.hinhanh + '" style="width: 50px; height: 50px">';
                             return str;
                         },
                     },

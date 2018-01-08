@@ -45,7 +45,7 @@ class ChuDeController extends Controller
         $mss = new Message(true, 'Thêm mới chủ đề thành công');
         if($request->ajax())
         {
-            $tenchude = $request->get('tenchude');
+            $tenchude = ucfirst($request->get('tenchude'));
             $tomtat = $request->get('tomtat');
             $duan = $request->get('loai');
             $noibat = $request->get('noibat') == 1 ? 1 : 0;
@@ -62,12 +62,12 @@ class ChuDeController extends Controller
                 }
 
                 $name = $file->getClientOriginalName();
-                $Hinh = str_random(4)."_". $name;
-                while(file_exists("upload/".$Hinh))
+                $Hinh = str_random(4)."_". changeTitle($name).'.'. $duoi;
+                while(file_exists("upload/hinhanh/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
-                $file->move("upload", $Hinh);
+                $file->move("upload/hinhanh/", $Hinh);
                 $hinhanh = $Hinh;
             }
             else 
@@ -89,9 +89,9 @@ class ChuDeController extends Controller
                     {
                         $block = new BlockContent;
                         $block->chudeid = $idchude;
-                        $block->tenblock = "Bạn chưa tạo nội dung";
-                        $block->tomtat = "Bạn chưa tạo nội dung";
-                        $block->noidung = "Bạn chưa tạo nội dung";
+                        $block->tenblock = " ";
+                        $block->tomtat = " ";
+                        $block->noidung = " ";
                         $block->subtitle = changeTitle($loaiblock->ten);
                         $block->loaiblockid = $loaiblock->id;
                         $block->hienthi = 1;
@@ -145,11 +145,11 @@ class ChuDeController extends Controller
 
                 $name = $file->getClientOriginalName();
                 $Hinh = str_random(4)."_". $name;
-                while(file_exists("upload/".$Hinh))
+                while(file_exists("upload/hinhanh/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
-                $file->move("upload", $Hinh);
+                $file->move("upload/hinhanh", $Hinh);
                 $chude->hinhanh = $Hinh;
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $Hinh,

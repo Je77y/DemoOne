@@ -24,42 +24,10 @@
                         <div class="box-header">
                             <div class="row nomargin nopadding">
                                 <button class="btn btn-primary pull-right margin-10"  onclick="createAlbum()"><i class="fa fa-plus"></i> Thêm mới</button>
-                                <button class="btn btn-primary pull-right margin-10" data-toggle="collapse" data-target="#timkiembox"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm</button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div class="row nomargin nopadding">
-                                <div id="timkiembox" class="collapse">
-                                    <div class="row nomargin nopadding">
-                                        <div class="col-md-offset-1 col-md-10">
-                                            <form action="/admin/baiviet/search" method="post" role="form" class="form-horizontal" id="frm-searchChuDe">
-                                                <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
-                                                <div class="form-group col-md-6">
-                                                    <label class="control-label col-md-3">Từ khóa</label>
-                                                    <div class="col-md-9">
-                                                        <input name="tukhoa" type="text" class="form-control" placeholder="Từ khóa...">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label class="control-label col-md-3">Loại</label>
-                                                    <div class="col-md-9">
-                                                        <select name="loai" class="form-control" style="width: 100%;">
-                                                            <option selected="selected" value="-1">Tất cả</option>
-                                                            <option value="0">Chủ đề</option>
-                                                            <option value="1">Dự án</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="center">
-                                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-                                                    <button type="button" class="btn btn-danger" onclick="closeTimKiem()">Đóng</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <table id="tblAlbum" class="table table-bordered table-striped" style="width:100%;">
                                 <thead>
                                 <tr>
@@ -197,7 +165,7 @@
                     //},
                     {
                         "mData": function(data, type, dataToSet) {
-                            var str = '<img class="attachment-img center" alt="not find" src="/upload/' + data.hinhanh + '" style="width: 50px; height: 50px">';
+                            var str = '<img class="attachment-img center" alt="not find" src="/upload/hinhanh/' + data.hinhanh + '" style="width: 50px; height: 50px">';
                             return str;
                         },
                     },
