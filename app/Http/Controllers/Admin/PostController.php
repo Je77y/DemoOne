@@ -50,9 +50,8 @@ class PostController extends Controller
                 {
                     return response(json_encode($mss));
                 }
-                //$file = '.'. $file;
                 $name = $file->getClientOriginalName();
-                $Hinh = str_random(4)."_". changeTitle($name);
+                $Hinh = str_random(4)."_". changeTitle($name).'.'. $duoi;
                 while(file_exists("upload/".$Hinh))
                 {
                     $Hinh = str_random(4)."_". $name;

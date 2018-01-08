@@ -4,41 +4,116 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Message;
+use App\HinhAnh;
+use Illuminate\Support\Facades\DB;
+use Mockery\Exception;
+use MongoDB\Driver\Exception\ExecutionTimeoutException;
 
 class HinhAnhController extends Controller
 {
-    public function index()
+    public function Reload()
     {
-        return view('backend/hinhanh/danhsach');
+        $dshinhanh = DB::table('HinhAnhBlock')
+            ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
+            ->select('HinhAnhBlock.*', 'BlockContent.tenblock')
+            ->get();
+        return response(json_encode($dshinhanh));
     }
 
-    public function create()
+    public function Index()
+    {
+        $dshinhanh = json_encode($dshinhanh = DB::table('HinhAnhBlock')
+            ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
+            ->select('HinhAnhBlock.*', 'BlockContent.tenblock')
+            ->get());
+        return view('backend/hinhanh/danhsach', compact('dshinhanh'));
+    }
+
+    public function Create()
+    {
+        return view('backend/hinhanh/_createModal');
+    }
+
+    public function Store(Request $request)
+    {
+        $mss = new Message(true, "Thêm thành công");
+        if($request->ajax())
+        {
+            $hinhanh = new HinhAnh;
+            $hinhanh->mota = $request->get('mota');
+            $hinhanh->blockid = 2;
+            if($request->hasFile('hinhanh'))
+            {
+                $file = $request->file('hinhanh');
+                $duoi = $file->getClientOriginalExtension();
+                if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
+                {
+                    $mss->status = false;
+                    $mss->message = "Sai định dạng ảnh";
+                    return response(json_encode($mss));
+                }
+                $hinhanh->url = $file->getClientOriginalName();
+            }
+            try {
+            $hinhanh->save();
+            }
+            catch (Exception $e)
+            {
+                $mss->status = false;
+                $mss->message = "Lỗi. Thêm thất bại";
+            }
+        }
+        return response(json_encode($mss));
+    }
+
+    public function Show($id)
     {
         //
     }
 
-    public function store(Request $request)
+    public function Edit($id)
     {
-        //
+        $hinhanh = HinhAnh::find($id);
+        return view('backend/hinhanh/_editModal', compact('hinhanh'));
     }
 
-    public function show($id)
+    public function Update(Request $request)
     {
-        //
+        $mss = new Message(true, "Cập nhật thành công");
+        if($request->ajax())
+        {
+            $hinhanh = HinhAnh::find($request->get('id'));
+            $hinhanh->mota = $request->get('mota');
+            $hinhanh->blockid = 2;
+            if($request->hasFile('hinhanh'))
+            {
+                $file = $request->file('hinhanh');
+                $duoi = $file->getClientOriginalExtension();
+                if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
+                {
+                    $mss->status = false;
+                    $mss->message = "Sai định dạng ảnh";
+                    return response(json_encode($mss));
+                }
+                $hinhanh->url = $file->getClientOriginalName();
+            }
+            try {
+                $hinhanh->save();
+            }
+            catch (Exception $e)
+            {
+                $mss->status = false;
+                $mss->message = "Lỗi. Cập nhật thất bại";
+            }
+        }
+        return response(json_encode($mss));
     }
 
-    public function edit($id)
+    public function Destroy($id)
     {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        HinhAnh::destroy($id);
+        $mss = new Message(true, "Xoá thành công");
+        return response(json_encode($mss));
     }
 }

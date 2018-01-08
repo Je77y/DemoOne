@@ -4,40 +4,46 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\DanhMuc;
 
 class DanhMucController extends Controller
 {
-    public function index()
+    public function Index()
     {
         return view('backend/danhmuc/danhsach');
     }
 
-    public function create()
+    public function Create()
     {
         //
     }
 
-    public function store(Request $request)
+    public function Store(Request $request)
     {
         //
     }
 
-    public function show($id)
+    public function Show($id)
     {
         //
     }
 
-    public function edit($id)
+    public function Edit($id)
     {
         //
     }
 
-    public function update(Request $request, $id)
+    public function Update(Request $request, $id)
     {
         //
     }
 
-    public function destroy($id)
+    public function Delete($id)
+    {
+
+    }
+
+    public function Destroy($id)
     {
         //
     }
