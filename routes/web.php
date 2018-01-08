@@ -98,5 +98,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/slide', 'SlideController@index');
     Route::get('/lienhe', 'LienHeController@index');
 
+    // Begin TaiLieu
 	Route::get('/tailieu', 'TaiLieuController@index');
+	// End TaiLieu
 });
