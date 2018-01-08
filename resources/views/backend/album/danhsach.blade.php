@@ -1,121 +1,231 @@
-@extends('backend/layout/base') @section('title', 'Quản lý bài viết') @section('content')
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Album</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="/admin/baiviet/them" class="btn btn-primary">Thêm Album</a>
-                    </div>
-                    <div class="col-md-6">
-                        <form action="#" method="get" accept-charset="utf-8">
-                            <div class="col-md-offset-4 col-md-8">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" placeholder="Từ khóa ...">
+@extends('backend/layout/base')
+@section('css')
+
+@endsection
+@section('title', 'Quản lý Album')
+@section('content')
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Danh sách Album
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                <li class="active">Album</li>
+            </ol>
+        </section>
+        <!-- Main content -->
+        <section class="content">
+            <!-- /.row -->
+            <div class="row nomargin nopadding" style="margin:0px; padding: 0px">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="row nomargin nopadding">
+                                <button class="btn btn-primary pull-right margin-10"  onclick="createAlbum()"><i class="fa fa-plus"></i> Thêm mới</button>
+                                <button class="btn btn-primary pull-right margin-10" data-toggle="collapse" data-target="#timkiembox"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm</button>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="row nomargin nopadding">
+                                <div id="timkiembox" class="collapse">
+                                    <div class="row nomargin nopadding">
+                                        <div class="col-md-offset-1 col-md-10">
+                                            <form action="/admin/baiviet/search" method="post" role="form" class="form-horizontal" id="frm-searchChuDe">
+                                                <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
+                                                <div class="form-group col-md-6">
+                                                    <label class="control-label col-md-3">Từ khóa</label>
+                                                    <div class="col-md-9">
+                                                        <input name="tukhoa" type="text" class="form-control" placeholder="Từ khóa...">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="control-label col-md-3">Loại</label>
+                                                    <div class="col-md-9">
+                                                        <select name="loai" class="form-control" style="width: 100%;">
+                                                            <option selected="selected" value="-1">Tất cả</option>
+                                                            <option value="0">Chủ đề</option>
+                                                            <option value="1">Dự án</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="center">
+                                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                                    <button type="button" class="btn btn-danger" onclick="closeTimKiem()">Đóng</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <th>ID</th>
-                                <th>Hình ảnh</th>
-                                <th>Mô tả</th>
-                                <th></th>
-                            </thead>
-                            <tbody>
+                            <table id="tblAlbum" class="table table-bordered table-striped" style="width:100%;">
+                                <thead>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Niger</td>
-                                    <td>Oud-Turnhout</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
+                                    <th class="width-30">Id</th>
+                                    <th>Hình ảnh</th>
+                                    <th>Mô tả</th>
+                                    <th></th>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Curaçao</td>
-                                    <td>Sinaai-Waas</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Netherlands</td>
-                                    <td>Baileux</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Korea, South</td>
-                                    <td>Overland Park</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Malawi</td>
-                                    <td>Feldkirchen in Kärnten</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Chile</td>
-                                    <td>Gloucester</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Sửa" class="btn btn-info btn-simple btn-xs">
-                                            <i class="fa fa-edit"></i>
-                                        </button>
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="album-info">
+                                {{--@include('backend/baiviet/_listTable')--}}
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- /.content -->
+        <div class="modal fade" id="modal-edit"></div>
+        <div class="modal fade" id="modal-delete"></div>
+        <div class="modal fade" id="modal-create" ></div>
     </div>
-</div>
+@endsection
+@section('js')
+    <script>
+        var dataObj = decodeURIComponent("<?php echo rawurlencode($dsalbum); ?>");
+        var jsdata = JSON.parse(dataObj);
+        $(document).ready(function () {
+            loadDataTable(jsdata);
+        })
+
+
+        var createAlbum = function(){
+            $.ajax({
+                type: 'get',
+                url: '/admin/album/create',
+
+                success: function(data){
+                    $("#modal-create").html(data);
+                    $("#modal-create").modal("show");
+                },
+                error: function() {
+                    console.log('Lỗi khi gọi button thêm bài viết')
+                }
+
+            })
+        }
+        var editAblum = function(id) {
+            $.ajax({
+                type: 'get',
+                url: '/admin/album/edit/'+id,
+                success: function(data) {
+                    $("#modal-edit").html(data);
+                    $("#modal-edit").modal("show");
+                },
+                error: function() {
+                    console.log('Lỗi')
+                }
+            })
+        }
+
+        function deleteAblum(id) {
+            $.confirm({
+                'title': 'Xác nhận xóa',
+                'message': 'Bạn có chắc chắn muốn xóa?',
+                'buttons': {
+                    'Đồng ý': {
+                        'class': 'btn-confirm-yes btn-info',
+                        'action': function () {
+                            $.ajax({
+                                type: 'GET',
+                                url: '/admin/album/destroy/'+id,
+                                dataType: 'json',
+                                success: function(mss) {
+                                    if(mss.status){
+                                        $.notify(mss.message, "success");
+                                        $("#modal-delete").modal("hide");
+                                        reloadAction();
+                                    }
+                                    else {
+                                        $.notify(mss.message, "error");
+                                    }
+                                },
+                                error: function() {
+                                    $.notify("Lỗi. không thực hiện được thao tác", "error");
+                                }
+                            })
+                        }
+                    },
+                    'Hủy bỏ': {
+                        'class': 'btn-danger',
+                        'action': function () { }
+                    }
+                }
+            });
+        }
+
+        function reloadAction() {
+            $.ajax({
+                type: "get",
+                url: '/admin/album/reload',
+                dataType: 'json',
+                success: function(mss) {
+                    loadDataTable(mss);
+                },
+                error: function() {
+                    $.notify("Lỗi. Không thực hiện được thao tác", "error");
+                }
+            })
+        }
+
+        var loadDataTable = function(item) {
+            var table = $('#tblAlbum').DataTable({
+
+                "data": item,
+                "bDestroy": true,
+                "iDisplayLength": 20,
+                paging: true,
+                "aoColumns": [{
+                    "orderable": false,
+                    "sClass": "center",
+                    "mData": function(data, type, dataToSet) {
+                        return '<input class="global_" type="checkbox" name="ids" value="' + data.id + '" />';
+                    },
+                    "orderable": false,
+                },
+
+                    //{
+                    //    "class": 'details-control',
+                    //    "orderable": false,
+                    //    "data": null,
+                    //    "defaultContent": ''
+                    //},
+                    {
+                        "mData": function(data, type, dataToSet) {
+                            var str = '<img class="attachment-img center" alt="not find" src="/upload/' + data.hinhanh + '" style="width: 50px; height: 50px">';
+                            return str;
+                        },
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+                            return data.mota;
+                        },
+                    },
+                    {
+                        "orderable": false,
+                        "sClass": "center",
+                        "mData": function(data, type, dataToSet) {
+                            var str = '<a href="javascript:void(0)" onclick="editAblum(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>';
+                            str += '  <a href="javascript:void(0)" onclick="deleteAblum(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+
+                            return str;
+                        },
+
+                    },
+
+                ],
+                //"order": [[1, 'asc']],
+                "fnDrawCallback": function(oSettings) {
+
+                    //runAllCharts()
+                }
+            });
+        }
+
+    </script>
 @endsection

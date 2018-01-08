@@ -233,7 +233,7 @@
                 data: $(this).serialize(),
                 dataType: 'json',
                 success: function(rs) {
-                    loadDataTable(rs);
+                        loadDataTable(rs);
                 },
                 error: function() {
                     $.notify("Lỗi. Không thực hiện được thao tác", 'error');

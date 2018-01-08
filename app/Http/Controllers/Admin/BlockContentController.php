@@ -7,43 +7,25 @@ use App\Http\Controllers\Controller;
 use App\BlockContent;
 use App\Message;
 use Mockery\Exception;
+use App\LoaiBlock;
+use Illuminate\Support\Facades\DB;
 
 class BlockContentController extends Controller
 {
     public function Index($idduan)
     {
-        $dsblockcontent = BlockContent::where('chudeid', '=', $idduan)->get();
-//        $dsblockcontent = json_encode($dsblockcontent1);
+        $dsblockcontent1 = DB::table('BlockContent')->join('LoaiBlock', 'BlockContent.loaiblockid', '=', 'LoaiBlock.id')
+            ->select('BlockContent.*', 'LoaiBlock.ten')
+            ->where('chudeid', '=', $idduan)->get();
+        $dsblockcontent = json_encode($dsblockcontent1);
         return view('backend/blockcontent/danhsach', compact('idduan', 'dsblockcontent'));
     }
 
     public function Reload($idduan)
     {
-        $dsblockcontent = BlockContent::where('chudeid', $idduan)->orderBy('id', 'desc');
+        $dsblockcontent = BlockContent::where('chudeid', $idduan)->get();
         return response(json_encode($dsblockcontent));
     }
-
-//    public function Store(Request $request)
-//    {
-//        $mss = new Message(true, 'Thêm thành công');
-//        if($request->ajax())
-//        {
-//            try {
-//                $block = new BlockContent;
-//                $block->tenblock = $request->get('tenblock');
-//                $block->thutu = $request->get('thutu');
-//                $block->noidung = $request->get('noidung');
-//                $block->subtitle = $request->get('subtitle');
-//                $block->chudeid = $request->get('idduan');
-//
-//                //$block->save();
-//            } catch (Exception $e){
-//                $mss->status = false;
-//                $mss->message = "Lỗi. Thêm thất bại";
-//            }
-//            return response(json_encode($block));
-//        }
-//    }
 
     public function Show($id)
     {
@@ -58,13 +40,23 @@ class BlockContentController extends Controller
 
     public function Update(Request $request)
     {
-
+        $mss = new Message(true, 'Cập nhật thành công');
+        try {
+        if($request->ajax())
+        {
+            $blockcontent = BlockContent::find($request->get('id'));
+            $blockcontent->tenblock = $request->get('tenblock');
+            $blockcontent->tomtat = $request->get('tomtat');
+            $blockcontent->noidung = $request->get('noidung');
+            $blockcontent->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
+            $blockcontent->save();
+        }
+        }
+        catch (Exception $e)
+        {
+            $mss->status = false;
+            $mss->message = "Lỗi. Cập nhật thất bại";
+        }
+        return response(json_encode($mss));
     }
-
-//    public function Destroy($id)
-//    {
-//        BlockContent::destroy($id);
-//        $mss = new Message(true, 'Xoá thành công');
-//        return response(json_encode($mss));
-//    }
 }

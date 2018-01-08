@@ -6,6 +6,7 @@ use App\BaiViet;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Message;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -18,10 +19,6 @@ class PostController extends Controller
     public function Index($idchude)
     {
         $dsbaiviet1 = BaiViet::where('chudeid', '=', $idchude)->orderBy('created_at', 'desc')->get();
-//        foreach ( $dsbaiviet1 as $item)
-//        {
-//            $item->noidung="";
-//        }
         $dsbaiviet = json_encode($dsbaiviet1);
         return view('backend/baiviet/danhsach', compact('dsbaiviet', 'idchude'));
     }
@@ -62,6 +59,10 @@ class PostController extends Controller
                 }
                 $file->move("upload", $Hinh);
                 $baiviet->hinhanh = $Hinh;
+                $album = DB::table('Album')->insert([
+                    'hinhanh' => $Hinh,
+                    'mota' => $baiviet->tenbaiviet
+                ]);
             }
             else
             {
@@ -120,6 +121,10 @@ class PostController extends Controller
                 }
                 $file->move("upload", $Hinh);
                 $baiviet->hinhanh = $Hinh;
+                $album = DB::table('Album')->insert([
+                    'hinhanh' => $Hinh,
+                    'mota' => $baiviet->tenbaiviet
+                ]);
             }
             try {
                 $baiviet->save();

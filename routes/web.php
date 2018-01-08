@@ -28,20 +28,26 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
 	Route::get('/danhmuc', 'DanhMucController@index');
 
-	Route::get('/album', 'AlbumController@index');
+	// Begin Album
+    Route::get('/album', 'AlbumController@Index');
+    Route::get('/album/create', 'AlbumController@Create');
+    Route::post('/album/store', 'AlbumController@Store');
+    Route::get('/album/show/{id}', 'AlbumController@Show');
+    Route::get('/album/reload', 'AlbumController@Reload');
+    Route::get('/album/edit/{id}', 'AlbumController@Edit');
+    Route::post('/album/update', 'AlbumController@Update');
+    Route::get('/album/destroy/{id}', 'AlbumController@Destroy');
+
+	// End Album
 
 	Route::get('/banner', 'BannerController@index');
 
     // Begin BlockContent
     Route::get('/blockcontent/{idduan}', 'BlockContentController@Index');
-    Route::get('/blockcontent/create/{id}', 'BlockContentController@Create');
     Route::get('/blockcontent/show/{id}', 'BlockContentController@Show');
     Route::get('/blockcontent/reload/{id}', 'BlockContentController@Reload');
-//    Route::post('/blockcontent/store', 'BlockContentController@Store');
     Route::get('/blockcontent/edit/{id}', 'BlockContentController@Edit');
     Route::post('/blockcontent/update', 'BlockContentController@Update');
-//    Route::get('/blockcontent/delete/{id}', 'BlockContentController@Delete');
-//    Route::get('/blockcontent/destroy/{id}', 'BlockContentController@Destroy');
     // End BlockContent
 
 	Route::get('/hinhanh', 'HinhAnhController@index');
@@ -70,8 +76,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('/nguoidung/delete/{id}', 'UserController@Delete');
     Route::post('/nguoidung/delete', 'UserController@Remove');
     //End USER
-
-
 
 	Route::get('/slide', 'SlideController@index');
     Route::get('/lienhe', 'LienHeController@index');

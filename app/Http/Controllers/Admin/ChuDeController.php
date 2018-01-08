@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Album;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -47,8 +48,8 @@ class ChuDeController extends Controller
             $tenchude = $request->get('tenchude');
             $tomtat = $request->get('tomtat');
             $duan = $request->get('loai');
-            $noibat = $request->get('noibat');
-            $trongtam = $request->get('trongtam');
+            $noibat = $request->get('noibat') == 1 ? 1 : 0;
+            $trongtam = $request->get('trongtam') == 1 ? 1 : 0;
 
             if($request->hasFile('hinhanh'))
             {
@@ -77,6 +78,10 @@ class ChuDeController extends Controller
                 $idchude = DB::table('ChuDe')->insertGetId(
                     ['tenchude' => $tenchude, 'tomtat' => $tomtat, 'duan' => $duan, 'hinhanh' => $hinhanh, 'noibat' => $noibat, 'trongtam' => $trongtam]
                 );
+                $album = DB::table('Album')->insert([
+                    'hinhanh' => $hinhanh,
+                    'mota' => $tenchude
+                ]);
                 if ($duan == 1)
                 {
                     $dsloaiblock = LoaiBlock::all();
@@ -84,7 +89,7 @@ class ChuDeController extends Controller
                     {
                         $block = new BlockContent;
                         $block->chudeid = $idchude;
-                        $block->tenblock = $loaiblock->ten;
+                        $block->tenblock = "Bạn chưa tạo nội dung";
                         $block->tomtat = "Bạn chưa tạo nội dung";
                         $block->noidung = "Bạn chưa tạo nội dung";
                         $block->subtitle = changeTitle($loaiblock->ten);
@@ -94,7 +99,8 @@ class ChuDeController extends Controller
                     }
                 }
 
-            } catch (Exception $e) {
+            }
+            catch (Exception $e) {
                 $mss->status = false;
                 $mss->message = "Lỗi. Thêm mới thất bại";
             }
@@ -145,12 +151,14 @@ class ChuDeController extends Controller
                 }
                 $file->move("upload", $Hinh);
                 $chude->hinhanh = $Hinh;
-
+                $album = DB::table('Album')->insert([
+                    'hinhanh' => $Hinh,
+                    'mota' => $chude->tenchude
+                ]);
             }
            
             try {
-            $chude->save();
-                
+                $chude->save();
             } catch (Exception $e){
                $mss->status = false;
                $mss->message = "Không lưu được dữ liệu";
