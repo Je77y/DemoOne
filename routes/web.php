@@ -16,6 +16,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::get('/', 'AdminController@index');
 	Route::get('/dangnhap', 'UserController@login');
 
+	// Begin BaiViet
     Route::get('/baiviet/create/{id}', 'PostController@Create');
 	Route::get('/baiviet/{idchude}', 'PostController@Index');
 	Route::get('/baiviet/show/{id}', 'PostController@Show');
@@ -25,8 +26,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::post('/baiviet/update', 'PostController@Update');
 	Route::get('/baiviet/delete/{id}', 'PostController@Delete');
 	Route::get('/baiviet/destroy/{id}', 'PostController@Destroy');
-
-	Route::get('/danhmuc', 'DanhMucController@index');
+	// End BaiViet
 
 	// Begin Album
     Route::get('/album', 'AlbumController@Index');
@@ -80,7 +80,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 	Route::post('/chude/update', 'ChuDeController@update');
 	Route::get('/chude/show/{id}', 'ChuDeController@show');
 	Route::get('/chude/destroy/{id}', 'ChuDeController@destroy');
-
 	//End CHUDE
 
     //Begin USER
@@ -95,8 +94,16 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::post('/nguoidung/delete', 'UserController@Remove');
     //End USER
 
-	Route::get('/slide', 'SlideController@index');
-    Route::get('/lienhe', 'LienHeController@index');
+    // Begin Slide
+    Route::get('/slide', 'SlideController@Index');
+    Route::get('/slide/create', 'SlideController@Create');
+    Route::post('/slide/store', 'SlideController@Store');
+    Route::get('/slide/show/{id}', 'SlideController@Show');
+    Route::get('/slide/reload', 'SlideController@Reload');
+    Route::get('/slide/edit/{id}', 'SlideController@Edit');
+    Route::post('/slide/update', 'SlideController@Update');
+    Route::get('/slide/destroy/{id}', 'SlideController@Destroy');
+    // End Slide
 
     // Begin TaiLieu
 	Route::get('/tailieu', 'TaiLieuController@index');
