@@ -92,8 +92,10 @@ class AlbumController extends Controller
 
     public function Destroy($id)
     {
+        // Xoá hình ảnh
         $album = Album::find($id);
         $album->delete();
+        // Xoá dữ liệu
         Album::destroy($id);
         $mss = new Message(true, 'Xoá thành công');
         return response(json_encode($mss));

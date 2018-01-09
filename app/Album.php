@@ -10,8 +10,8 @@ class Album extends Model
 
     public function delete()
     {
-        if(file_exists('upload/'.$this->hinhanh)){
-            @unlink('upload/'.$this->hinhanh);
+        if(file_exists('upload/hinhanh/'.$this->hinhanh)){
+            @unlink('upload/hinhanh/'.$this->hinhanh);
         }
         parent::delete();
     }

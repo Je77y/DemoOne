@@ -42,11 +42,6 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/hinhanh">
-                    <i class="fa fa-table"></i> <span>Hình ảnh</span>
-                </a>
-            </li>
-            <li>
                 <a href="/admin/dangkyemail">
                     <i class="fa fa-envelope"></i> <span>Đăng ký Email</span>
                 </a>
@@ -54,11 +49,6 @@
             <li>
                 <a href="/admin/slide">
                     <i class="fa fa-share"></i> <span>Slide</span>
-                </a>
-            </li>
-            <li>
-                <a href="/admin/tailieu">
-                    <i class="fa fa-share"></i> <span>Tài liệu</span>
                 </a>
             </li>
             <li>
