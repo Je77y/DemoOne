@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use App\User;
@@ -54,8 +55,8 @@ class UserController extends Controller
     }
     public function Delete($id)
     {
-            $obj=User::find($id);
-       return view('backend/taikhoan/_deleteModal',compact('obj'));
+        $obj=User::find($id);
+        return view('backend/taikhoan/_deleteModal',compact('obj'));
     }
     public function Remove(Request $request)
     {
@@ -76,9 +77,7 @@ class UserController extends Controller
             $ngdung = new User;
             $ngdung->name = $request->get("taiKhoan");
             $ngdung->email = $request->get("email");
-            $ngdung->password = Hash::make($request->get("matKhau"), [
-                'rounds' => 12
-            ]);
+            $ngdung->password = bcrypt($request->get("matKhau"));
             $ngdung->save();
         }catch (Exception $e)
         {
@@ -100,13 +99,36 @@ class UserController extends Controller
         return response(json_encode($rs));
     }
 
-    public function login()
+    public function Login()
     {
+        if(Auth::check())
+        {
+            return redirect('/admin');
+        }
         return view('backend/taikhoan/dangnhap');
     }
 
-    public function signin(Request $request)
+    public function Sigin(Request $request)
     {
+        // Tạo file PhanQuyenMiddleware trong Middleware
+        // Thêm 'adminLogin' => \App\Http\Middleware\PhanQuyenMiddleware::class,
+        // vào Kernel.php
+        // Chỉnh route Route::group(['middleware' => 'adminLogin'], function() {
+        // Mật khẩu được tự động mã hoá
+        $email = $request->input('email');
+        $password = $request->input('matkhau');
+        if(Auth::attempt(['email' => $email, 'password' => $password]))
+        {
+            $thongbao = "Đăng nhập thành công";
+            return redirect('/admin')->with($thongbao);
+        }
+        $thongbao = "Đăng nhập thất bại";
+        return redirect()->back()->withInput();
+    }
 
+    public function Logout(Request $request)
+    {
+        Auth::logout();
+        return redirect('/admin/dangnhap');
     }
 }

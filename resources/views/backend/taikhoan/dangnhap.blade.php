@@ -4,80 +4,44 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>SB Admin - Start Bootstrap Template</title>
-    <base href="{{ asset('') }}" target="_blank, _self, _parent, _top">
-    <!--  Bootstrap core CSS     -->
-    <link href="backend/assets/css/bootstrap.min.css" rel="stylesheet" />
-    <!--  Animation library for notifications   -->
-    <link href="backend/assets/css/animate.min.css" rel="stylesheet" />
-    <!--  Light Bootstrap Table core CSS    -->
-    <link href="backend/assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
-    <!--  CSS for Demo Purpose, don't include it in your project     -->
-    <link href="backend/assets/css/demo.css" rel="stylesheet" />
-    <!--  Fonts and icons     -->
-    <link href="backend/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
-    <link href="backend/assets/css/font-awesome.css" rel="stylesheet" />
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <title>Trang quản lý</title>
+    <base href="{{ asset('') }}" >
+    <!-- Bootstrap core CSS-->
+    <link href="backend/asset/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="backend/asset/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="backend/asset/css/sb-admin.css" rel="stylesheet">
 </head>
 
-<body>
-    <div class="wrapper">
-        <div class="main-panel">
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-offset-2 col-md-6">
-                            <div class="card">
-                                <div class="header">
-                                    <h4 class="title">Đăng nhập</h4>
-                                </div>
-                                <div class="content">
-                                    <form>
-                                        
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Tên đăng nhập</label>
-                                                    <input type="text" class="form-control" placeholder="Tài khoản" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>Mật khẩu</label>
-                                                    <input type="password" class="form-control" placeholder="Mật khẩu" required>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                        <button type="submit" class="btn btn-primary btn-fill pull-left">Đăng nhập</button>
-                                        <div class="clearfix"></div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<body class="bg-dark">
+<div class="container">
+    <div class="card card-login mx-auto mt-5">
+        <div class="card-header text-center">
+            <h3>Quản lý Admin</h3>
+        </div>
+        <div >@if( isset($thongbao)) {{ $thongbao  }} @endif</div>
+        <div class="card-body">
+            <form action="/admin/truycap" method="post">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" name="email" type="email"  placeholder="Nhập email">
                 </div>
-            </div>
+                <div class="form-group">
+                    <label for="matkhau">Mật khẩu</label>
+                    <input class="form-control" name="matkhau" type="password" placeholder="Mật khẩu">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+            </form>
         </div>
     </div>
-    </div>
-    <!--   Core JS Files   -->
-    <script src="backend/assets/js/jquery.3.2.1.min.js" type="text/javascript"></script>
-    <script src="backend/assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <!--  Charts Plugin -->
-    <script src="backend/assets/js/chartist.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="backend/assets/js/bootstrap-notify.js"></script>
-    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-    <script src="backend/assets/js/light-bootstrap-dashboard.js?v=1.4.0"></script>
-    <!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-    <script src="backend/assets/js/demo.js"></script>
+</div>
+<!-- Bootstrap core JavaScript-->
+<script src="backend/asset/vendor/jquery/jquery.min.js"></script>
+<script src="backend/asset/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="backend/asset/vendor/jquery-easing/jquery.easing.min.js"></script>
 </body>
 
 </html>
