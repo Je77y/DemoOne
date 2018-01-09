@@ -5,25 +5,25 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="center">
-                <h4 class="modal-title">Thêm mới hình ảnh</h4>
+                <h4 class="modal-title">Thêm mới Album</h4>
             </div>
         </div>
         <div class="modal-body">
             <div class="row">
-                <form action="/admin/hinhanh/store" role="form" enctype="multipart/form-data" method="POST" id="frm-themmoi">
+                <form action="/admin/album/save" role="form" enctype="multipart/form-data" method="POST" id="frm-nhap">
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Mô tả</label> <span class="requireTxt">(*)</span>
-                            <input name="mota" type="text" class="form-control required" placeholder="Tên bài viết" required>
+                            <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
+                            <input name="duongdan" type="file" class="form-control required" required>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Hình ảnh</label> <span class="requireTxt">(*)</span>
-                            <input class="required" type="file" name="hinhanh" accept=".jpg, .jpeg, .png" required>
+                            <label>Mô tả</label> <span class="requireTxt">(*)</span>
+                            <textarea name="mota" class="form-control required" row="8" placeholder="Nội dung" ></textarea>
                             <div class="note-error">
-                                <span class="error mes-note-error"></span>
+                                <span class="error mes-note-error" id="errNoiDung"></span>
                             </div>
                         </div>
                     </div>
@@ -41,9 +41,9 @@
 
 <script>
 
-    $("#frm-themmoi").submit(function() {
+    $("#frm-nhap").submit(function() {
         event.preventDefault();
-        var valid = checkForm("frm-themmoi");
+        var valid = checkForm("frm-nhap");
         if (!valid) {
             return false;
         } else {
@@ -55,15 +55,18 @@
             var dataString;
 
             var contentType1 = false;
-            var action = $("#frm-themmoi").attr("action");
-            if ($("#frm-themmoi").attr("enctype") == "multipart/form-data") {
+            var action = $("#frm-nhap").attr("action");
+            if ($("#frm-nhap").attr("enctype") == "multipart/form-data") {
                 //this only works in some browsers.
                 //purpose? to submit files over ajax. because screw iframes.
                 //also, we need to call .get(0) on the jQuery element to turn it into a regular DOM element so that FormData can use it.
-                dataString = new FormData($("#frm-themmoi").get(0));
+                dataString = new FormData($("#frm-nhap").get(0));
                 contentType1 = false;
                 processData = false;
             }
+//            console.log(dataString);
+
+//            dataString.noidung = value;
             $.ajax({
                 type: "POST",
                 url: action,
@@ -76,8 +79,8 @@
                     {
                         $.notify(mss.message, "success");
                         // console.log(mss.noidung);
-                        $("#modal-create").modal("hide");
-                        $("#modal-create").empty();
+                        $("#modal-import").modal("hide");
+                        $("#modal-import").empty();
                         //-----------------------------------
                         reloadAction();
                     }
@@ -95,6 +98,6 @@
     });
 
     var createAction = function () {
-        $("#frm-themmoi").submit();
+        $("#frm-nhap").submit();
     }
 </script>

@@ -20,9 +20,49 @@ class AlbumController extends Controller
 
     public function Index()
     {
-        $dsAlbum_model = Album::orderBy('id', 'desc')->get();
-        $dsalbum = json_encode($dsAlbum_model);
+        $dsalbum = json_encode(Album::orderBy('id', 'desc')->get());
         return view('backend/album/danhsach', compact('dsalbum'));
+    }
+
+    public function Import()
+    {
+        return view('backend/album/_importModal');
+    }
+
+    public function Save(Request $request)
+    {
+        $mss = new Message(true, "Thêm thành công");
+        if($request->ajax())
+        {
+            $album = new Album;
+            $mota = $request->input('mota');
+            if($request->hasFile('duongdan'))
+            {
+                $file = $request->file('duongdan');
+                $duoi = $file->getClientOriginalExtension();
+                $name = chop($file->getClientOriginalName(),('.'.$duoi));
+                if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
+                {
+                    $mss->status = false;
+                    $mss->message = "Sai định dạng ảnh";
+                    return response(json_encode($mss));
+                }
+                $name = str_random(4). changeTitle($name).'.'. $duoi;
+                try {
+                    $album->mota = $mota;
+                    $album->hinhanh = $name;
+                    $album->save();
+                    $file->move('upload/hinhanh/', $name);
+                }
+                catch (Exception $e)
+                {
+                    $mss->status = false;
+                    $mss->message = "Thêm thất bại";
+                    $album->delete();
+                }
+            }
+            return response(json_encode($mss));
+        }
     }
 
     public function Create()
@@ -56,18 +96,19 @@ class AlbumController extends Controller
                     $mss->message = "Lỗi. Thêm thất bại";
                 }
             }
-
+//        return response(json_encode($mss));
         return response(json_encode($mss));
     }
 
     public function Show($id)
     {
-        //
+        $album = Album::findOrFail($id);
+        return view('backend/album/_viewModal', compact('album'));
     }
 
     public function Edit($id)
     {
-        $album = Album::find($id);
+        $album = Album::findOrFail($id);
         return view('backend/album/_editModal', compact('album'));
     }
 
@@ -90,14 +131,14 @@ class AlbumController extends Controller
         return response(json_encode($mss));
     }
 
-    public function Destroy($id)
-    {
-        // Xoá hình ảnh
-        $album = Album::find($id);
-        $album->delete();
-        // Xoá dữ liệu
-        Album::destroy($id);
-        $mss = new Message(true, 'Xoá thành công');
-        return response(json_encode($mss));
-    }
+//    public function Destroy($id)
+//    {
+//        // Xoá hình ảnh
+//        $album = Album::find($id);
+//        $album->delete();
+//        // Xoá dữ liệu
+//        Album::destroy($id);
+//        $mss = new Message(true, 'Xoá thành công');
+//        return response(json_encode($mss));
+//    }
 }

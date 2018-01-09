@@ -38,6 +38,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         Route::group(['prefix' => 'album'], function() {
             // Begin Album
             Route::get('/', 'AlbumController@Index');
+            Route::get('import', 'AlbumController@Import');
+            Route::post('save', 'AlbumController@Save');
             Route::get('create', 'AlbumController@Create');
             Route::post('store', 'AlbumController@Store');
             Route::get('show/{id}', 'AlbumController@Show');
