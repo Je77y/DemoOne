@@ -114,15 +114,14 @@ class UserController extends Controller
         // Thêm 'adminLogin' => \App\Http\Middleware\PhanQuyenMiddleware::class,
         // vào Kernel.php
         // Chỉnh route Route::group(['middleware' => 'adminLogin'], function() {
-        // Mật khẩu được tự động mã hoá
+        // Mật khẩu được tự động mã hoá bcryp
         $email = $request->input('email');
         $password = $request->input('matkhau');
         if(Auth::attempt(['email' => $email, 'password' => $password]))
         {
-            $thongbao = "Đăng nhập thành công";
-            return redirect('/admin')->with($thongbao);
+            return redirect('/admin');
         }
-        $thongbao = "Đăng nhập thất bại";
+        $thongbao = "Bạn nhập sai email hoặc mật khẩu";
         return redirect()->back()->withInput();
     }
 

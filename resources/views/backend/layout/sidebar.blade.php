@@ -53,7 +53,7 @@
             </li>
             <li>
                 <a href="/admin/nguoidung">
-                    <i class="fa fa-share"></i> <span>Người dùng</span>
+                    <i class="fa fa-user"></i> <span>Người dùng</span>
                 </a>
             </li>
             
