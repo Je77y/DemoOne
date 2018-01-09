@@ -116,12 +116,12 @@
                     },
                     {
                         "mData": function(data, type, dataToSet) {
-                            return data.tomtat;
+                            return data.tomtat.slice(0, 120);
                         },
                     },
                     {
                         "mData": function(data, type, dataToSet) {
-                            return data.noidung;
+                            return data.noidung.slice(0, 120);
                         },
                     },
                     {
