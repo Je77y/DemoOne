@@ -4,20 +4,17 @@
         <div class="container">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+                    @foreach($dsslide as $key => $slide)
+                        <li data-target="#carousel-example-generic" data-slide-to="{{ $key  }}" @if($key == 0) {{'class="active"' }} @endif></li>
+                    @endforeach
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="upload/diatrunghai.png" alt="First slide">
+                    @foreach($dsslide as $key => $slide)
+                        <div class="item @if($key == 0) {{ 'active' }} @endif">
+                            <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}">
+                        </div>
+                    @endforeach
 
-                    </div>
-
-                    <div class="item">
-                        <img src="upload/tong-theg.jpg" alt="Second slide">
-
-                    </div>
                 </div>
                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                     <span class="fa fa-angle-left"></span>
@@ -133,43 +130,43 @@
 
             <div id="dangKyEmail">
                 <div class="form-email">
-                <div class="title">ĐĂNG KÝ NHẬN THÔNG TIN</div>
-                <div class="content">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <label class="control-label">Họ tên</label> <span class="requireTxt">(*)</span>
-                            <div>
-                                <input type="text" class="form-control"/>
-                                <div class="note-error">
-                                    <span class="error mes-note-error" id="errMatKhau"></span>
+                    <div class="title">ĐĂNG KÝ NHẬN THÔNG TIN</div>
+                    <div class="content">
+                        <form class="form-horizontal" method="post" action="/dangkyemail">
+                            <div class="form-group">
+                                <label class="control-label">Họ tên</label> <span class="requireTxt">(*)</span>
+                                <div>
+                                    <input type="text" name="hoten" class="form-control"/>
+                                    <div class="note-error">
+                                        <span class="error mes-note-error" id="errMatKhau"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Email</label> <span class="requireTxt">(*)</span>
-                            <div>
-                                <input type="text" class="form-control"/>
-                                <div class="note-error">
-                                    <span class="error mes-note-error" id="errMatKhau"></span>
+                            <div class="form-group">
+                                <label class="control-label">Email</label> <span class="requireTxt">(*)</span>
+                                <div>
+                                    <input type="text" name="email" class="form-control"/>
+                                    <div class="note-error">
+                                        <span class="error mes-note-error" id="errMatKhau"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Số điện thoại</label> <span class="requireTxt">(*)</span>
-                            <div>
-                                <input type="text" class="form-control"/>
-                                <div class="note-error">
-                                    <span class="error mes-note-error" id="errMatKhau"></span>
+                            <div class="form-group">
+                                <label class="control-label">Số điện thoại</label> <span class="requireTxt">(*)</span>
+                                <div>
+                                    <input type="text" name="sodienthoai" class="form-control"/>
+                                    <div class="note-error">
+                                        <span class="error mes-note-error" id="errMatKhau"></span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="center">
-                            <button class="btn btn-default btn-lg">
-                                ĐĂNG KÝ
-                            </button>
-                        </div>
+                            <div class="center">
+                                <button class="btn btn-default btn-lg">
+                                    ĐĂNG KÝ
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                </div>
                 </div>
             </div>
 

@@ -1,15 +1,21 @@
 <?php
 
 Route::group(['namespace' => 'Client'], function() {
-    Route::get('/home', 'HomeController@index');
-//Begin BAIVIET CLIENT
+    Route::get('/home', 'HomeController@Index');
+
+    //Begin BAIVIET CLIENT
     Route::get('/post/{id}', 'BaiVietController@index');
 
     #End BAIVIET
+
     //Begin GioiThieu du an CLIENT
     Route::get('/duan/{id}', 'DuAnController@index');
 
     #End GioiThieu du an
+
+    // Đăng Email
+    Route::post('/dangkyemail', 'HomeController@Email');
+    #End Email
 });
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
@@ -140,6 +146,3 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         });
     });
 });
-
-
-
