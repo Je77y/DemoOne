@@ -1,18 +1,23 @@
 @extends('frontEnd/layout/baseClient')
+@section('title', 'Home')
 @section('content')
     <div class="content-wrapper">
         <div class="container">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
                     @foreach($dsslide as $key => $slide)
+                        @if ($slide->hienthi == 1)
                         <li data-target="#carousel-example-generic" data-slide-to="{{ $key  }}" @if($key == 0) {{'class="active"' }} @endif></li>
+                        @endif
                     @endforeach
                 </ol>
-                <div class="carousel-inner">
+                <div class="carousel-inner" style=" width:100%; height:350px; !important;">
                     @foreach($dsslide as $key => $slide)
+                        @if ($slide->hienthi == 1)
                         <div class="item @if($key == 0) {{ 'active' }} @endif">
-                            <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}">
+                            <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}" style="width: 100%; height: 100%">
                         </div>
+                        @endif
                     @endforeach
 
                 </div>
@@ -35,28 +40,22 @@
                             <div class="block-body">
                                 <div class="block-content row nomargin">
                                     <div class="content-img col-sm-4 nomargin nopadding center" style="    max-height: 220px;">
-                                        <img src="upload/20180106081548-9832.jpg">
+                                        <img src="upload/hinhanh/{{ $baivietmoinhat[0]->hinhanh }}" alt="{{ $baivietmoinhat[0]->hinhanh }}" style="width: 250px; height: 150px;">
                                     </div>
                                     <div class="content-text col-sm-8 nomargin nopadding" style="    max-height: 220px;">
                                         <div class="content-title">
-                                            Biệt thự, nhà liên kế “mạnh tay” khuyến mại mùa cận Tết hệ số điều chỉnh giá
+                                            <a href="/post/{{ $baivietmoinhat[0]->id }}">{{ $baivietmoinhat[0]->tenbaiviet }}</a>
                                         </div>
                                         <div class="content-tomtat">
-                                            Thông tin từ Văn phòng UBND Tp.HCM cho biết, phương án hệ số điều chỉnh giá đất để tính bồi thường, hỗ trợ cho 3 dự án trên địa bàn vừa được UBND thành phố phê duyệt.
-                                            hông tin từ Văn phòng UBND Tp.HCM cho biết, phương án hệ số điều chỉnh giá đất để tính bồi thường, hỗ trợ cho 3 dự án trên địa bàn vừa được UBND thành phố phê duyệt.
-                                            hương án hệ số điều chỉnh giá đất để tính bồi thường...
+                                            {{ $baivietmoinhat[0]->tomtat }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="block-content">
                                     <ul>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018</li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018</li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018</li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018</li>
-
-
+                                        @foreach($dsbaiviet as $baiviet)
+                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/post/{{ $baiviet->id }}">{{ $baiviet->tenbaiviet }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -132,7 +131,8 @@
                 <div class="form-email">
                     <div class="title">ĐĂNG KÝ NHẬN THÔNG TIN</div>
                     <div class="content">
-                        <form class="form-horizontal" method="post" action="/dangkyemail">
+                        <form class="form-horizontal" method="post" action="/dangkyemail" id="frm-dangkyemail">
+                            {{ csrf_field() }}
                             <div class="form-group">
                                 <label class="control-label">Họ tên</label> <span class="requireTxt">(*)</span>
                                 <div>
@@ -177,6 +177,41 @@
 @endsection
 @section("js")
     <script>
+//        $("#frm-dangkyemail").submit(function(){
+//            var data = $(this).serialize();
+//            var url = $(this).attr("action");
+//            var method = $(this).attr("method");
+//            $.ajaxSetup({
+//                headers: {
+//                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                }
+//            });
+//            $.ajax({
+//                type: method,
+//                url: url,
+//                data: data,
+//                success: function(data){
+//                    if (mss.status)
+//                    {
+//                        $.notify(mss.message, "success");
+//                        window.location.replace();
+//                    }
+//                    else
+//                    {
+//
+//                    }
+//                },
+//                error: function() {
+//                    console.log('Lỗi khi gọi khi đăng ký email')
+//                }
+//            });
+//            return false;
+//        });
+
+        var mss = '<?php if(isset($mss)) echo $mss ?>';
+        if (mss.status) {
+            $.notify(mss.message, "success");
+        }
         $("#slimScrollDiv").slimScroll({
             height: '350px'
         });

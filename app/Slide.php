@@ -10,5 +10,11 @@ class Slide extends Model
 
     protected $dates = ['ngaybatdau', 'ngayketthuc'];
 
-//    protected $dateFormat = 'U';
+    public function delete()
+    {
+        if(file_exists('upload/slide/'.$this->hinhanh)){
+            @unlink('upload/slide/'.$this->hinhanh);
+        }
+        parent::delete();
+    }
 }

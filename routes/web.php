@@ -72,8 +72,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
         Route::group(['prefix' => 'blockcontent'], function(){
             // Begin BlockContent
             Route::get('/{idduan}', 'BlockContentController@Index');
-            Route::get('show/{id}', 'BlockContentController@Show');
             Route::get('reload/{id}', 'BlockContentController@Reload');
+            Route::get('show/{id}', 'BlockContentController@Show');
             Route::get('edit/{id}', 'BlockContentController@Edit');
             Route::post('update', 'BlockContentController@Update');
             // End BlockContent
@@ -143,6 +143,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
             Route::post('update', 'TaiLieuController@Update');
             Route::get('destroy/{id}', 'TaiLieuController@Destroy');
             // End TaiLieu
+        });
+
+        Route::group(['prefix' => 'lienhe'], function () {
+            // Begin LienHe
+            Route::get('/', 'LienHeController@Index');
+            Route::get('reload', 'LienHeController@Reload');
+            Route::get('destroy/{id}', 'LienHeController@Destroy');
+            // End LienHe
         });
     });
 });
