@@ -15,11 +15,11 @@ class HomeController extends Controller
 {
     public function Index()
     {
-        $dsslide = Slide::all();
+        $dsslide = Slide::where('hienthi', 1)->get();
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->first()->get();
         $dsbaiviet = BaiViet::all();
         $dsduan = ChuDe::where('duan', 1)->get();
-        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet']));
+        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan']));
     }
 
     public function Email(Request $request)

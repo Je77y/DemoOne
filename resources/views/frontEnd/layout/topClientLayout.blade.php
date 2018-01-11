@@ -14,10 +14,8 @@
                     <li class="active"><a href="/home">Trang chủ <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Giới thiệu</a></li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dự án <span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
+                        <a href="#">Dự án </a>
 
-                        </ul>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">

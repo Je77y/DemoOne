@@ -15,10 +15,9 @@ class BaiVietController extends Controller
      */
     public function index($id)
     {
+        $dsbaiviet = BaiViet::orderBy('id', 'desc')->get();
         $baiViet =  BaiViet::find($id);
-        $chude = ChuDe::find($baiViet->chudeid);
-        return view('frontEnd/baiviet/index',compact('baiViet','chude'));
+        $dsBVChuDe = BaiViet::where('chudeid', $baiViet->chudeid)->get();
+        return view('frontEnd/baiviet/index',compact(['baiViet', 'dsBVChuDe', 'dsbaiviet']));
     }
-
-
 }

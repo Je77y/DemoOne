@@ -70,54 +70,19 @@
                             <div class="block-body" id="slimScrollDiv">
                                 <div class="block-content">
                                     <div class="row nomargin nopadding" >
-                                        <div class="col-sm-6 duan-item">
-                                            <div class="duan-item-img">
-                                                <img src="upload/20171003134542-c89a.jpg"/>
-                                            </div>
-                                            <div class="duan-item-name center">
-                                                Golden City
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 duan-item">
-                                            <div class="duan-item-img">
-                                                <img src="upload/20171003134542-c89a.jpg"/>
-                                            </div>
-                                            <div class="duan-item-name center">
-                                                Golden City
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 duan-item">
-                                            <div class="duan-item-img">
-                                                <img src="upload/20171003134542-c89a.jpg"/>
-                                            </div>
-                                            <div class="duan-item-name center">
-                                                Golden City
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 duan-item">
-                                            <div class="duan-item-img">
-                                                <img src="upload/20171003134542-c89a.jpg"/>
-                                            </div>
-                                            <div class="duan-item-name center">
-                                                Golden City
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 duan-item">
-                                            <div class="duan-item-img">
-                                                <img src="upload/20171003134542-c89a.jpg"/>
-                                            </div>
-                                            <div class="duan-item-name center">
-                                                Golden City
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6 duan-item">
-                                            <div class="duan-item-img">
-                                                <img src="upload/20171003134542-c89a.jpg"/>
-                                            </div>
-                                            <div class="duan-item-name center">
-                                                Golden City
-                                            </div>
-                                        </div>
+                                        @foreach($dsduan  as $duan)
+                                            @if($duan->noibat == 1)
+                                                <div class="col-sm-6 duan-item">
+                                                    <div class="duan-item-img">
+                                                        <img src="upload/hinhanh/{{ $duan->hinhanh  }}" style="width: 80px; height:80px;"/>
+                                                    </div>
+                                                    <div class="duan-item-name text-left">
+                                                        <a href="/duan/{{ $duan->id }}">{{ $duan->tenchude  }}</a>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+
                                     </div>
 
                                 </div>

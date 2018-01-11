@@ -9,8 +9,8 @@ Route::group(['namespace' => 'Client'], function() {
     #End BAIVIET
 
     //Begin GioiThieu du an CLIENT
-    Route::get('/duan/{id}', 'DuAnController@index');
-
+    Route::get('/duan/{id}', 'DuAnController@Index');
+    Route::get('/duan', 'DuAnController@Home');
     #End GioiThieu du an
 
     // Đăng Email

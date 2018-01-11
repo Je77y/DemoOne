@@ -1,5 +1,5 @@
 @extends('frontEnd/layout/baseClient')
-
+@section('title', 'Chi tiết bài viết')
 @section('content')
     <div class="content-wrapper" >
         <div class="container">
@@ -11,7 +11,7 @@
 
                             <div class="baiviet-time">{{$baiViet->created_at}}</div>
                             <div class="baiviet-chude">
-                                <span>Chủ đề </span><a href="">{{$chude->tenchude}}</a>
+                                <span>Chủ đề </span><a href="">{{$baiViet->chude->tenchude}}</a>
                             </div>
 
                             <div class="baiviet-content">
@@ -41,13 +41,10 @@
                             <div class="list">
                                 <div class="list-item">
                                     <ul>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a>
+                                        @foreach($dsBVChuDe as $bv)
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/post/{{ $bv->id }}">{{ $bv->tenbaiviet  }}</a>
                                         </li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
@@ -72,13 +69,14 @@
                             <div class="list">
                                 <div class="list-item">
                                     <ul>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a>
-                                        </li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">Tin tức, dự án bất động sản nổi bật tuần từ 1/1 - 6/1/2018 </a></li>
-
+                                        @foreach($dsbaiviet as $key => $baiviet)
+                                            @if($key < 5)
+                                                <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">{{ $baiviet->tenbaiviet }}</a>
+                                                </li>
+                                            @else
+                                                @break
+                                            @endif
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
