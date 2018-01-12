@@ -1,10 +1,10 @@
-<header class="main-header">
-    <nav class="navbar navbar-static-top">
+<div class="main-header">
+    <nav class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <a href="/home" class="navbar-brand"><b>TheLife</b> - Group</a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                    <i class="fa fa-bars"></i>
+                    <i class="fa fa-bars" aria-hidden="true"></i>
                 </button>
             </div>
 
@@ -14,7 +14,7 @@
                     <li class="active"><a href="/home">Trang chủ <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Giới thiệu</a></li>
                     <li class="dropdown">
-                        <a href="#">Dự án </a>
+                        <a href="/duan">Dự án </a>
 
                     </li>
                 </ul>
@@ -23,23 +23,15 @@
                         <input type="text" class="form-control" id="navbar-search-input" placeholder="Tìm kiếm">
                     </div>
                 </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="mailto:thelifegroup.sales@gmail.com"><i class="fa fa-envelope-o"></i> thelifegroup.sales@gmail.com</a></li>
+                    <li><a href="tel:+84917017919"><i class="fa fa-phone"></i> 0917 017 919</a></li>
+                </ul>
             </div>
-            <!-- /.navbar-collapse -->
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
 
-                <div class="contactDiv">
-                    <div class="itemContact"><i class="fa fa-envelope-o"></i><a href="mailto:thelifegroup.sales@gmail.com">thelifegroup.sales@gmail.com</a></div>
-                    <div class="itemContact"><i class="fa fa-phone"></i><a href="tel:+84917017919"> 0917 017 919</a></div>
-                </div>
-                <!-- Messages: style can be found in dropdown.less-->
-
-                <!-- User Account Menu -->
-
-
-            </div>
             <!-- /.navbar-custom-menu -->
         </div>
         <!-- /.container-fluid -->
     </nav>
-</header>
+</div>
+

@@ -1,4 +1,5 @@
 
+
 .center{
 	text-align: center;
 }
@@ -242,7 +243,7 @@
 .duan-item .duan-item-name
 {
 	color: #055699;
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: bold;
 }
 
@@ -413,3 +414,138 @@
 	text-align: justify;
     padding: 10px 25px;
 }
+
+@media (min-width: 320px ) and (max-width: 375px) {
+
+}
+
+@media (min-width: 375px ) and (max-width: 425px) {
+	
+}
+
+@media (min-width: 768px) and (max-width: 425px) {
+	#tinmoi {
+		width: 250px;
+		height: 250px;
+	}
+
+	#duannoibat {
+		width: 80px;
+		height: 80px;
+	}
+
+	.main-header {
+		margin-bottom: 70px;
+	}
+
+	.carousel-inner > .item > img {
+		width: 100%;
+		height: 250px;
+	}
+
+	.form-email {
+		margin: 0px;
+		padding: 20px;
+	}
+
+	.form-email .title {
+		font-size: 25px;
+	}
+
+	#dangKyEmail {
+		padding: 0px; !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+
+	.carousel-inner {
+		width: 100%;
+		height: 350px;
+	}
+
+	.main-header {
+		margin-bottom: 70px;
+	}
+
+	.carousel-inner .item img {
+		width: 940px;
+		height: 530px;
+	}
+
+	.form-email {
+		margin: 0;
+		padding: 25px;
+	}
+
+	.form-email .title {
+		font-size: 27px;
+	}
+
+	.block-content {
+		margin-top: 20px;
+	}
+
+	.block-content ul {
+		padding: 5px;
+	}
+
+	.navbar-right {
+		display: none;
+	}
+
+	.navbar-left {
+		display: none;
+	}
+
+	#tinmoi {
+		width: 120px;
+		height: 80px;
+	}
+
+	.content-tomtat {
+		display: none;
+	}
+
+	.block-content .content-text .content-title {
+		font-size: 15px;
+	}
+
+	#duannoibat {
+		width: 100px;
+		height:80px;
+	}
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+	.main-header {
+		margin-bottom: 70px;
+	}
+
+	.carousel-inner {
+		width: 100%;
+		height: 350px;
+	}
+
+	.content-wrapper {
+		margin-top: 70px;
+	}
+
+	#tinmoi {
+		width: 180px;
+		height: 125px;
+	}
+
+	#duannoibat {
+		width: 150px;
+		height:100px;
+	}
+}
+
+@media (min-width: 1440px) {
+	#duannoibat {
+		width: 150px;
+		height:100px;
+	}
+}
+

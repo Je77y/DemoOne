@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
     <base href="{{ asset('') }}" >
     <!-- Tell the browser to be responsive to screen width -->
@@ -33,15 +34,15 @@
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
-<div class="wrapper">
+    <div class="wrapper">
 
-@include('frontEnd/layout/topClientLayout')
+        @include('frontEnd/layout/topClientLayout')
     <!-- Full Width Column -->
-@yield('content')
+        @yield('content')
     <!-- /.content-wrapper -->
 
-    @include('frontEnd/layout/bottomClientLayout')
-</div>
+        @include('frontEnd/layout/bottomClientLayout')
+    </div>
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->

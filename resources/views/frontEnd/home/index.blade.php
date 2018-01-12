@@ -11,11 +11,11 @@
                         @endif
                     @endforeach
                 </ol>
-                <div class="carousel-inner" style=" width:100%; height:350px; !important;">
+                <div class="carousel-inner" >
                     @foreach($dsslide as $key => $slide)
                         @if ($slide->hienthi == 1)
                         <div class="item @if($key == 0) {{ 'active' }} @endif">
-                            <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}" style="width: 100%; height: 100%">
+                            <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}" >
                         </div>
                         @endif
                     @endforeach
@@ -39,10 +39,10 @@
                             </div>
                             <div class="block-body">
                                 <div class="block-content row nomargin">
-                                    <div class="content-img col-sm-4 nomargin nopadding center" style="    max-height: 220px;">
-                                        <img src="upload/hinhanh/{{ $baivietmoinhat[0]->hinhanh }}" alt="{{ $baivietmoinhat[0]->hinhanh }}" style="width: 250px; height: 150px;">
+                                    <div class="content-img col-sm-4 nomargin nopadding center">
+                                        <img id="tinmoi" src="upload/hinhanh/{{ $baivietmoinhat[0]->hinhanh }}" alt="{{ $baivietmoinhat[0]->hinhanh }}" >
                                     </div>
-                                    <div class="content-text col-sm-8 nomargin nopadding" style="    max-height: 220px;">
+                                    <div class="content-text col-sm-8 nomargin nopadding">
                                         <div class="content-title">
                                             <a href="/post/{{ $baivietmoinhat[0]->id }}">{{ $baivietmoinhat[0]->tenbaiviet }}</a>
                                         </div>
@@ -72,12 +72,12 @@
                                     <div class="row nomargin nopadding" >
                                         @foreach($dsduan  as $duan)
                                             @if($duan->noibat == 1)
-                                                <div class="col-sm-6 duan-item">
+                                                <div class="col-sm-6 col-xm-12 duan-item">
                                                     <div class="duan-item-img">
-                                                        <img src="upload/hinhanh/{{ $duan->hinhanh  }}" style="width: 80px; height:80px;"/>
+                                                        <img src="upload/hinhanh/{{ $duan->hinhanh  }}" id="duannoibat"/>
                                                     </div>
-                                                    <div class="duan-item-name text-left">
-                                                        <a href="/duan/{{ $duan->id }}">{{ $duan->tenchude  }}</a>
+                                                    <div class="duan-item-name text-center">
+                                                        <a href="/duan/{{ $duan->id }}">{{ $duan->tenthuongmai  }}</a>
                                                     </div>
                                                 </div>
                                             @endif

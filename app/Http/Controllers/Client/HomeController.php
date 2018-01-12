@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $dsslide = Slide::where('hienthi', 1)->get();
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->first()->get();
-        $dsbaiviet = BaiViet::all();
+        $dsbaiviet = BaiViet::orderBy('id', 'desc')->take(6)->get();
         $dsduan = ChuDe::where('duan', 1)->get();
         return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan']));
     }
