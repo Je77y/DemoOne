@@ -23,13 +23,17 @@ class BlockContentController extends Controller
 
     public function Reload($idduan)
     {
-        $dsblockcontent = BlockContent::where('chudeid', $idduan)->get();
-        return response(json_encode($dsblockcontent));
+        $dsblockcontent1 = DB::table('BlockContent')->join('LoaiBlock', 'BlockContent.loaiblockid', '=', 'LoaiBlock.id')
+            ->select('BlockContent.*', 'LoaiBlock.ten')
+            ->where('chudeid', '=', $idduan)->get();
+        $dsblockcontent = json_encode($dsblockcontent1);
+        return response($dsblockcontent);
     }
 
     public function Show($id)
     {
-        //
+        $block = BlockContent::find($id);
+        return view('backend/blockcontent/_showBlockContent', compact('block'));
     }
 
     public function Edit($id)

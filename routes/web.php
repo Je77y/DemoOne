@@ -94,14 +94,14 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
         Route::group(['prefix' => 'chude'], function() {
             //Begin CHUDE
-            Route::get('/', 'ChuDeController@index');
-            Route::post('search', 'ChuDeController@search');
-            Route::get('reload', 'ChuDeController@reload');
-            Route::post('store', 'ChuDeController@store');
-            Route::get('edit/{id}', 'ChuDeController@edit');
-            Route::post('update', 'ChuDeController@update');
-            Route::get('show/{id}', 'ChuDeController@show');
-            Route::get('destroy/{id}', 'ChuDeController@destroy');
+            Route::get('/', 'ChuDeController@Index');
+            Route::get('create', 'ChuDeController@Create');
+            Route::post('search', 'ChuDeController@Search');
+            Route::get('reload', 'ChuDeController@Reload');
+            Route::post('store', 'ChuDeController@Store');
+            Route::get('edit/{id}', 'ChuDeController@Edit');
+            Route::post('update', 'ChuDeController@Update');
+            Route::get('destroy/{id}', 'ChuDeController@Destroy');
             //End CHUDE
         });
 

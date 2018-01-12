@@ -13,7 +13,7 @@ use App\BlockContent;
 
 class ChuDeController extends Controller
 {
-    public function search(Request $request) 
+    public function Search(Request $request)
     {
         $tukhoa = $request->get('tukhoa');
         $loai = $request->get('loai');
@@ -29,27 +29,33 @@ class ChuDeController extends Controller
         return response(json_encode($chude->orderBy('id', 'desc')->get()));
     }
 
-    public function index()
+    public function Index()
     {
         $dschude6 = ChuDe::orderBy('id', 'desc')->get();
         $dschude = json_encode($dschude6);
         return view('backend/chude/index', compact('dschude'));
     }
-    public function reload()
+    public function Reload()
     {
         $dschude = ChuDe::orderBy('id', 'desc')->get();
         return response(json_encode($dschude));
     }
-    public function store(Request $request)
+
+    public function Create()
+    {
+        return view("backend/chude/_createModal");
+    }
+    public function Store(Request $request)
     {
         $mss = new Message(true, 'Thêm mới chủ đề thành công');
         if($request->ajax())
         {
-            $tenchude = ucfirst($request->get('tenchude'));
+            $tenchude = ucwords($request->get('tenchude'));
             $tomtat = $request->get('tomtat');
             $duan = $request->get('loai');
             $noibat = $request->get('noibat') == 1 ? 1 : 0;
             $trongtam = $request->get('trongtam') == 1 ? 1 : 0;
+            $tenthuongmai = ucwords($request->input('tenthuongmai'));
 
             if($request->hasFile('hinhanh'))
             {
@@ -76,7 +82,7 @@ class ChuDeController extends Controller
             }
             try {
                 $idchude = DB::table('ChuDe')->insertGetId(
-                    ['tenchude' => $tenchude, 'tomtat' => $tomtat, 'duan' => $duan, 'hinhanh' => $hinhanh, 'noibat' => $noibat, 'trongtam' => $trongtam]
+                    ['tenthuongmai' => $tenthuongmai, 'tenchude' => $tenchude, 'tomtat' => $tomtat, 'duan' => $duan, 'hinhanh' => $hinhanh, 'noibat' => $noibat, 'trongtam' => $trongtam]
                 );
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $hinhanh,
@@ -109,29 +115,24 @@ class ChuDeController extends Controller
         }
     }
 
-    public function show($id)
+    public function Edit($id)
     {
         $chude = ChuDe::find($id);
-        return view('backend/chude/delete', compact('chude'));
+        return view('backend/chude/_editModal', compact('chude'));
     }
 
-    public function edit($id)
-    {
-        $chude = ChuDe::find($id);
-        return view('backend/chude/edit', compact('chude'));
-    }
-
-    public function update(Request $request)
+    public function Update(Request $request)
     {
          $mss = new Message(true, 'Cập nhật chủ đề thành công');
         if($request->ajax())
         {
             $id = $request->get('id');
             $chude = ChuDe::find($id);
-            $chude->tenchude = $request->get('tenchude');
+            $chude->tenchude = ucwords($request->get('tenchude'));
             $chude->tomtat = $request->get('tomtat');
             $chude->noibat = $request->get('noibat') == 1 ? 1 : 0;
             $chude->trongtam = $request->get('trongtam') == 1 ? 1 : 0;
+            $chude->tenthuongmai = ucwords($request->input('tenthuongmai'));
 
             if($request->hasFile('hinhanh'))
             {
@@ -170,7 +171,7 @@ class ChuDeController extends Controller
         }
     }
 
-    public function destroy($id)
+    public function Destroy($id)
     {
         $chude = Chude::find($id);
         Chude::destroy($id);

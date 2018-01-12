@@ -30,7 +30,6 @@
                                     <th class="width-30">STT</th>
                                     <th>Tên </th>
                                     <th>Tóm tắt</th>
-                                    <th>Nội dung</th>
                                     <th>Loại block</th>
                                     <th>Hiển thị</th>
                                     <th></th>
@@ -116,12 +115,7 @@
                     },
                     {
                         "mData": function(data, type, dataToSet) {
-                            return data.tomtat.slice(0, 120);
-                        },
-                    },
-                    {
-                        "mData": function(data, type, dataToSet) {
-                            return data.noidung.slice(0, 120);
+                            return data.tomtat;
                         },
                     },
                     {

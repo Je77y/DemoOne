@@ -83,15 +83,12 @@ class SlideController extends Controller
 
     public function Update(Request $request)
     {
-        $mss = new Message(true, "Thêm thành công");
+        $mss = new Message(true, "Cập nhật thành công");
         if($request->ajax())
         {
             $slide = Slide::find($request->get('id'));
             $slide->ngaybatdau = Carbon::createFromFormat('d/m/Y', $request->get('ngaybatdau'));
             $slide->ngayketthuc = Carbon::createFromFormat('d/m/Y', $request->get('ngayketthuc'));
-
-//            $slide->ngaybatdau = Carbon::parse($request->get('ngaybatdau'))->format('Y/m/d');
-//            $slide->ngayketthuc = Carbon::parse($request->get('ngayketthuc'))->format('Y/m/d');
             $slide->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             if($request->hasFile('hinhanh'))
             {
@@ -110,6 +107,7 @@ class SlideController extends Controller
                     $Hinh = str_random(4)."_". $name;
                 }
                 $file->move("upload/slide", $Hinh);
+                $slide->delete();
                 $slide->hinhanh = $Hinh;
             }
             try {
@@ -118,7 +116,7 @@ class SlideController extends Controller
             catch (Exception $e)
             {
                 $mss->status = false;
-                $mss->message = "Thêm thất bại";
+                $mss->message = "Cập nhật thất bại";
             }
         }
         return response(json_encode($mss));
@@ -126,6 +124,8 @@ class SlideController extends Controller
 
     public function Destroy($id)
     {
+        $slide = Slide::find($id);
+        $slide->delete();
         Slide::destroy($id);
         $mss = new Message(true, 'Xoá thành công');
         return response(json_encode($mss));

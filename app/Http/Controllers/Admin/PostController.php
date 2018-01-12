@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\BaiViet;
+use App\ChuDe;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Message;
@@ -18,9 +19,10 @@ class PostController extends Controller
 
     public function Index($idchude)
     {
+        $chude = ChuDe::find($idchude);
         $dsbaiviet1 = BaiViet::where('chudeid', '=', $idchude)->orderBy('created_at', 'desc')->get();
         $dsbaiviet = json_encode($dsbaiviet1);
-        return view('backend/baiviet/danhsach', compact('dsbaiviet', 'idchude'));
+        return view('backend/baiviet/danhsach', compact(['dsbaiviet', 'idchude', 'chude']));
     }
 
     public function Create($idchude)
@@ -34,12 +36,15 @@ class PostController extends Controller
         if($request->ajax())
         {
             $baiviet = new BaiViet;
-            $baiviet->tenbaiviet = $request->get('tenbaiviet');
+            $baiviet->tenbaiviet = ucwords($request->get('tenbaiviet'));
             $baiviet->tomtat = $request->get('tomtat');
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
-            $baiviet->slug = $request->get('slug');
+            $baiviet->slug = changeTitle($request->input('tenbaiviet'));
+            $baiviet->keywork = $request->input('keywork');
+            $baiviet->description = $request->input('description');
             $baiviet->chudeid = $request->get('idchude');
+            $baiviet->ghim = $request->input('ghim') == 1 ? 1 : 0;
 
             if($request->hasFile('hinhanh'))
             {
@@ -81,7 +86,8 @@ class PostController extends Controller
 
     public function Show($id)
     {
-        return view('backend/baiviet/_showBaiViet');
+        $baiviet = BaiViet::find($id);
+        return view('backend/baiviet/_showBaiViet', compact('baiviet'));
     }
 
     public function Edit($id)
@@ -96,11 +102,14 @@ class PostController extends Controller
         if($request->ajax())
         {
             $baiviet = BaiViet::find($request->get('id'));
-            $baiviet->tenbaiviet = $request->get('tenbaiviet');
+            $baiviet->tenbaiviet = ucwords($request->get('tenbaiviet'));
             $baiviet->tomtat = $request->get('tomtat');
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
-            $baiviet->slug = $request->get('slug');
+            $baiviet->keyword = $request->input('keyword');
+            $baiviet->description = $request->input('description');
+            $baiviet->slug = changeTitle($request->input('tenbaiviet'));
+            $baiviet->ghim = $request->input('ghim') == 1 ? 1 : 0;
 
             if($request->hasFile('hinhanh'))
             {
