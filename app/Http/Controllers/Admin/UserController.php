@@ -10,12 +10,14 @@ use App\User;
 use App\Message;
 use Mockery\Exception;
 
+
 class UserController extends Controller
 {
     public function Index()
     {
-        $data = User::orderBy('id', 'desc')->get();
-        return view('backend/taikhoan/index', compact('data'));
+        $id = Auth::User()->id;
+        $dsnguoidung = User::where('id', '!=', $id)->orderBy('id', 'desc')->get();
+        return view('backend/taikhoan/index', compact('dsnguoidung'));
     }
 
     /**
@@ -24,8 +26,9 @@ class UserController extends Controller
 
     public function Reload()
     {
-        $lstAll = User::orderby("id","desc")->get();
-        return response(json_encode($lstAll));
+        $id = Auth::User()->id;
+        $dsnguoidung = User::where('id', '!=', $id)->orderby("id","desc")->get();
+        return response(json_encode($dsnguoidung));
     }
     public function Create()
     {
@@ -62,7 +65,13 @@ class UserController extends Controller
     {
         $rs = new Message(true);
         try{
-            User::destroy($request->id);
+            if (Auth::User()->id != $request->id)
+            {
+                User::destroy($request->id);
+            } else {
+                $rs->status = false;
+                $rs->message = "Bạn không thể xoá.";
+            }
         }catch (Exception $e)
         {
             $rs->status=false;

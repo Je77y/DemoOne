@@ -56,13 +56,12 @@
 @section('js')
     <script>
 
-        var dataObj = '<?php echo $data; ?>';
-
+        var dataObj = decodeURIComponent("<?php echo rawurlencode($dsnguoidung); ?>");
         var jsdata = JSON.parse(dataObj);
         $(document).ready(function () {
             loadDataTable(jsdata);
-
         })
+
         function CreateAction() {
             $.ajax({
                 type: 'GET',
