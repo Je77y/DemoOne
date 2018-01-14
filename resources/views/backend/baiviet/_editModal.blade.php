@@ -21,6 +21,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Keyword</label> <span class="requireTxt">(*)</span>
+                            <input name="keyword" type="text" class="form-control required" placeholder="Keywords" required value="{{ $baiviet->keyword }}">
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label> <span class="requireTxt">(*)</span>
+                            <textarea name="description" class="form-control required" row="8" placeholder="Description" required>{{ $baiviet->description }}</textarea>
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
                             <textarea name="tomtat" class="form-control required" row="8" placeholder="Tóm tắt" required>{{ $baiviet->tomtat }}</textarea>
                             <div class="note-error">
@@ -43,6 +57,9 @@
                         </div>
                         <div class="form-group">
                             <label class="checkbox-inline"><input type="checkbox" value="1" @if ($baiviet->hienthi ==1) {{ 'checked' }} @endif name="hienthi">Hiển thị</label>
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if ($baiviet->ghim ==1) {{ 'checked' }} @endif name="ghim">Ghim</label>
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label> <span class="requireTxt">(*)</span>

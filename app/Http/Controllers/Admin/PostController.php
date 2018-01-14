@@ -41,7 +41,7 @@ class PostController extends Controller
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             $baiviet->slug = changeTitle($request->input('tenbaiviet'));
-            $baiviet->keywork = $request->input('keywork');
+            $baiviet->keyword = $request->input('keyword');
             $baiviet->description = $request->input('description');
             $baiviet->chudeid = $request->get('idchude');
             $baiviet->ghim = $request->input('ghim') == 1 ? 1 : 0;
@@ -87,7 +87,8 @@ class PostController extends Controller
     public function Show($id)
     {
         $baiviet = BaiViet::find($id);
-        return view('backend/baiviet/_showBaiViet', compact('baiviet'));
+        $chude = ChuDe::find( $baiviet->chudeid);
+        return view('backend/baiviet/_showBaiViet', compact(['baiviet', 'chude']));
     }
 
     public function Edit($id)

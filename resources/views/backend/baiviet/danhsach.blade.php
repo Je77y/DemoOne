@@ -8,7 +8,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Danh sách bài viết
+                Chủ đề: <span style="margin-left: 20px">{{ $chude->tenchude  }}</span>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
@@ -23,43 +23,12 @@
                     <div class="box">
                         <div class="box-header">
                             <div class="row nomargin nopadding">
+                                <div class="pull-left"><h3>Danh sách bài viết</h3></div>
                                 <button class="btn btn-primary pull-right margin-10"  onclick="createBaiViet1({{ $idchude  }})"><i class="fa fa-plus"></i> Thêm mới</button>
-                                <button class="btn btn-primary pull-right margin-10" data-toggle="collapse" data-target="#timkiembox"><i class="fa fa-search" aria-hidden="true"></i> Tìm kiếm</button>
                             </div>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
-                            <div class="row nomargin nopadding">
-                                <div id="timkiembox" class="collapse">
-                                    <div class="row nomargin nopadding">
-                                        <div class="col-md-offset-1 col-md-10">
-                                            <form action="/admin/baiviet/search" method="post" role="form" class="form-horizontal" id="frm-searchChuDe">
-                                                <input type = "hidden" name = "_token" value = "<?php echo csrf_token() ?>" />
-                                                <div class="form-group col-md-6">
-                                                    <label class="control-label col-md-3">Từ khóa</label>
-                                                    <div class="col-md-9">
-                                                        <input name="tukhoa" type="text" class="form-control" placeholder="Từ khóa...">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group col-md-6">
-                                                    <label class="control-label col-md-3">Loại</label>
-                                                    <div class="col-md-9">
-                                                        <select name="loai" class="form-control" style="width: 100%;">
-                                                            <option selected="selected" value="-1">Tất cả</option>
-                                                            <option value="0">Chủ đề</option>
-                                                            <option value="1">Dự án</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="center">
-                                                    <button type="submit" class="btn btn-primary">Tìm kiếm</button>
-                                                    <button type="button" class="btn btn-danger" onclick="closeTimKiem()">Đóng</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <table id="tblBaiViet" class="table table-bordered table-striped" style="width:100%;">
                                 <thead>
                                 <tr>
@@ -67,7 +36,7 @@
                                     <th>Hình ảnh</th>
                                     <th>Tên bài viết</th>
                                     <th>Hiển thị</th>
-                                    <th>Slub</th>
+                                    <th>Ghim</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -78,6 +47,9 @@
                         </div>
                         <!-- /.box-body -->
                     </div>
+                </div>
+                <div class="col-xs-12">
+                    <a href="/admin/chude" class="btn btn-info ">Quay lại</a>
                 </div>
             </div>
         </section>
@@ -219,7 +191,8 @@
                     },
                     {
                         "mData": function(data, type, dataToSet) {
-                            return data.slug;
+                            var str = data.ghim === 0 ? '<span class=" badge bg-aqua">Không</span>' : '<span class=" badge bg-green">Có</span>';
+                            return str;
                         },
                     },
                     {

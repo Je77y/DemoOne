@@ -893,8 +893,13 @@
 	#duAnNoiBat .block .block-body {
 		padding-top: 0px;
 		padding-bottom: 0px;
-		height: 230px;
+		height: 230px !important;
 		overflow: auto;
+	}
+
+	#duAnNoiBat .block-body {
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 	.duan-item .duan-item-img img {
 		width: 100%;
