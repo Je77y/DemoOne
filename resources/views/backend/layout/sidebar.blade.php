@@ -42,7 +42,7 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/dangkyemail">
+                <a href="/admin/lienhe">
                     <i class="fa fa-envelope"></i> <span>Đăng ký Email</span>
                 </a>
             </li>

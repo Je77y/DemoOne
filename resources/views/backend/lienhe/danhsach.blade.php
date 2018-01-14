@@ -1,107 +1,172 @@
-@extends('backend/layout/base') @section('title', 'Quản lý bài viết') @section('content')
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="header">
-                        <h4 class="title">Liên hệ</h4>
-                        <p class="category">Here is a subtitle for this table</p>
-                    </div>
-                    <div class="col-md-offset-6 col-md-6">
-                        <form action="#" method="get" accept-charset="utf-8">
-                            <div class="col-md-offset-4 col-md-8">
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                                        <input type="text" class="form-control" placeholder="Từ khóa ...">
-                                    </div>
-                                </div>
+@extends('backend/layout/base')
+@section('css')
+@endsection
+@section('title', 'Quản lý liên hệ')
+@section('content')
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Danh sách khách hàng
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
+                <li class="active">Liên hệ</li>
+            </ol>
+        </section>
+        <section class="content">
+            <!-- /.row -->
+            <div class="row nomargin nopadding" style="margin:0px; padding: 0px">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <div class="row nomargin nopadding">
+
                             </div>
-                        </form>
-                    </div>
-                    <div class="content table-responsive table-full-width">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <th>ID</th>
-                                <th>Họ tên</th>
-                                <th>Email</th>
-                                <th>Điện thoại</th>
-                                <th></th>
-                            </thead>
-                            <tbody>
+                            <table id="tblLienHe" class="table table-bordered table-striped" style="width:100%;">
+                                <thead>
                                 <tr>
-                                    <td>1</td>
-                                    <td>Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
+                                    <th class="width-30"></th>
+                                    <th>Họ tên</th>
+                                    <th>Email</th>
+                                    <th>Điện thoại</th>
+                                    <th></th>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Minerva Hooper</td>
-                                    <td>$23,789</td>
-                                    <td>Curaçao</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Sage Rodriguez</td>
-                                    <td>$56,142</td>
-                                    <td>Netherlands</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>Philip Chaney</td>
-                                    <td>$38,735</td>
-                                    <td>Korea, South</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>5</td>
-                                    <td>Doris Greene</td>
-                                    <td>$63,542</td>
-                                    <td>Malawi</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>6</td>
-                                    <td>Mason Porter</td>
-                                    <td>$78,615</td>
-                                    <td>Chile</td>
-                                    <td class="td-actions text-right">
-                                        <button type="button" rel="tooltip" title="Xóa" class="btn btn-danger btn-simple btn-xs">
-                                            <i class="fa fa-times"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="lienhe-info">
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <div class="modal fade" id="modal-delete"></div>
     </div>
-</div>
+@endsection
+@section('js')
+    <script>
+
+        var dataObj = decodeURIComponent("<?php echo rawurlencode($dslienhe); ?>");
+        var jsdata = JSON.parse(dataObj);
+        $(document).ready(function () {
+            loadDataTable(jsdata);
+        })
+
+        function DeleteAction(id) {
+            $.confirm({
+                'title': 'Xác nhận xóa',
+                'message': 'Bạn có chắc chắn muốn xóa?',
+                'buttons': {
+                    'Đồng ý': {
+                        'class': 'btn-confirm-yes btn-info',
+                        'action': function () {
+                            $.ajax({
+                                type: 'GET',
+                                url: '/admin/lienhe/destroy/'+id,
+                                dataType: 'json',
+                                success: function(mss) {
+                                    if(mss.status){
+                                        $.notify(mss.message, "success");
+                                        $("#modal-delete").modal("hide");
+                                        ReloadAction();
+                                    }
+                                    else {
+                                        $.notify(mss.message, "error");
+                                    }
+                                },
+                                error: function() {
+                                    $.notify("Lỗi. không thực hiện được thao tác", "error");
+                                }
+                            })
+                        }
+                    },
+                    'Hủy bỏ': {
+                        'class': 'btn-danger',
+                        'action': function () { }
+                    }
+                }
+            });
+        }
+
+        function ReloadAction() {
+
+            $.ajax({
+                type: 'GET',
+                url: 'admin/lienhe/reload',
+                dataType: 'json',
+                success: function(rs) {
+                    loadDataTable(rs);
+                },
+                error: function() {
+                    $.notify("Lỗi. Không thực hiện được thao tác","error");
+                }
+            });
+        }
+
+        var loadDataTable = function(item) {
+            var table = $('#tblLienHe').DataTable({
+
+                "data": item,
+                "bDestroy": true,
+                "iDisplayLength": 20,
+                paging: true,
+                "aoColumns": [{
+                    "orderable": false,
+                    "sClass": "center",
+                    "mData": function(data, type, dataToSet) {
+                        return '<input class="global_" type="checkbox" name="ids" value="' + data.id + '" />';
+                    },
+                    "orderable": false,
+                },
+
+                    //{
+                    //    "class": 'details-control',
+                    //    "orderable": false,
+                    //    "data": null,
+                    //    "defaultContent": ''
+                    //},
+                    {
+
+                        "orderable": false,
+                        "mData": function(data, type, dataToSet) {
+                            return data.hoten;
+                        },
+
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+
+                            return data.email;
+                        },
+
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+
+                            return data.dienthoai;
+                        },
+
+                    },
+                    {
+                        "orderable": false,
+                        "sClass": "center",
+                        "mData": function(data, type, dataToSet) {
+                            var str = '<a href="javascript:void(0)" onclick="DeleteAction(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+                            return str;
+                        },
+
+                    },
+
+                ],
+                //"order": [[1, 'asc']],
+                "fnDrawCallback": function(oSettings) {
+
+                    //runAllCharts()
+                }
+            });
+        }
+
+    </script>
 @endsection
