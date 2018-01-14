@@ -22,7 +22,7 @@
                         </div>
                         <div class="form-group">
                             <label>Tên thương mại</label> <span class="requireTxt">(*)</span>
-                            <input name="tenthuongmai" type="text" class="form-control required" placeholder="Tên thương mại" value="{{ $chude->tenchude }}">
+                            <input name="tenthuongmai" type="text" class="form-control required" placeholder="Tên thương mại" value="{{ $chude->tenthuongmai }}">
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
@@ -34,9 +34,11 @@
                                 <span class="error mes-note-error"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($chude->trongtam == 1) {{'checked'}} @endif  name="trongtam">Trọng tâm</label>
-                        </div>
+                        @if ($chude->duan == 1)
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" value="1" @if($chude->trongtam == 1) {{'checked'}} @endif  name="trongtam">Trọng tâm</label>
+                            </div>
+                        @endif
                         <div class="form-group">
                             <label class="checkbox-inline"><input type="checkbox" value="1" @if($chude->noibat == 1) {{'checked'}} @endif name="noibat">Nổi bật</label>
                         </div>

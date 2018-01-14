@@ -102,7 +102,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Loại</label>
-                                        <select name="loai" class="form-control" style="width: 100%;">
+                                        <select name="loai" class="form-control" style="width: 100%;" onchange="ChangeLoaiChuDe(this.value)">
                                             <option selected="selected" value="0">Chủ đề</option>
                                             <option value="1">Dự án</option>
                                         </select>
@@ -129,7 +129,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="checkbox-inline"><input type="checkbox" value="1" name="trongtam">Trọng tâm</label>
+                                        <label class="checkbox-inline"><input type="checkbox" value="1" name="trongtam" id="trongtam">Trọng tâm</label>
                                     </div>
                                     <div class="form-group">
                                         <label class="checkbox-inline"><input type="checkbox" value="1" name="noibat">Nổi bật</label>
@@ -159,6 +159,13 @@
 
     <script>
 
+        function ChangeLoaiChuDe(id) {
+            if (id == 0) {
+                $("#trongtam").attr('disabled', 'disabled');
+            } else {
+                $("#trongtam").removeAttr('disabled');
+            }
+        }
 
         var dataObj = decodeURIComponent("<?php echo rawurlencode($dschude); ?>");
 

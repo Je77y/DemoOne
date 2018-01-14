@@ -133,11 +133,17 @@ class ChuDeController extends Controller
         {
             $id = $request->get('id');
             $chude = ChuDe::find($id);
-            $chude->tenchude = ucwords($request->get('tenchude'));
+            $chude->tenchude = ucwords($request->get('tenchude'), " ");
             $chude->tomtat = $request->get('tomtat');
             $chude->noibat = $request->get('noibat') == 1 ? 1 : 0;
             $chude->trongtam = $request->get('trongtam') == 1 ? 1 : 0;
-            $chude->tenthuongmai = ucwords($request->input('tenthuongmai'));
+            if ($chude->trongtam == 1 && $chude->duan == 1)
+            {
+                DB::table('ChuDe')
+                    ->where('id', '!=', $id)
+                    ->update(['trongtam' => 0]);
+            }
+            $chude->tenthuongmai = ucwords($request->input('tenthuongmai'), " ");
 
             if($request->hasFile('hinhanh'))
             {
@@ -165,11 +171,6 @@ class ChuDeController extends Controller
             }
            
             try {
-                if ($chude->trongtam == 1 && $chude->duan == 1)
-                {
-                    DB::table('ChuDe')
-                        ->update(['trongtam' => 0]);
-                }
                 $chude->save();
             } catch (Exception $e){
                $mss->status = false;
