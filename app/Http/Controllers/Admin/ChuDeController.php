@@ -81,6 +81,11 @@ class ChuDeController extends Controller
                 $hinhanh = "notfoundimg.png";
             }
             try {
+                if ($trongtam == 1 && $duan == 1)
+                {
+                    DB::table('ChuDe')
+                        ->update(['trongtam' => 0]);
+                }
                 $idchude = DB::table('ChuDe')->insertGetId(
                     ['tenthuongmai' => $tenthuongmai, 'tenchude' => $tenchude, 'tomtat' => $tomtat, 'duan' => $duan, 'hinhanh' => $hinhanh, 'noibat' => $noibat, 'trongtam' => $trongtam]
                 );
@@ -150,6 +155,7 @@ class ChuDeController extends Controller
                 {
                     $Hinh = str_random(4)."_". $name;
                 }
+//                $album = Album::   Khi cập nhật có sựa thây đổi về hình ảnh thì xoá hình ảnh cũ đi
                 $file->move("upload/hinhanh", $Hinh);
                 $chude->hinhanh = $Hinh;
                 $album = DB::table('Album')->insert([
@@ -159,6 +165,11 @@ class ChuDeController extends Controller
             }
            
             try {
+                if ($chude->trongtam == 1 && $chude->duan == 1)
+                {
+                    DB::table('ChuDe')
+                        ->update(['trongtam' => 0]);
+                }
                 $chude->save();
             } catch (Exception $e){
                $mss->status = false;

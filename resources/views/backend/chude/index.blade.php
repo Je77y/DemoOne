@@ -6,7 +6,6 @@
         <section class="content-header">
             <h1>
                 Danh sách chủ đề
-
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
@@ -64,6 +63,7 @@
                                     <th class="width-30">#</th>
                                     <th>Hình ảnh</th>
                                     <th>Tên chủ đề</th>
+                                    <th>Tên thương mại</th>
                                     <th>Thể loại</th>
                                     <th>Tóm tắt</th>
                                     <th>Trọng tâm</th>
@@ -81,7 +81,7 @@
             </div>
         </section>
         <!-- /.content -->
-        <div class="modal fade" id="modal-default">
+        <div class="modal fade" id="modal-edit">
         </div>
         <div class="modal fade" id="modal-delete">
         </div>
@@ -110,6 +110,13 @@
                                     <div class="form-group">
                                         <label>Tên chủ đề</label> <span class="requireTxt">(*)</span>
                                         <input name="tenchude" type="text" class="form-control required" placeholder="Tên chủ đề" required>
+                                        <div class="note-error">
+                                            <span class="error mes-note-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Tên thương mại</label> <span class="requireTxt">(*)</span>
+                                        <input name="tenthuongmai" type="text" class="form-control required" placeholder="Tên thương mại" required>
                                         <div class="note-error">
                                             <span class="error mes-note-error"></span>
                                         </div>
@@ -219,8 +226,8 @@
                 url: 'admin/chude/edit/' + id,
                 data: { 'id': id },
                 success: function(rs) {
-                    $("#modal-default").html(rs);
-                    $("#modal-default").modal("show");
+                    $("#modal-edit").html(rs);
+                    $("#modal-edit").modal("show");
                 }
             })
         }
@@ -349,6 +356,14 @@
                         "mData": function(data, type, dataToSet) {
                             var str = '<a href="/admin/baiviet/' + data.id + '">' + data.tenchude + '</a>';
                             return str;
+                        },
+
+                    },
+                    {
+                        "orderable": false,
+                        "mData": function(data, type, dataToSet) {
+
+                            return data.tenthuongmai;
                         },
 
                     },

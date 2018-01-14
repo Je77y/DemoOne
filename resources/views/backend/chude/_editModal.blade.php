@@ -21,6 +21,13 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Tên thương mại</label> <span class="requireTxt">(*)</span>
+                            <input name="tenthuongmai" type="text" class="form-control required" placeholder="Tên thương mại" value="{{ $chude->tenchude }}">
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
                             <textarea name="tomtat" class="form-control required" style="height: 150px" placeholder="Tóm tắt">{{ $chude->tomtat }}</textarea>
                             <div class="note-error">
@@ -83,9 +90,8 @@ $("#frm-capnhat").submit(function() {
                 if (mss.status) {
 
                     $.notify(mss.message, "success");
-                    // console.log(mss.noidung);
-                    //
-                    $("#modal-default").modal("hide");
+                    $("#modal-edit").modal("hide");
+                    $("#modal-edit").html();
                     reloadAction();
                 } else {
                     $.notify(mss.message, "error");
