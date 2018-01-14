@@ -33,11 +33,11 @@ class SlideController extends Controller
         if($request->ajax())
         {
             $slide = new Slide;
-            $slide->ngaybatdau = Carbon::createFromFormat('d/m/Y', $request->get('ngaybatdau'));
-            $slide->ngayketthuc = Carbon::createFromFormat('d/m/Y', $request->get('ngayketthuc'));
+            $ngaybatdau = strtotime($request->get('ngaybatdau'));
+            $ngayketthuc = strtotime($request->get('ngayketthuc'));
+            $slide->ngaybatdau = date('Y-m-d', $ngaybatdau);
+            $slide->ngayketthuc = date('Y-m-d', $ngayketthuc);
 
-//            $slide->ngaybatdau = Carbon::parse($request->get('ngaybatdau'))->format('Y/m/d');
-//            $slide->ngayketthuc = Carbon::parse($request->get('ngayketthuc'))->format('Y/m/d');
             $slide->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             if($request->hasFile('hinhanh'))
             {
@@ -87,8 +87,10 @@ class SlideController extends Controller
         if($request->ajax())
         {
             $slide = Slide::find($request->get('id'));
-            $slide->ngaybatdau = Carbon::createFromFormat('d/m/Y', $request->get('ngaybatdau'));
-            $slide->ngayketthuc = Carbon::createFromFormat('d/m/Y', $request->get('ngayketthuc'));
+            $ngaybatdau = strtotime($request->get('ngaybatdau'));
+            $ngayketthuc = strtotime($request->get('ngayketthuc'));
+            $slide->ngaybatdau = date('Y-m-d', $ngaybatdau);
+            $slide->ngayketthuc = date('Y-m-d', $ngayketthuc);
             $slide->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
             if($request->hasFile('hinhanh'))
             {

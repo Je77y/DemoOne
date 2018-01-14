@@ -34,7 +34,7 @@
                             <!-- /.input group -->
                         </div>
                         <div class="form-group">
-                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($slide->hienthi == 1) {{ 'checked' }} @endif checked name="hienthi">Hiện thị</label>
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($slide->hienthi == 1) {{ 'checked' }} @endif name="hienthi">Hiện thị</label>
                         </div>
                         <div class="form-group">
                             <label>Hình ảnh</label>
