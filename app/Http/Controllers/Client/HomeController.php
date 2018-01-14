@@ -15,7 +15,20 @@ class HomeController extends Controller
 {
     public function Index()
     {
+        $date = date("Y-m-d");
         $dsslide = Slide::where('hienthi', 1)->get();
+        foreach($dsslide as $key => $slide)
+        {
+            if(strtotime($slide->ngayketthuc) < strtotime($date))
+            {
+                unset($dsslide[$key]);
+            }
+
+            if(strtotime($slide->ngaybatdau) > strtotime($date))
+            {
+                unset($dsslide[$key]);
+            }
+        }
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->first()->get();
         $dsbaiviet = BaiViet::orderBy('id', 'desc')->take(6)->get();
         $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->take(4)->get();
