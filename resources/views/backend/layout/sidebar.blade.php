@@ -37,11 +37,6 @@
                 </a>
             </li>
             <li>
-                <a href="/admin/danhmuc">
-                    <i class="fa fa-edit"></i> <span>Danh mục</span>
-                </a>
-            </li>
-            <li>
                 <a href="/admin/lienhe">
                     <i class="fa fa-envelope"></i> <span>Đăng ký Email</span>
                 </a>
