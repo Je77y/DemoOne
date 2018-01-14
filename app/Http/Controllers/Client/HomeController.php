@@ -18,8 +18,9 @@ class HomeController extends Controller
         $dsslide = Slide::where('hienthi', 1)->get();
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->first()->get();
         $dsbaiviet = BaiViet::orderBy('id', 'desc')->take(6)->get();
-        $dsduan = ChuDe::where('duan', 1)->get();
-        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan']));
+        $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->take(4)->get();
+        $duantrongtam = ChuDe::where('trongtam', 1)->first()->get();
+        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan', 'duantrongtam']));
     }
 
     public function Email(Request $request)

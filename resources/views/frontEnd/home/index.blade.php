@@ -12,16 +12,16 @@
                 <ol class="carousel-indicators">
                     @foreach($dsslide as $key => $slide)
                         @if ($slide->hienthi == 1)
-                        <li data-target="#carousel-example-generic" data-slide-to="{{ $key  }}" @if($key == 0) {{'class="active"' }} @endif></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="{{ $key  }}" @if($key == 0) {{'class="active"' }} @endif></li>
                         @endif
                     @endforeach
                 </ol>
                 <div class="carousel-inner">
                     @foreach($dsslide as $key => $slide)
                         @if ($slide->hienthi == 1)
-                        <div class="item @if($key == 0) {{ 'active' }} @endif">
-                            <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}" >
-                        </div>
+                            <div class="item @if($key == 0) {{ 'active' }} @endif">
+                                <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}" >
+                            </div>
                         @endif
                     @endforeach
 
@@ -37,14 +37,14 @@
 
             <div id="tinDauTrang">
                 <div class="row">
-                    <div class="col-sm-8" id="tinMoi">
+                    <div class="col-md-8 col-sm-12" id="tinMoi">
                         <div class=" block">
                             <div class="block-header">
                                 <span class="block-title">Tin mới</span>
                             </div>
                             <div class="block-body">
                                 <div class="block-content row nomargin">
-                                    <div class="content-img col-sm-4 nomargin nopadding center">
+                                    <div class="content-img col-sm-4  nomargin nopadding center">
                                         <img id="tinmoi" src="upload/hinhanh/{{ $baivietmoinhat[0]->hinhanh }}" alt="{{ $baivietmoinhat[0]->hinhanh }}" >
                                     </div>
                                     <div class="content-text col-sm-8 nomargin nopadding">
@@ -67,7 +67,7 @@
 
                         </div>
                     </div>
-                    <div class="col-sm-4" id="duAnNoiBat">
+                    <div class="col-sm-12 col-md-4" id="duAnNoiBat">
                         <div class=" block">
                             <div class="block-header">
                                 <span class="block-title">Dự án nội bật</span>
@@ -77,7 +77,7 @@
                                     <div class="row nomargin nopadding" >
                                         @foreach($dsduan  as $duan)
                                             @if($duan->noibat == 1)
-                                                <div class="col-sm-6 col-xm-6 duan-item">
+                                                <div class="col-sm-3 col-xm-3 duan-item">
                                                     <div class="duan-item-img">
                                                         <img src="upload/hinhanh/{{ $duan->hinhanh  }}" class="duannoibat"/>
                                                     </div>
@@ -97,86 +97,118 @@
                 </div>
             </div>
 
-            <div id="dangKyEmail">
-                <div class="form-email">
-                    <div class="title">ĐĂNG KÝ NHẬN THÔNG TIN</div>
-                    <div class="content">
-                        <form class="form-horizontal" method="post" action="/dangkyemail" id="frm-dangkyemail">
-                            {{ csrf_field() }}
-                            <div class="form-group">
-                                <label class="control-label">Họ tên</label> <span class="requireTxt">(*)</span>
-                                <div>
-                                    <input type="text" name="hoten" class="form-control"/>
-                                    <div class="note-error">
-                                        <span class="error mes-note-error" id="errMatKhau"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Email</label> <span class="requireTxt">(*)</span>
-                                <div>
-                                    <input type="text" name="email" class="form-control"/>
-                                    <div class="note-error">
-                                        <span class="error mes-note-error" id="errMatKhau"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label">Số điện thoại</label> <span class="requireTxt">(*)</span>
-                                <div>
-                                    <input type="text" name="sodienthoai" class="form-control"/>
-                                    <div class="note-error">
-                                        <span class="error mes-note-error" id="errMatKhau"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="center">
-                                <button class="btn btn-default btn-lg">
-                                    ĐĂNG KÝ
-                                </button>
-                            </div>
-                        </form>
+            <div id="duAnTrongTam">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 duan-tieude center">
+                        <h1 class="tenDuAnTrongTam">{{ $duantrongtam[0]->tenchude }}</h1>
+                    </div>
+                    <div class="col-sm-12 col-md-12 duan-hinhanh" >
+                        <img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}">
+                    </div>
+                    <div class="col-sm-12 col-md-12 duan-tomtat">
+
+                        <p>{!! $duantrongtam[0]->tomtat !!}</p>
+                    </div>
+                    <div class="col-sm-12 col-md-12 duan-dshinhanh">
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 duan-xemthem">
+                        <div class="center">
+                            <a href="/duan/{{ $duantrongtam[0]->id }}" class="btn btn-primary btn-lg">Xem thêm</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- /.content -->
+
         </div>
-        <!-- /.container -->
+
+        <div id="dangKyEmail">
+            <div class="form-email">
+                <div class="title">ĐĂNG KÝ NHẬN THÔNG TIN</div>
+                <div class="content">
+                    <form class="form-horizontal" method="post" action="/dangkyemail" id="frm-dangkyemail">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label class="control-label">Họ tên</label> <span class="requireTxt">(*)</span>
+                            <div>
+                                <input type="text" name="hoten" class="form-control"/>
+                                <div class="note-error">
+                                    <span class="error mes-note-error" id="errMatKhau"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Email</label> <span class="requireTxt">(*)</span>
+                            <div>
+                                <input type="text" name="email" class="form-control"/>
+                                <div class="note-error">
+                                    <span class="error mes-note-error" id="errMatKhau"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label">Số điện thoại</label> <span class="requireTxt">(*)</span>
+                            <div>
+                                <input type="text" name="sodienthoai" class="form-control"/>
+                                <div class="note-error">
+                                    <span class="error mes-note-error" id="errMatKhau"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="center">
+                            <button class="btn btn-default btn-lg">
+                                ĐĂNG KÝ
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- /.content -->
+    </div>
+    <!-- /.container -->
     </div>
 @endsection
 @section("js")
     <script>
-//        $("#frm-dangkyemail").submit(function(){
-//            var data = $(this).serialize();
-//            var url = $(this).attr("action");
-//            var method = $(this).attr("method");
-//            $.ajaxSetup({
-//                headers: {
-//                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//                }
-//            });
-//            $.ajax({
-//                type: method,
-//                url: url,
-//                data: data,
-//                success: function(data){
-//                    if (mss.status)
-//                    {
-//                        $.notify(mss.message, "success");
-//                        window.location.replace();
-//                    }
-//                    else
-//                    {
-//
-//                    }
-//                },
-//                error: function() {
-//                    console.log('Lỗi khi gọi khi đăng ký email')
-//                }
-//            });
-//            return false;
-//        });
+        //        $("#frm-dangkyemail").submit(function(){
+        //            var data = $(this).serialize();
+        //            var url = $(this).attr("action");
+        //            var method = $(this).attr("method");
+        //            $.ajaxSetup({
+        //                headers: {
+        //                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //                }
+        //            });
+        //            $.ajax({
+        //                type: method,
+        //                url: url,
+        //                data: data,
+        //                success: function(data){
+        //                    if (mss.status)
+        //                    {
+        //                        $.notify(mss.message, "success");
+        //                        window.location.replace();
+        //                    }
+        //                    else
+        //                    {
+        //
+        //                    }
+        //                },
+        //                error: function() {
+        //                    console.log('Lỗi khi gọi khi đăng ký email')
+        //                }
+        //            });
+        //            return false;
+        //        });
 
         var mss = '<?php if(isset($mss)) echo $mss ?>';
         if (mss.status) {

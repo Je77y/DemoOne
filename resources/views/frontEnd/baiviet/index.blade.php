@@ -1,5 +1,6 @@
 @extends('frontEnd/layout/baseClient')
-@section('description', $baiviet->de)
+@section('description', $baiviet->description)
+@section('keywords', $baiviet->keyword)
 @section('title', 'Chi tiết bài viết')
 @section('content')
     <div class="content-wrapper" >
