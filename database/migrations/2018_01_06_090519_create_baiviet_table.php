@@ -17,7 +17,9 @@ class CreateBaivietTable extends Migration
             $table->increments('id');
             $table->integer('chudeid');
             $table->string('tenbaiviet', 250);
-            $table->boolean('hienthi');
+            $table->text('description');
+            $table->string('keyword', 500);
+            $table->boolean('hienthi')->default(0);
             $table->string('hinhanh', 500);
             $table->text('tomtat');
             $table->text('noidung');

@@ -11,9 +11,12 @@ class TaoBangChude extends Migration
         Schema::create('ChuDe', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tenchude')->unique();
-            $table->boolean('duan');
+            $table->boolean('duan')->default(0);
+            $table->boolean('noibat')->default(0);
+            $table->boolean('trongtam')->default(0);
             $table->text('tomtat');
             $table->text('hinhanh');
+            $table->string('tenthuongmai', 500);
             $table->timestamps();
         });
     }

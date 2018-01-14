@@ -103,11 +103,11 @@
                         @endif
                     @endforeach
                 </ol>
-                <div class="carousel-inner" style=" width:100%; height:350px; !important;">
+                <div class="carousel-inner">
                     @foreach($dsslide as $key => $slide)
                         @if ($slide->hienthi == 1)
                             <div class="item @if($key == 0) {{ 'active' }} @endif">
-                                <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}" style="width: 100%; height: 100%">
+                                <img src="upload/slide/{{ $slide->hinhanh }}" alt="{{ $slide->hinhanh }}">
                             </div>
                         @endif
                     @endforeach

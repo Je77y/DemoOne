@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=”description” content=@yield('description') />
     <title>@yield('title')</title>
     <base href="{{ asset('') }}" >
     <!-- Tell the browser to be responsive to screen width -->
@@ -28,7 +29,7 @@
 
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="backend/dist/css/main.css">
-@yield('css')
+    @yield('css')
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>

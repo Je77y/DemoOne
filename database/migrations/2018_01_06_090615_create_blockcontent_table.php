@@ -16,7 +16,8 @@ class CreateBlockcontentTable extends Migration
         Schema::create('BlockContent', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('chudeid');
-            $table->integer('thutu');
+            $table->integer('loaiblockid');
+            $table->boolean('hienthi')->default(0);
             $table->string('tenblock', 250);
             $table->text('tomtat');
             $table->string('subtitle', 250);

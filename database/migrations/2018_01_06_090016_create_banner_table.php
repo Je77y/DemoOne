@@ -19,7 +19,7 @@ class CreateBannerTable extends Migration
             $table->integer('vitri');
             $table->string('lienket', 250);
             $table->string('hinhanh', 500);
-            $table->boolean('hienthi');
+            $table->boolean('hienthi')->default(0);
             $table->timestamps();
         });
     }

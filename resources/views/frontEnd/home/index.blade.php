@@ -1,4 +1,9 @@
 @extends('frontEnd/layout/baseClient')
+@section('css')
+    <style>
+
+    </style>
+@endsection
 @section('title', 'Home')
 @section('content')
     <div class="content-wrapper">
@@ -11,7 +16,7 @@
                         @endif
                     @endforeach
                 </ol>
-                <div class="carousel-inner" >
+                <div class="carousel-inner">
                     @foreach($dsslide as $key => $slide)
                         @if ($slide->hienthi == 1)
                         <div class="item @if($key == 0) {{ 'active' }} @endif">
@@ -72,9 +77,9 @@
                                     <div class="row nomargin nopadding" >
                                         @foreach($dsduan  as $duan)
                                             @if($duan->noibat == 1)
-                                                <div class="col-sm-6 col-xm-12 duan-item">
+                                                <div class="col-sm-6 col-xm-6 duan-item">
                                                     <div class="duan-item-img">
-                                                        <img src="upload/hinhanh/{{ $duan->hinhanh  }}" id="duannoibat"/>
+                                                        <img src="upload/hinhanh/{{ $duan->hinhanh  }}" class="duannoibat"/>
                                                     </div>
                                                     <div class="duan-item-name text-center">
                                                         <a href="/duan/{{ $duan->id }}">{{ $duan->tenthuongmai  }}</a>

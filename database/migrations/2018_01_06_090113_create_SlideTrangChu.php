@@ -16,7 +16,7 @@ class CreateSlideTrangChu extends Migration
         Schema::create('Slide', function (Blueprint $table) {
             $table->increments('id');
             $table->string('hinhanh', 500);
-            $table->boolean('hienthi');
+            $table->boolean('hienthi')->default(0);
             $table->datetime('ngaybatdau');
             $table->datetime('ngayketthuc');
             $table->timestamps();
