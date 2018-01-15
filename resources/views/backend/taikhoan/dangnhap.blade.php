@@ -47,12 +47,13 @@
                 <input type="password" name="matkhau" class="form-control" placeholder="Mật khẩu">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
-            <div class="row">
+            <div class="form-group has-feedback">
 
                 <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
                 <!-- /.col -->
             </div>
         </form>
+        <a href="#">Bạn quên mật khẩu?</a><br>
     </div>
     <!-- /.login-box-body -->
 </div>
