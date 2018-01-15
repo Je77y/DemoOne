@@ -216,8 +216,8 @@
             '<div class="mailbox-attachment-info">\n' +
             '<p><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i>' + data.mota + '</a></p>\n' +
             '<span>\n' +
-            '<a href="/admin/hinhanh/edit/' + data.id +'" class="btn btn-primary" title="Sửa"><i class="fa fa-pencil" aria-hidden="true"></i></a>\n' +
-            '<a href="/admin/hinhanh/destroy/' + data.id +'" class="btn btn-danger" title="Xoá"><i class="fa fa-trash-o" aria-hidden="true"></i></a>\n' +
+            '<button onclick="editHinhAnh(' + data.id +')" class="btn btn-primary" title="Sửa"><i class="fa fa-pencil" aria-hidden="true"></i></button>\n' +
+            '<button onclick="deleteHinhAnh(' + data.id +')" class="btn btn-danger" title="Xoá"><i class="fa fa-trash-o" aria-hidden="true"></i></button>\n' +
             '</span>\n' +
             '</div>\n' +
             '</div>';

@@ -81,19 +81,6 @@ class HinhAnhController extends Controller
         {
             $hinhanh = HinhAnh::find($request->get('id'));
             $hinhanh->mota = $request->get('mota');
-            $hinhanh->blockid = 2;
-            if($request->hasFile('hinhanh'))
-            {
-                $file = $request->file('hinhanh');
-                $duoi = $file->getClientOriginalExtension();
-                if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
-                {
-                    $mss->status = false;
-                    $mss->message = "Sai định dạng ảnh";
-                    return response(json_encode($mss));
-                }
-                $hinhanh->url = $file->getClientOriginalName();
-            }
             try {
                 $hinhanh->save();
             }

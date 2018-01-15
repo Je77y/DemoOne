@@ -15,7 +15,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Mô tả</label> <span class="requireTxt">(*)</span>
-                            <input name="mota" type="text" class="form-control required" placeholder="Tên bài viết" required>
+                            <input name="mota" type="text" class="form-control required" placeholder="Mô tả" required>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
@@ -77,8 +77,8 @@
                     {
                         $.notify(mss.message, "success");
                         // console.log(mss.noidung);
-                        $("#modal-create").modal("hide");
-                        $("#modal-create").html();
+                        $("#modal-create-hinhanh").modal("hide");
+                        $("#modal-create-hinhanh").html();
                         //-----------------------------------
                         reloadAction();
                     }

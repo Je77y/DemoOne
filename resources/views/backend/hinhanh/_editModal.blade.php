@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <form action="/admin/hinhanh/update" role="form" enctype="multipart/form-data" method="POST" id="frm-capnhat">
+                <form action="/admin/hinhanh/update" role="form" method="POST" id="frm-capnhat">
                     <input type="hidden" value="{{ $hinhanh->id }}" name="id">
                     <div class="col-md-12">
                         <div class="form-group">
@@ -21,7 +21,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="file" name="hinhanh" accept=".jpg, .jpeg, .png" >
                             <img class="img-responsive pad" src="upload/hinhanh/{{ $hinhanh->url }}">
                         </div>
                     </div>
@@ -51,34 +50,23 @@
                 }
             });
             var dataString;
-
-            var contentType1 = false;
             var action = $("#frm-capnhat").attr("action");
-            if ($("#frm-capnhat").attr("enctype") == "multipart/form-data") {
-                //this only works in some browsers.
-                //purpose? to submit files over ajax. because screw iframes.
-                //also, we need to call .get(0) on the jQuery element to turn it into a regular DOM element so that FormData can use it.
-                dataString = new FormData($("#frm-capnhat").get(0));
-                contentType1 = false;
-                processData = false;
-            }
-//            console.log(dataString);
 
-//            dataString.noidung = value;
+//            dataString = new FormData($("#frm-capnhat").get(0));
+            dataString = $("#frm-capnhat").serialize();
+
             $.ajax({
                 type: "POST",
                 url: action,
                 data: dataString,
                 dataType: "json", //change to your own, else read my note above on enabling the JsonValueProviderFactory in MVC
-                contentType: false,
-                processData: false,
                 success: function(mss) {
                     if(mss.status)
                     {
                         $.notify(mss.message, "success");
                         // console.log(mss.noidung);
-                        $("#modal-edit").modal("hide");
-                        $("#modal-edit").html();
+                        $("#modal-edit-hinhanh").modal("hide");
+                        $("#modal-edit-hinhanh").html();
                         //-----------------------------------
                         reloadAction();
                     }
