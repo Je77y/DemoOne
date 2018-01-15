@@ -15,7 +15,7 @@
                         <input type="hidden" name="id" value="{{ $banner->id }}">
                         <div class="form-group">
                             <label>Tên banner</label> <span class="requireTxt">(*)</span>
-                            <input name="tenbanner" type="text" value="{{ $banner->tenbanner  }}" class="form-control required" placeholder="Tên bài viết" required>
+                            <input name="tenbanner" type="text" value="{{ $banner->tenbanner  }}" class="form-control required" placeholder="Tên " required>
                             <div class="note-error">
                                 <span class="error mes-note-error"></span>
                             </div>
