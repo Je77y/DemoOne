@@ -37,6 +37,11 @@
                 </a>
             </li>
             <li>
+                <a href="/admin/ghim">
+                    <i class="fa fa-thumb-tack" aria-hidden="true"></i><span>Ghim bài</span>
+                </a>
+            </li>
+            <li>
                 <a href="/admin/lienhe">
                     <i class="fa fa-envelope"></i> <span>Đăng ký Email</span>
                 </a>
