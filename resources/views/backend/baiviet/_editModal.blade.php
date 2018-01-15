@@ -49,13 +49,6 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Url</label> <span class="requireTxt">(*)</span>
-                            <input value="{{ $baiviet->slug }}" name="slug" type="text" class="form-control required" placeholder="Đường dẫn" required>
-                            <div class="note-error">
-                                <span class="error mes-note-error"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="checkbox-inline"><input type="checkbox" value="1" @if ($baiviet->hienthi ==1) {{ 'checked' }} @endif name="hienthi">Hiển thị</label>
                         </div>
                         <div class="form-group">

@@ -151,5 +151,18 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
             Route::get('destroy/{id}', 'LienHeController@Destroy');
             // End LienHe
         });
+
+        Route::group(['prefix' => 'ghim'], function() {
+           // Begin Ghim
+            Route::get('/', 'GhimController@Index');
+            Route::get('create', 'GhimController@Create');
+            Route::post('search', 'GhimController@Search');
+            Route::get('reload', 'GhimController@Reload');
+            Route::post('store', 'GhimController@Store');
+            Route::get('edit/{id}', 'GhimController@Edit');
+            Route::post('update', 'GhimController@Update');
+            Route::get('destroy/{id}', 'GhimController@Destroy');
+            // End Ghim
+        });
     });
 });

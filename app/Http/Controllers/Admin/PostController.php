@@ -130,7 +130,6 @@ class PostController extends Controller
             }
             try {
                 $baiviet->save();
-
             } catch (Exception $e) {
                 $mss->status = false;
                 $mss->message = "Lỗi. Cập nhật thất bại";

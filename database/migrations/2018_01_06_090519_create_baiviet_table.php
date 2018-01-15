@@ -23,6 +23,7 @@ class CreateBaivietTable extends Migration
             $table->string('hinhanh', 500);
             $table->text('tomtat');
             $table->text('noidung');
+            $table->boolean('ghim')->default(0);
             $table->string('slug', 250);
             $table->timestamps();
         });
