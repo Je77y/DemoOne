@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="javascript:void(0)" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
+        <span class="logo-mini"><b>TheLife</b> - Group</span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
+        <span class="logo-lg"><b>TheLife</b> - Group</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -16,13 +16,8 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown user user-menu">
                   <a href="/admin/dangxuat">
-                    <img src="backend/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                    <span class="hidden-xs">Alexander Pierce</span>
+                    <span class="hidden-xs">Chào mừng {{ Auth::User()->name  }}</span>, đăng xuất
                   </a>
-                </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>
