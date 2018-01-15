@@ -31,7 +31,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
             // Begin BaiViet
             Route::get('create/{id}', 'PostController@Create');
             Route::get('{idchude}', 'PostController@Index');
-            Route::get('show/{id}', 'PostController@Show');
             Route::get('reload/{id}', 'PostController@Reload');
             Route::post('store', 'PostController@Store');
             Route::get('edit/{id}', 'PostController@Edit');

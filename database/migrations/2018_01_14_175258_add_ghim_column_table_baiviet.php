@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddPasswordResetsInTableUser extends Migration
+class AddGhimColumnTableBaiviet extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddPasswordResetsInTableUser extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->rememberToken();
+        Schema::table('BaiViet', function (Blueprint $table) {
+            $table->boolean('ghim')->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class AddPasswordResetsInTableUser extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-
+        Schema::table('BaiViet', function (Blueprint $table) {
+            //
         });
     }
 }

@@ -199,8 +199,7 @@
                         "orderable": false,
                         "sClass": "center",
                         "mData": function(data, type, dataToSet) {
-                            var str = '<a href="/admin/baiviet/show/' + data.id + '" ><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a> ';
-                            str += '<a href="javascript:void(0)" onclick="editBaiViet(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>';
+                            var str = '<a href="javascript:void(0)" onclick="editBaiViet(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a>';
                             str += '<a href="javascript:void(0)" onclick="deleteBaiViet(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
 
                             return str;

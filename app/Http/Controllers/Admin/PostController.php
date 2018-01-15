@@ -84,13 +84,6 @@ class PostController extends Controller
         }
     }
 
-    public function Show($id)
-    {
-        $baiviet = BaiViet::find($id);
-        $chude = ChuDe::find( $baiviet->chudeid);
-        return view('backend/baiviet/_showBaiViet', compact(['baiviet', 'chude']));
-    }
-
     public function Edit($id)
     {
         $baiviet = BaiViet::find($id);
