@@ -78,7 +78,7 @@
                         $.notify(mss.message, "success");
                         // console.log(mss.noidung);
                         $("#modal-edit").modal("hide");
-                        $("#modal-edit").empty();
+                        $("#modal-edit").html();
                         //-----------------------------------
                         reloadAction();
                     }

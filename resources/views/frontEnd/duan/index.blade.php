@@ -17,9 +17,7 @@
                             <div class="col-sm-4">
                                 <h1>{{ $block->LoaiBlock->ten }}</h1>
                             </div>
-                            <div class="col-sm-8">
-                                <h2>{{ $block->tenblock }}</h2>
-                            </div>
+
                         </div>
                     </div>
                     <div class="col-sm-5 nomargin nopadding ">

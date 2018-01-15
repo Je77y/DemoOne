@@ -80,11 +80,11 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
 
         Route::group(['prefix' => 'hinhanh'], function(){
             // Begin HinhAnh
-            Route::get('/', 'HinhAnhController@Index');
-            Route::get('create', 'HinhAnhController@Create');
+//            Route::get('/{idblock}', 'HinhAnhController@Index');
+            Route::get('create/{idblock}', 'HinhAnhController@Create');
             Route::post('store', 'HinhAnhController@Store');
             Route::get('show/{id}', 'HinhAnhController@Show');
-            Route::get('reload', 'HinhAnhController@Reload');
+            Route::get('reload/{idblock}', 'HinhAnhController@Reload');
             Route::get('edit/{id}', 'HinhAnhController@Edit');
             Route::post('update', 'HinhAnhController@Update');
             Route::get('destroy/{id}', 'HinhAnhController@Destroy');

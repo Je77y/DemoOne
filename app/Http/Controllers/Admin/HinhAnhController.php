@@ -12,27 +12,23 @@ use MongoDB\Driver\Exception\ExecutionTimeoutException;
 
 class HinhAnhController extends Controller
 {
-    public function Reload()
+    public function Reload($idblock)
     {
-        $dshinhanh = DB::table('HinhAnhBlock')
-            ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
-            ->select('HinhAnhBlock.*', 'BlockContent.tenblock')
+        $dshinhanh = HinhAnh::where('blockid', $idblock)
+            ->orderBy('id', 'desc')
             ->get();
         return response(json_encode($dshinhanh));
     }
 
-    public function Index()
-    {
-        $dshinhanh = json_encode($dshinhanh = DB::table('HinhAnhBlock')
-            ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
-            ->select('HinhAnhBlock.*', 'BlockContent.tenblock')
-            ->get());
-        return view('backend/hinhanh/danhsach', compact('dshinhanh'));
-    }
+//    public function Index($idblock)
+//    {
+//        $dshinhanh = HinhAnh::where('blockid', $idblock)->get();
+//        return view();
+//    }
 
-    public function Create()
+    public function Create($idblock)
     {
-        return view('backend/hinhanh/_createModal');
+        return view('backend/hinhanh/_createModal', compact('idblock'));
     }
 
     public function Store(Request $request)
@@ -42,7 +38,7 @@ class HinhAnhController extends Controller
         {
             $hinhanh = new HinhAnh;
             $hinhanh->mota = $request->get('mota');
-            $hinhanh->blockid = 2;
+            $hinhanh->blockid = $request->get('id');
             if($request->hasFile('hinhanh'))
             {
                 $file = $request->file('hinhanh');
@@ -56,7 +52,7 @@ class HinhAnhController extends Controller
                 $hinhanh->url = $file->getClientOriginalName();
             }
             try {
-            $hinhanh->save();
+                $hinhanh->save();
             }
             catch (Exception $e)
             {

@@ -1,94 +1,21 @@
 @extends('backend/layout/base')
 @section('css')
     <style>
-        .hovereffect {
-            width:100%;
-            height:100%;
-            float:left;
-            overflow:hidden;
-            position:relative;
-            text-align:center;
-            cursor:default;
+        .mailbox-read-message {
+            background: #ecf0f1;
         }
-
-        .hovereffect .overlay {
-            width:100%;
-            height:50.5%;
-            position:absolute;
-            overflow:hidden;
-            top:0;
-            left:0;
-            opacity:0;
-            background-color:rgba(0,0,0,0.5);
-            -webkit-transition:all .4s ease-in-out;
-            transition:all .4s ease-in-out
+        .mailbox-attachment-info {
+            background: #bdc3c7;
         }
-
-        .hovereffect img {
-            display:block;
-            position:relative;
-            -webkit-transition:all .4s linear;
-            transition:all .4s linear;
+        .col-md-3 {
+            margin-top: 5px;
         }
-
-        .hovereffect h2 {
-            text-transform:uppercase;
-            color:#fff;
-            text-align:center;
-            position:relative;
-            font-size:17px;
-            background:rgba(0,0,0,0.6);
-            -webkit-transform:translatey(-100px);
-            -ms-transform:translatey(-100px);
-            transform:translatey(-100px);
-            -webkit-transition:all .2s ease-in-out;
-            transition:all .2s ease-in-out;
-            padding:10px;
-        }
-
-        .hovereffect a.info {
-            text-decoration:none;
-            display:inline-block;
-            text-transform:uppercase;
-            color:#fff;
-            border:1px solid #fff;
-            background-color:transparent;
-            opacity:0;
-            filter:alpha(opacity=0);
-            -webkit-transition:all .2s ease-in-out;
-            transition:all .2s ease-in-out;
-            margin:50px 0 0;
-            padding:7px 14px;
-        }
-
-        .hovereffect a.info:hover {
-            box-shadow:0 0 5px #fff;
-        }
-
-        .hovereffect:hover img {
-            -ms-transform:scale(1.2);
-            -webkit-transform:scale(1.2);
-            transform:scale(1.2);
-        }
-
-        .hovereffect:hover .overlay {
-            opacity:1;
-            filter:alpha(opacity=100);
-        }
-
-        .hovereffect:hover h2,.hovereffect:hover a.info {
-            opacity:1;
-            filter:alpha(opacity=100);
-            -ms-transform:translatey(0);
-            -webkit-transform:translatey(0);
-            transform:translatey(0);
-        }
-
-        .hovereffect:hover a.info {
-            -webkit-transition-delay:.2s;
-            transition-delay:.2s;
+        #dsHinhAnh img {
+            width: 100%;
+            height: 168px;
         }
     </style>
+
 @endsection
 @section('title', 'BlockContent')
 @section('content')
@@ -96,7 +23,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Tổng quan dự án
+                Loại Block: {{ $block->LoaiBlock->ten  }}
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
@@ -144,17 +71,17 @@
                             <!-- /.mailbox-read-message -->
                         </div>
                         <!-- /.box-body -->
-                        <div class="box-header">
-                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                <div class="hovereffect">
-                                    <img style="width: 350px; height: 200px" class="img-responsive" src="upload/hinhanh/07fB-123.jpg" alt="">
-                                    <div class="overlay">
-                                        <h2>Hover effect 3</h2>
-                                        <a class="info" href="#">Cập nhật</a>
-                                        <a class="info" href="#">Xem</a>
-                                    </div>
+                        <div class="box-header with-border">
+                            <div class="mailbox-read-message">
+                                <h3 class="box-title">Danh sách hình ảnh</h3>
+                                <p></p>
+                                <p><button class="btn btn-primary" onclick="createHinhAnh({{ $block->id }})">Thêm hình ảnh</button></p>
+                                <div class="row" id="dsHinhAnh">
+
                                 </div>
                             </div>
+
+
                         </div>
                         <!-- /.box-footer -->
                         <div class="box-footer">
@@ -170,25 +97,139 @@
             <!-- /.row -->
         </section>
         <!-- /.content -->
-        <div class="modal fade" id="modal-edit"></div>
+        <div class="modal fade" id="modal-edit-block"></div>
+        <div class="modal fade" id="modal-edit-hinhanh"></div>
+        <div class="modal fade" id="modal-delete-hinhanh"></div>
+        <div class="modal fade" id="modal-create-hinhanh" ></div>
     </div>
 
 
 
 @endsection
+<script
+        src="https://code.jquery.com/jquery-3.2.1.js"
+        integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+        crossorigin="anonymous"></script>
 <script>
+    var id = parseInt('<?php echo $block->id ?>');
+    var dataObj = decodeURIComponent("<?php echo rawurlencode($dshinhanh); ?>");
+    var jsdata = JSON.parse(dataObj);
+    $(document).ready(function () {
+        loadHinhAnh(jsdata);
+    })
+
     var editBlockContent = function(id) {
         $.ajax({
             type: 'get',
             url: '/admin/blockcontent/edit/'+id,
             success: function(data) {
-                $("#modal-edit").html(data);
-                $("#modal-edit").modal("show");
+                $("#modal-edit-block").html(data);
+                $("#modal-edit-block").modal("show");
             },
             error: function() {
                 console.log('Lỗi')
             }
         })
+    }
+
+    var createHinhAnh = function(id) {
+        $.ajax({
+            type: 'get',
+            url: '/admin/hinhanh/create/'+id,
+            success: function(data) {
+                $("#modal-create-hinhanh").html(data);
+                $("#modal-create-hinhanh").modal("show");
+            },
+            error: function() {
+                console.log('Lỗi')
+            }
+        })
+    }
+
+    var editHinhAnh = function(id) {
+        $.ajax({
+            type: 'get',
+            url: '/admin/hinhanh/edit/'+id,
+            success: function(data) {
+                $("#modal-edit-hinhanh").html(data);
+                $("#modal-edit-hinhanh").modal("show");
+            },
+            error: function() {
+                console.log('Lỗi')
+            }
+        })
+    }
+
+    function deleteHinhAnh(id) {
+        $.confirm({
+            'title': 'Xác nhận xóa',
+            'message': 'Bạn có chắc chắn muốn xóa?',
+            'buttons': {
+                'Đồng ý': {
+                    'class': 'btn-confirm-yes btn-info',
+                    'action': function () {
+                        $.ajax({
+                            type: 'GET',
+                            url: '/admin/hinhanh/destroy/'+id,
+                            dataType: 'json',
+                            success: function(mss) {
+                                if(mss.status){
+                                    $.notify(mss.message, "success");
+                                    $("#modal-delete-hinhanh").modal("hide");
+                                    reloadAction();
+                                }
+                                else {
+                                    $.notify(mss.message, "error");
+                                }
+                            },
+                            error: function() {
+                                $.notify("Lỗi. không thực hiện được thao tác", "error");
+                            }
+                        })
+                    }
+                },
+                'Hủy bỏ': {
+                    'class': 'btn-danger',
+                    'action': function () { }
+                }
+            }
+        });
+    }
+
+    function reloadAction() {
+        $.ajax({
+            type: "get",
+            url: '/admin/hinhanh/reload/'+id,
+            dataType: 'json',
+            success: function(mss) {
+                loadHinhAnh(mss);
+            },
+            error: function() {
+                $.notify("Lỗi. Không thực hiện được thao tác", "error");
+            }
+        })
+    }
+
+    function drawHtml(data) {
+        var str = '<div class="col-md-3">\n' +
+            '<span class="mailbox-attachment-icon has-img"><img src="upload/hinhanh/'+ data.url +'" alt="'+ data.mota +'"></span>\n' +
+            '<div class="mailbox-attachment-info">\n' +
+            '<p><a href="#" class="mailbox-attachment-name"><i class="fa fa-paperclip"></i>' + data.mota + '</a></p>\n' +
+            '<span>\n' +
+            '<a href="/admin/hinhanh/edit/' + data.id +'" class="btn btn-primary" title="Sửa"><i class="fa fa-pencil" aria-hidden="true"></i></a>\n' +
+            '<a href="/admin/hinhanh/destroy/' + data.id +'" class="btn btn-danger" title="Xoá"><i class="fa fa-trash-o" aria-hidden="true"></i></a>\n' +
+            '</span>\n' +
+            '</div>\n' +
+            '</div>';
+        return str;
+    }
+
+    function loadHinhAnh(data) {
+        var a="";
+        $.each(data, function(index, obj) {
+            a+=drawHtml(obj);
+        })
+        $("#dsHinhAnh").html(a);
     }
 </script>
 

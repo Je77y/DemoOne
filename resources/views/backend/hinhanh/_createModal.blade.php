@@ -11,6 +11,7 @@
         <div class="modal-body">
             <div class="row">
                 <form action="/admin/hinhanh/store" role="form" enctype="multipart/form-data" method="POST" id="frm-themmoi">
+                    <input type="hidden" value="{{ $idblock }}" name="id">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label>Mô tả</label> <span class="requireTxt">(*)</span>
@@ -77,7 +78,7 @@
                         $.notify(mss.message, "success");
                         // console.log(mss.noidung);
                         $("#modal-create").modal("hide");
-                        $("#modal-create").empty();
+                        $("#modal-create").html();
                         //-----------------------------------
                         reloadAction();
                     }

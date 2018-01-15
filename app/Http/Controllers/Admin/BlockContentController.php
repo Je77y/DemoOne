@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ChuDe;
+use App\HinhAnh;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\BlockContent;
@@ -18,7 +20,8 @@ class BlockContentController extends Controller
             ->select('BlockContent.*', 'LoaiBlock.ten')
             ->where('chudeid', '=', $idduan)->get();
         $dsblockcontent = json_encode($dsblockcontent1);
-        return view('backend/blockcontent/danhsach', compact('idduan', 'dsblockcontent'));
+        $duan = ChuDe::find($idduan);
+        return view('backend/blockcontent/danhsach', compact(['idduan', 'dsblockcontent', 'duan']));
     }
 
     public function Reload($idduan)
@@ -33,7 +36,8 @@ class BlockContentController extends Controller
     public function Show($id)
     {
         $block = BlockContent::find($id);
-        return view('backend/blockcontent/_showBlockContent', compact('block'));
+        $dshinhanh = HinhAnh::where('blockid', $id)->get();
+        return view('backend/blockcontent/_showBlockContent', compact(['block', 'dshinhanh']));
     }
 
     public function Edit($id)

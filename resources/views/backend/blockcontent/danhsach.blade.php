@@ -8,7 +8,7 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Danh sách BlockContent
+                Chủ đề: <span style="margin-left: 20px">{{ $duan->tenchude }}</span>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Trang chủ</a></li>
@@ -21,7 +21,11 @@
             <div class="row nomargin nopadding" style="margin:0px; padding: 0px">
                 <div class="col-xs-12">
                     <div class="box">
-
+                        <div class="box-header">
+                            <div class="row nomargin nopadding">
+                                <div class="pull-left"><h3>Danh sách BlockContent</h3></div>
+                            </div>
+                        </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <table id="tblBlockContent" class="table table-bordered table-striped" style="width:100%;">
@@ -42,6 +46,9 @@
                         </div>
                         <!-- /.box-body -->
                     </div>
+                </div>
+                <div class="col-xs-12">
+                    <a href="/admin/chude" class="btn btn-info ">Quay lại</a>
                 </div>
             </div>
         </section>
