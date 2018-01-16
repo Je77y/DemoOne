@@ -1,9 +1,4 @@
 @extends('frontEnd/layout/baseClient')
-@section('css')
-    <style>
-
-    </style>
-@endsection
 @section('title', 'Home')
 @section('content')
     <div class="content-wrapper">
@@ -38,7 +33,7 @@
             <div id="tinDauTrang">
                 <div class="row">
                     <div class="col-md-8 col-sm-12" id="tinMoi">
-                        <div class=" block">
+                        <div class="block">
                             <div class="block-header">
                                 <span class="block-title">Tin mới</span>
                             </div>
@@ -59,7 +54,7 @@
                                 <div class="block-content">
                                     <ul>
                                         @foreach($dsbaighim as $baighim)
-                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>@if($baighim->trangthai == 0)<a href="/post/{{ $baighim->baivietid}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
+                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>@if($baighim->trangthai == 0) <a href="/post/{{ $baighim->baivietid}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
                                         @endforeach
                                         @foreach($dsbaiviet as $baiviet)
                                             <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/post/{{ $baiviet->id }}">{{ $baiviet->tenbaiviet }}</a></li>
@@ -113,12 +108,9 @@
                         <p>{!! $duantrongtam[0]->tomtat !!}</p>
                     </div>
                     <div class="col-sm-12 col-md-12 duan-dshinhanh">
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}"></div>
+                        @foreach($dshinhanh as $hinhanh)
+                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $hinhanh->url }}"></div>
+                        @endforeach
                     </div>
                     <div class="col-sm-12 col-md-12 duan-xemthem">
                         <div class="center">
@@ -132,52 +124,9 @@
 
         </div>
 
-        <div id="dangKyEmail">
-            <div class="form-email">
-                <div class="title">ĐĂNG KÝ NHẬN THÔNG TIN</div>
-                <div class="content">
-                    <form class="form-horizontal" method="post" action="/dangkyemail" id="frm-dangkyemail">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <label class="control-label">Họ tên</label> <span class="requireTxt">(*)</span>
-                            <div>
-                                <input type="text" name="hoten" class="form-control"/>
-                                <div class="note-error">
-                                    <span class="error mes-note-error" id="errMatKhau"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Email</label> <span class="requireTxt">(*)</span>
-                            <div>
-                                <input type="text" name="email" class="form-control"/>
-                                <div class="note-error">
-                                    <span class="error mes-note-error" id="errMatKhau"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label">Số điện thoại</label> <span class="requireTxt">(*)</span>
-                            <div>
-                                <input type="text" name="sodienthoai" class="form-control"/>
-                                <div class="note-error">
-                                    <span class="error mes-note-error" id="errMatKhau"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="center">
-                            <button class="btn btn-default btn-lg">
-                                ĐĂNG KÝ
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+    @include('frontEnd/layout/dangKyEmail')
 
-        <!-- /.content -->
-    </div>
-    <!-- /.container -->
+    <!-- /.content -->
     </div>
 @endsection
 @section("js")

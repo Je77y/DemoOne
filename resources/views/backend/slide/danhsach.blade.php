@@ -48,6 +48,9 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
+                <div class="col-xs-12">
+                    <a href="/admin" class="btn btn-info ">Quay lại</a>
+                </div>
             </div>
         </section>
         <!-- /.content -->

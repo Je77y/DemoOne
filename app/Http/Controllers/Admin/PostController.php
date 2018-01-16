@@ -32,11 +32,11 @@ class PostController extends Controller
 
     public function Store(Request $request)
     {
-        $mss = new Message(true, 'Thêm mới bài viết thành công');
+        $mss = new Message(true, "Thêm mới bài viết thành công");
         if($request->ajax())
         {
             $baiviet = new BaiViet;
-            $baiviet->tenbaiviet = ucwords($request->get('tenbaiviet'));
+            $baiviet->tenbaiviet = $request->get('tenbaiviet');
             $baiviet->tomtat = $request->get('tomtat');
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;
@@ -92,11 +92,11 @@ class PostController extends Controller
 
     public function Update(Request $request)
     {
-        $mss = new Message(true, 'Cập nhật bài viết thành công');
+        $mss = new Message(true, "Cập nhật bài viết thành công");
         if($request->ajax())
         {
             $baiviet = BaiViet::find($request->get('id'));
-            $baiviet->tenbaiviet = ucwords($request->get('tenbaiviet'));
+            $baiviet->tenbaiviet = $request->get('tenbaiviet');
             $baiviet->tomtat = $request->get('tomtat');
             $baiviet->noidung = $request->get('noidung');
             $baiviet->hienthi = $request->get('hienthi') == 1 ? 1 : 0;

@@ -89,6 +89,9 @@
             -webkit-transition-delay:.2s;
             transition-delay:.2s;
         }
+
+
+
     </style>
 @endsection
 @section('title', "Dự án")

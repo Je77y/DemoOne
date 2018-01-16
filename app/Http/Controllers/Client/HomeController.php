@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use App\LienHe;
 use App\Slide;
 use Mockery\Exception;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -34,8 +35,15 @@ class HomeController extends Controller
         $dsbaiviet = BaiViet::where('ghim', '!=', 1)->orderBy('id', 'desc')->take(4)->get();
         $dsbaighim = Ghim::orderBy('id', 'desc')->take(2)->get();
         $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->take(4)->get();
-        $duantrongtam = ChuDe::where('trongtam', 1)->first()->get();
-        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan', 'duantrongtam', 'dsbaighim']));
+        $duantrongtam = ChuDe::where('trongtam', 1)->get();
+        $dshinhanh = DB::table('HinhAnhBlock')
+            ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
+            ->join('ChuDe', 'BlockContent.chudeid', '=', 'ChuDe.id')
+            ->where('ChuDe.id', '=', $duantrongtam[0]->id)
+            ->select('HinhAnhBlock.*')
+            ->orderBy('id', 'desc')
+            ->get();
+        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan', 'duantrongtam', 'dsbaighim', 'dshinhanh']));
     }
 
     public function Email(Request $request)

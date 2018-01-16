@@ -13,16 +13,13 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/home">Trang chủ <span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Giới thiệu</a></li>
-                    <li class="dropdown">
+                    <li>
                         <a href="/duan">Dự án </a>
-
+                    </li>
+                    <li>
+                        <a href="/duan">Tuyển dụng </a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="navbar-search-input" placeholder="Tìm kiếm">
-                    </div>
-                </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="mailto:thelifegroup.sales@gmail.com"><i class="fa fa-envelope-o"></i> thelifegroup.sales@gmail.com</a></li>
                     <li><a href="tel:+84917017919"><i class="fa fa-phone"></i> 0917 017 919</a></li>

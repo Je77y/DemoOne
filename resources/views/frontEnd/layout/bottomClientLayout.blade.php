@@ -20,8 +20,8 @@
                                     </ul></div></div>                                </div>
                         <div class="col-xs-12 col-sm-4">
                             <div id="nav_menu-4" class="widget widget_nav_menu"><h4 class="widget-title"><span>Tin tức</span></h4><div class="menu-menu-tin-tuc-container"><ul id="menu-menu-tin-tuc" class="menu"><li id="menu-item-640" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-640"><a href="http://titangroup.vn/thong-cao-bao-chi/">Thông cáo báo chí</a></li>
-                                    </ul></div></div><div id="text-7" class="widget widget_text">			<div class="textwidget"><a href="http://www.dmca.com/Protection/Status.aspx?ID=d0be5d7d-5df1-46f6-a62c-d2a26a36e2c2&amp;refurl=http://titangroup.vn/gioi-thieu-titan-group/" title="DMCA.com Protection Status" class="dmca-badge"> <img src="//images.dmca.com/Badges/_dmca_premi_badge_2.png?ID=d0be5d7d-5df1-46f6-a62c-d2a26a36e2c2" alt="DMCA.com Protection Status"></a> <script src="//images.dmca.com/Badges/DMCABadgeHelper.min.js"> </script></div>
-                            </div>                                </div>
+                                    </ul></div></div>
+                        </div>
                     </div>
                 </div>
             </div>
