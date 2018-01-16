@@ -58,6 +58,9 @@
                                 </div>
                                 <div class="block-content">
                                     <ul>
+                                        @foreach($dsbaighim as $baighim)
+                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>@if($baighim->trangthai == 0)<a href="/post/{{ $baighim->baivietid}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
+                                        @endforeach
                                         @foreach($dsbaiviet as $baiviet)
                                             <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/post/{{ $baiviet->id }}">{{ $baiviet->tenbaiviet }}</a></li>
                                         @endforeach

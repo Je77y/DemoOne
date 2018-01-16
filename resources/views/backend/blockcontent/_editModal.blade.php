@@ -5,7 +5,7 @@
                 <span aria-hidden="true">&times;</span>
             </button>
             <div class="center">
-                <h4 class="modal-title">Cập nhật BlockContent</h4>
+                <h4 class="modal-title">Cập nhật BlockContent: {{ $blockcontent->LoaiBlock->ten }}</h4>
             </div>
         </div>
         <div class="modal-body">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\BaiViet;
 use App\ChuDe;
+use App\Ghim;
 use App\Message;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,10 +31,11 @@ class HomeController extends Controller
             }
         }
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->first()->get();
-        $dsbaiviet = BaiViet::orderBy('id', 'desc')->take(6)->get();
+        $dsbaiviet = BaiViet::where('ghim', '!=', 1)->orderBy('id', 'desc')->take(4)->get();
+        $dsbaighim = Ghim::orderBy('id', 'desc')->take(2)->get();
         $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->take(4)->get();
         $duantrongtam = ChuDe::where('trongtam', 1)->first()->get();
-        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan', 'duantrongtam']));
+        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan', 'duantrongtam', 'dsbaighim']));
     }
 
     public function Email(Request $request)

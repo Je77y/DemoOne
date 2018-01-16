@@ -86,7 +86,6 @@
                         <!-- /.box-footer -->
                         <div class="box-footer">
                             <a href="/admin/blockcontent/{{ $block->ChuDe->id }}" type="button" class="btn btn-default"><i class="fa fa-chevron-left" aria-hidden="true"></i>  Quay lại</a>
-                            <a href="javascript:void(0)" onclick="editBlockContent({{ $block->id }})" type="button" class="btn btn-primary"><i class="fa fa-pencil" aria-hidden="true"></i>  Cập nhật</a>
                         </div>
                         <!-- /.box-footer -->
                     </div>
@@ -97,7 +96,6 @@
             <!-- /.row -->
         </section>
         <!-- /.content -->
-        <div class="modal fade" id="modal-edit-block"></div>
         <div class="modal fade" id="modal-edit-hinhanh"></div>
         <div class="modal fade" id="modal-delete-hinhanh"></div>
         <div class="modal fade" id="modal-create-hinhanh" ></div>
