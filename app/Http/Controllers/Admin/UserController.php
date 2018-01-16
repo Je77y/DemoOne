@@ -139,4 +139,9 @@ class UserController extends Controller
         Auth::logout();
         return redirect('/admin/dangnhap');
     }
+
+    public function ForgotPassword()
+    {
+        return view('backend/taikhoan/quenmatkhau');
+    }
 }

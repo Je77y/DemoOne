@@ -23,6 +23,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function() {
     Route::get('dangnhap', 'UserController@Login');
     Route::post('truycap', 'UserController@Sigin');
     Route::get('dangxuat', 'UserController@Logout');
+    Route::get('quenmatkhau', 'UserController@ForgotPassword');
+    Route::post('xacnhan', 'UserController@Accept');
 
     Route::group(['middleware' => 'adminLogin'], function() {
         Route::get('/', 'AdminController@Index');

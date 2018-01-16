@@ -187,7 +187,7 @@
                     },
                     {
                         "mData": function(data, type, dataToSet) {
-                            var str = data.hienthi === 0 ? '<span class=" badge bg-aqua">Không</span>' : '<span class=" badge bg-green">Có</span>';
+                            var str = data.hienthi == 0 ? '<span class=" badge bg-aqua">Không</span>' : '<span class=" badge bg-green">Có</span>';
                             return str;
                         },
                     },
