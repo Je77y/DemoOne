@@ -1,4 +1,6 @@
 @extends('frontEnd/layout/baseClient')
+@section('description', $duan->description)
+@section('keywords', $duan->keyword)
 @section('title', $duan->tenchude)
 @section('content')
     <div class="content-wrapper" >

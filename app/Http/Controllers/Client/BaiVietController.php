@@ -20,4 +20,9 @@ class BaiVietController extends Controller
         $dsBVChuDe = BaiViet::where('chudeid', $baiViet->chudeid)->get();
         return view('frontEnd/baiviet/index',compact(['baiViet', 'dsBVChuDe', 'dsbaiviet']));
     }
+
+    public function search($slug)
+    {
+//        $baiviet
+    }
 }
