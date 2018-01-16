@@ -31,7 +31,7 @@ class HomeController extends Controller
                 unset($dsslide[$key]);
             }
         }
-        $baivietmoinhat = BaiViet::orderBy('id', 'desc')->first()->get();
+        $baivietmoinhat = BaiViet::orderBy('id', 'desc')->take(1)->get();
         $dsbaiviet = BaiViet::where('ghim', '!=', 1)->orderBy('id', 'desc')->take(4)->get();
         $dsbaighim = Ghim::orderBy('id', 'desc')->take(2)->get();
         $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->take(4)->get();

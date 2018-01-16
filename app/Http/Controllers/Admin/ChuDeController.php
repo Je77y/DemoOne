@@ -50,12 +50,14 @@ class ChuDeController extends Controller
         $mss = new Message(true, 'Thêm mới chủ đề thành công');
         if($request->ajax())
         {
-            $tenchude = ucwords($request->get('tenchude'));
+            $tenchude = $request->get('tenchude');
             $tomtat = $request->get('tomtat');
             $duan = $request->get('loai');
             $noibat = $request->get('noibat') == 1 ? 1 : 0;
             $trongtam = $request->get('trongtam') == 1 ? 1 : 0;
-            $tenthuongmai = ucwords($request->input('tenthuongmai'));
+            $tenthuongmai = $request->input('tenthuongmai');
+            $description = $request->input('description');
+            $keyword = $request->input('keyword');
 
             if($request->hasFile('hinhanh'))
             {
@@ -87,7 +89,17 @@ class ChuDeController extends Controller
                         ->update(['trongtam' => 0]);
                 }
                 $idchude = DB::table('ChuDe')->insertGetId(
-                    ['tenthuongmai' => $tenthuongmai, 'tenchude' => $tenchude, 'tomtat' => $tomtat, 'duan' => $duan, 'hinhanh' => $hinhanh, 'noibat' => $noibat, 'trongtam' => $trongtam]
+                    [
+                        'tenthuongmai' => $tenthuongmai,
+                        'tenchude' => $tenchude,
+                        'tomtat' => $tomtat,
+                        'duan' => $duan,
+                        'hinhanh' => $hinhanh,
+                        'noibat' => $noibat,
+                        'trongtam' => $trongtam,
+                        'description' => $description,
+                        'keyword' => $keyword
+                    ]
                 );
                 $album = DB::table('Album')->insert([
                     'hinhanh' => $hinhanh,
@@ -137,6 +149,8 @@ class ChuDeController extends Controller
             $chude->tomtat = $request->get('tomtat');
             $chude->noibat = $request->get('noibat') == 1 ? 1 : 0;
             $chude->trongtam = $request->get('trongtam') == 1 ? 1 : 0;
+            $chude->keyword = $request->get('keyword');
+            $chude->description = $request->get('description');
             if ($chude->trongtam == 1 && $chude->duan == 1)
             {
                 DB::table('ChuDe')

@@ -1,10 +1,10 @@
 <?php
 
 Route::group(['namespace' => 'Client'], function() {
-    Route::get('/home', 'HomeController@Index');
+    Route::get('/', 'HomeController@Index');
 
     //Begin BAIVIET CLIENT
-    Route::get('/post/{id}', 'BaiVietController@index');
+    Route::get('/baiviet/{id}', 'BaiVietController@index');
 
     #End BAIVIET
 

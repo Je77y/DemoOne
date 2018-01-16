@@ -64,6 +64,7 @@
                                     <th>Hình ảnh</th>
                                     <th>Tên chủ đề</th>
                                     <th>Tên thương mại</th>
+                                    <th>Keyword</th>
                                     <th>Thể loại</th>
                                     <th>Tóm tắt</th>
                                     <th>Trọng tâm</th>
@@ -117,6 +118,20 @@
                                     <div class="form-group">
                                         <label>Tên thương mại</label> <span class="requireTxt">(*)</span>
                                         <input name="tenthuongmai" type="text" class="form-control required" placeholder="Tên thương mại" required>
+                                        <div class="note-error">
+                                            <span class="error mes-note-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Keyword</label> <span class="requireTxt">(*)</span>
+                                        <input name="keyword" type="text" class="form-control required" placeholder="Keyword" required>
+                                        <div class="note-error">
+                                            <span class="error mes-note-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Description</label> <span class="requireTxt">(*)</span>
+                                        <textarea name="description" class="form-control required" style="height: 150px" placeholder="Description" required></textarea>
                                         <div class="note-error">
                                             <span class="error mes-note-error"></span>
                                         </div>
@@ -367,10 +382,16 @@
 
                     },
                     {
-                        "orderable": false,
                         "mData": function(data, type, dataToSet) {
 
                             return data.tenthuongmai;
+                        },
+
+                    },
+                    {
+                        "mData": function(data, type, dataToSet) {
+
+                            return data.keyword;
                         },
 
                     },
@@ -409,9 +430,9 @@
                         "orderable": false,
                         "sClass": "center",
                         "mData": function(data, type, dataToSet) {
-                            var str = '<a href="javascript:void(0)" onclick="suachude(' + data.id + ')"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> ';
-                            str += '<a href="javascript:void(0)" onclick="xoachude(' + data.id + ')" style="color: #f56954"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
-                            str += data.duan == 1 ? ('<a href="/admin/blockcontent/' + data.id + '"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>' + '<a href="/admin/tailieu/' + data.id + '"><i class="fa fa-files-o fa-lg" aria-hidden="true"></i>') : ' ';
+                            var str = '<a href="javascript:void(0)" onclick="suachude(' + data.id + ')" title="Sửa chủ đề"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i></a> ';
+                            str += '<a href="javascript:void(0)" onclick="xoachude(' + data.id + ')" style="color: #f56954" title="Xoá chủ đề"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>';
+                            str += data.duan == 1 ? ('<a href="/admin/blockcontent/' + data.id + '" title="Block Content"><i class="fa fa-info-circle fa-lg" aria-hidden="true"></i>' + '<a href="/admin/tailieu/' + data.id + '" title="Tài liệu dự án"><i class="fa fa-files-o fa-lg" aria-hidden="true"></i>') : ' ';
                             return str;
                         },
 

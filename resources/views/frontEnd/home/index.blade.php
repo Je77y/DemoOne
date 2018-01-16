@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="content-text col-sm-8 nomargin nopadding">
                                         <div class="content-title">
-                                            <a href="/post/{{ $baivietmoinhat[0]->id }}">{{ $baivietmoinhat[0]->tenbaiviet }}</a>
+                                            <a href="/baiviet/{{ $baivietmoinhat[0]->id }}">{{ $baivietmoinhat[0]->tenbaiviet }}</a>
                                         </div>
                                         <div class="content-tomtat">
                                             {{ $baivietmoinhat[0]->tomtat }}
@@ -54,10 +54,10 @@
                                 <div class="block-content">
                                     <ul>
                                         @foreach($dsbaighim as $baighim)
-                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i>@if($baighim->trangthai == 0) <a href="/post/{{ $baighim->baivietid}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
+                                            <li><i class="fa fa-thumb-tack" aria-hidden="true"></i>@if($baighim->trangthai == 0) <a href="/baiviet/{{ $baighim->baivietid}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
                                         @endforeach
                                         @foreach($dsbaiviet as $baiviet)
-                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/post/{{ $baiviet->id }}">{{ $baiviet->tenbaiviet }}</a></li>
+                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $baiviet->id }}">{{ $baiviet->tenbaiviet }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

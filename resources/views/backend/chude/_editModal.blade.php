@@ -28,6 +28,20 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Keyword</label> <span class="requireTxt">(*)</span>
+                            <input name="keyword" type="text" value="{{ $chude->keyword }}" class="form-control required" placeholder="Keyword" required>
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label> <span class="requireTxt">(*)</span>
+                            <textarea name="description" class="form-control required" style="height: 150px" placeholder="Description" required>{{ $chude->description }}</textarea>
+                            <div class="note-error">
+                                <span class="error mes-note-error"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label>Tóm tắt</label> <span class="requireTxt">(*)</span>
                             <textarea name="tomtat" class="form-control required" style="height: 150px" placeholder="Tóm tắt">{{ $chude->tomtat }}</textarea>
                             <div class="note-error">

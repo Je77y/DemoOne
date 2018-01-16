@@ -17,6 +17,8 @@ class TaoBangChude extends Migration
             $table->text('tomtat');
             $table->text('hinhanh');
             $table->string('tenthuongmai', 500);
+            $table->text('description');
+            $table->string('keyword', 500);
             $table->timestamps();
         });
     }

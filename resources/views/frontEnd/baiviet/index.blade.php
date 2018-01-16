@@ -44,7 +44,7 @@
                                 <div class="list-item">
                                     <ul>
                                         @foreach($dsBVChuDe as $bv)
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/post/{{ $bv->id }}">{{ $bv->tenbaiviet  }}</a>
+                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $bv->id }}">{{ $bv->tenbaiviet  }}</a>
                                         </li>
                                         @endforeach
                                     </ul>
