@@ -114,7 +114,7 @@ class ChuDeController extends Controller
                         $block->chudeid = $idchude;
                         $block->tenblock = " ";
                         $block->tomtat = " ";
-                        $block->noidung = " ";
+                        $block->noidung = "null";
                         $block->subtitle = changeTitle($loaiblock->ten);
                         $block->loaiblockid = $loaiblock->id;
                         $block->hienthi = 1;

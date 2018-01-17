@@ -31,9 +31,13 @@
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="backend/dist/css/main.css">
     <link rel="stylesheet" type="text/css" href="backend/dist/css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="backend/css_js/thumbnail-slider.css">
     @yield('css')
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <script src="backend/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="backend/css_js/thumbnail-slider.js"></script>
+
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
@@ -49,7 +53,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="backend/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap 3.3.7 -->
 <script src="backend/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- SlimScroll -->

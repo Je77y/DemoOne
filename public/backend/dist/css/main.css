@@ -423,3 +423,36 @@
 	color: #e67e22;
 	font-weight: bold;
 }
+
+/*Slide hinh anh*/
+
+#dsHinhAnhDuAn a, #dsHinhAnhDuAn span {
+	display: inline-block;
+	padding: 4px 8px;
+	margin-right: 10px;
+	border: 2px solid #000;
+	background: #DDD;
+	color: #000;
+	text-decoration: none;
+	text-align: center;
+	height: 20px;
+}
+#dsHinhAnhDuAn span {background:white;}
+#dsHinhAnhDuAn a {color: #1155CC;}
+
+#duAnTrongTam .title-content{
+	background: #16a085;
+	float: left;
+	padding: 10px 15px;
+	margin: 10px 0px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+}
+
+#duAnTrongTam .bg-dark{
+	background: rgba(52, 73, 94,0.5);
+}

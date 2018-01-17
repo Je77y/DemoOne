@@ -5,8 +5,9 @@ Route::group(['namespace' => 'Client'], function() {
 
     //Begin BAIVIET CLIENT
     Route::get('/baiviet/{id}', 'BaiVietController@index');
-
+    Route::get('/chude/{id}', 'BaiVietController@ChuDeBaiViet');
     #End BAIVIET
+
 
     //Begin GioiThieu du an CLIENT
     Route::get('/duan/{id}', 'DuAnController@Index');

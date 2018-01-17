@@ -15,7 +15,7 @@ class BaiVietController extends Controller
      */
     public function index($slug)
     {
-        $baiviet = BaiViet::where('slug', 'like', $slug)->take(1)->get();
+        $baiviet = BaiViet::where('slug', 'like', $slug)->orderBy('id', 'desc')->take(1)->get();
 //        $id = $baiviet[0]->id;
         $baiViet = $baiviet[0];
         $dsbaiviet = BaiViet::orderBy('id', 'desc')->get();
@@ -26,8 +26,8 @@ class BaiVietController extends Controller
 
     public function ChuDeBaiViet($id)
     {
-        $dsbaiviet = BaiViet::where('chudeid', $id)->get();
+        $dsbaiviet = BaiViet::where('chudeid', $id)->where('hienthi', 1)->get();
         $chude = ChuDe::find($id);
-        return view('fontEnd/baiviet/danhsach', compact(['dsbaiviet', 'chude']));
+        return view('frontEnd/baiviet/danhsach', compact(['dsbaiviet', 'chude']));
     }
 }

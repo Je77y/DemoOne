@@ -1,4 +1,6 @@
 @extends('frontEnd/layout/baseClient')
+@section('css')
+@endsection
 @section('title', 'Home')
 @section('content')
     <div class="content-wrapper">
@@ -104,14 +106,83 @@
                         <img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}">
                     </div>
                     <div class="col-sm-12 col-md-12 duan-tomtat">
-
                         <p>{!! $duantrongtam[0]->tomtat !!}</p>
                     </div>
-                    <div class="col-sm-12 col-md-12 duan-dshinhanh">
-                        @foreach($dshinhanh as $hinhanh)
-                        <div class="col-md-4 hinhanh"><img src="upload/hinhanh/{{ $hinhanh->url }}"></div>
+                    <div class="col-sm-12 col-md-12 duan-tongquat">
+                        @foreach($duantrongtam[0]->BlockContent as $key => $block)
+                            <div class="blockcontent row nomargin">
+                                <div class="blockcontent-header">
+                                    <span class="title-content">{{ $block->LoaiBlock->ten }}</span>
+                                    <div class="row" style="margin-left: 0px; margin-right: 0px;">
+                                        <div class="col-sm-12">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                @if($block->noidung == 'null')
+                                    <div class="col-sm-12 nomargin nopadding body-img">
+                                        @foreach($block->HinhAnh as $hinhanh)
+                                            <img src="upload/hinhanh/{{ $hinhanh->url  }}" alt="{{ $block->tenblock }}">
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <div class="bg-dark col-sm-5 nomargin nopadding ">
+                                        <div class="body-text" >
+                                            {!! $block->noidung !!}
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-7 nomargin nopadding body-img">
+                                        <div id="carousel-example-generic{{$key}}" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                @for($i = 0; $i < count($block->HinhAnh); $i++)
+                                                    <li data-target="#carousel-example-generic{{$key}}" data-slide-to="{{ $i  }}" @if($i == 0) {{'class="active"' }} @endif></li>
+                                                @endfor
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                @for($i = 0; $i < count($block->HinhAnh); $i++)
+                                                    <div class="item @if($i == 0) {{ 'active' }} @endif">
+                                                        <img src="upload/hinhanh/{{ $block->HinhAnh[$i]->url  }}" alt="{{ $block->tenblock }}">
+                                                    </div>
+                                                @endfor
+
+                                            </div>
+                                            <a class="left carousel-control" href="#carousel-example-generic{{$key}}" data-slide="prev">
+                                                <span class="fa fa-angle-left"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-generic{{$key}}" data-slide="next">
+                                                <span class="fa fa-angle-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                            @break;
                         @endforeach
                     </div>
+                    <div id="dsHinhAnhDuAn" class="col-sm-12 col-md-12 duan-dshinhanh">
+
+                        <div class="item">
+                            <div style="max-width:900px;margin:0 auto;padding:100px 0;">
+
+                                <div style="float:left;padding-top:98px;">
+                                    <div id="thumbnail-slider">
+                                        <div class="inner">
+                                            <ul>
+
+                                                @foreach($dshinhanh as $hinhanh)
+                                                    <li>
+                                                        <a class="thumb" href="upload/hinhanh/{{$hinhanh->url}}"></a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div class="col-sm-12 col-md-12 duan-xemthem">
                         <div class="center">
                             <a href="/duan/{{ $duantrongtam[0]->id }}" class="btn btn-primary btn-lg">Xem thêm</a>
@@ -130,6 +201,7 @@
     </div>
 @endsection
 @section("js")
+
     <script>
         //        $("#frm-dangkyemail").submit(function(){
         //            var data = $(this).serialize();
