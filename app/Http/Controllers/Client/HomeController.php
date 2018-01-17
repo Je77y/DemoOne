@@ -43,7 +43,15 @@ class HomeController extends Controller
             ->select('HinhAnhBlock.*')
             ->orderBy('id', 'desc')
             ->get();
-        return view('frontEnd/home/index', compact(['dsslide', 'baivietmoinhat', 'dsbaiviet', 'dsduan', 'duantrongtam', 'dsbaighim', 'dshinhanh']));
+        return view('frontEnd/home/index',
+            compact(['dsslide',
+                'baivietmoinhat',
+                'dsbaiviet',
+                'dsduan',
+                'duantrongtam',
+                'dsbaighim',
+                'dshinhanh'
+            ]));
     }
 
     public function Email(Request $request)

@@ -1,7 +1,7 @@
 @extends('frontEnd/layout/baseClient')
-@section('description', $baiViet->description)
-@section('keywords', $baiViet->keyword)
-@section('title', 'Chi tiết bài viết')
+@section('description', $chude->description)
+@section('keywords', $chude->keyword)
+@section('title', 'Danh sách bài viết')
 @section('content')
     <div class="content-wrapper" >
         <div class="container">
@@ -9,15 +9,15 @@
                 <div class="col-sm-9">
                     <div class="box box-primary">
                         <div class="box-body box-profile">
-                            <div class="baiviet-title">{{$baiViet->tenbaiviet}}</div>
+                            <div class="baiviet-title">{{$baiviet->tenbaiviet}}</div>
 
-                            <div class="baiviet-time">{{$baiViet->created_at}}</div>
+                            <div class="baiviet-time">{{$baiviet->created_at}}</div>
                             <div class="baiviet-chude">
-                                <span>Chủ đề </span><a href="">{{$baiViet->chude->tenchude}}</a>
+                                <span>Chủ đề </span><a href="">{{$baiviet->chude->tenchude}}</a>
                             </div>
 
                             <div class="baiviet-content">
-                                {!!$baiViet->noidung!!}
+                                {!!$baiviet->noidung!!}
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -44,8 +44,8 @@
                                 <div class="list-item">
                                     <ul>
                                         @foreach($dsBVChuDe as $bv)
-                                        <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $bv->slug }}">{{ $bv->tenbaiviet  }}</a>
-                                        </li>
+                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $bv->id }}">{{ $bv->tenbaiviet  }}</a>
+                                            </li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -73,7 +73,7 @@
                                     <ul>
                                         @foreach($dsbaiviet as $key => $baiviet)
                                             @if($key < 5)
-                                                <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $baiviet->slug  }}">{{ $baiviet->tenbaiviet }}</a>
+                                                <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="">{{ $baiviet->tenbaiviet }}</a>
                                                 </li>
                                             @else
                                                 @break

@@ -54,10 +54,10 @@
                                 <div class="block-content">
                                     <ul>
                                         @foreach($dsbaighim as $baighim)
-                                            <li><i class="fa fa-thumb-tack" aria-hidden="true"></i>@if($baighim->trangthai == 0) <a href="/baiviet/{{ $baighim->baivietid}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
+                                            <li><i class="fa fa-thumb-tack" aria-hidden="true"></i>@if($baighim->trangthai == 0) <a href="/baiviet/{{ $baighim->BaiViet->slug}}">{{$baighim->tenbaighim}}</a>  @else <a href="{{$baighim->url}}">{{ $baighim->tenbaighim }}</a> @endif</li>
                                         @endforeach
                                         @foreach($dsbaiviet as $baiviet)
-                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $baiviet->id }}">{{ $baiviet->tenbaiviet }}</a></li>
+                                            <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $baiviet->slug }}">{{ $baiviet->tenbaiviet }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>

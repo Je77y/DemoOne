@@ -16,6 +16,6 @@ class BaiViet extends Model
 
     public function Ghim()
     {
-        return $this->belongsTo(Ghim::class, 'baivietid', 'id');
+        return $this->hasOne(Ghim::class, 'baivietid', 'id');
     }
 }
