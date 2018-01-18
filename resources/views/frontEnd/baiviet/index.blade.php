@@ -43,7 +43,7 @@
                             <div class="list">
                                 <div class="list-item">
                                     <ul>
-                                        @foreach($dsBVChuDe as $bv)
+                                        @foreach($dsBVChuDe as $key => $bv)
                                         <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $bv->slug }}">{{ $bv->tenbaiviet  }}</a>
                                         </li>
                                         @endforeach
@@ -52,7 +52,7 @@
                             </div>
                             <div style="padding-left: 20px;padding-right: 5px; padding-top: 5px; border-top: 1px solid #ccc; margin-top: 10px; text-align: right;">
 
-                                <a href="/chu-de-trong-chu-de-ve-thong-tin-thi-truong" class="linktoall " style="font-weight: bold;"  > Xem thêm</a>
+                                <a href="/chude/{{$baiViet->chude->id}}" class="linktoall " style="font-weight: bold;"  > Xem thêm</a>
 
                             </div>
                         </div>
@@ -72,19 +72,17 @@
                                 <div class="list-item">
                                     <ul>
                                         @foreach($dsbaiviet as $key => $baiviet)
-                                            @if($key < 5)
+
                                                 <li><i class="fa fa-newspaper-o" aria-hidden="true"></i><a href="/baiviet/{{ $baiviet->slug  }}">{{ $baiviet->tenbaiviet }}</a>
                                                 </li>
-                                            @else
-                                                @break
-                                            @endif
+
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
                             <div style="padding-left: 20px;padding-right: 5px; padding-top: 5px; border-top: 1px solid #ccc; margin-top: 10px; text-align: right;">
 
-                                <a href="/chu-de-trong-chu-de-ve-thong-tin-thi-truong" class="linktoall " style="font-weight: bold;"  > Xem thêm</a>
+                                <a href="/" class="linktoall " style="font-weight: bold;"  > Xem thêm</a>
 
                             </div>
                         </div>

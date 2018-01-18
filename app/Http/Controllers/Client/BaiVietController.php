@@ -18,16 +18,16 @@ class BaiVietController extends Controller
         $baiviet = BaiViet::where('slug', 'like', $slug)->orderBy('id', 'desc')->take(1)->get();
 //        $id = $baiviet[0]->id;
         $baiViet = $baiviet[0];
-        $dsbaiviet = BaiViet::orderBy('id', 'desc')->get();
+        $dsbaiviet = BaiViet::orderBy('id', 'desc')->take(5)->get();
 //        $baiViet =  BaiViet::find($id);
-        $dsBVChuDe = BaiViet::where('chudeid', $baiViet->chudeid)->get();
+        $dsBVChuDe = BaiViet::where('chudeid', $baiViet->chudeid)->orderBy('id', 'desc')->take(5)->get();
         return view('frontEnd/baiviet/index',compact(['baiViet', 'dsBVChuDe', 'dsbaiviet']));
     }
 
-    public function ChuDeBaiViet($id)
+    public function ChuDeBaiViet($id, $soluong = 0)
     {
-        $dsbaiviet = BaiViet::where('chudeid', $id)->where('hienthi', 1)->get();
+        $dsbaiviet = BaiViet::where('chudeid', $id)->where('hienthi', 1)->orderBy('id', 'desc')->take(($soluong+1)*10)->get();
         $chude = ChuDe::find($id);
-        return view('frontEnd/baiviet/danhsach', compact(['dsbaiviet', 'chude']));
+        return view('frontEnd/baiviet/danhsach', compact(['dsbaiviet', 'chude', 'soluong']));
     }
 }

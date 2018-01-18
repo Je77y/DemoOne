@@ -30,8 +30,13 @@
                                 </div>
                                 @endforeach
                             </div>
+
                         </div>
-                        <!-- /.box-body -->
+                        <div class="row">
+                            <div class="center">
+                                <a href="/chude/{{ $chude->id  }}/{{ $soluong + 1  }}" class="btn btn-sm btn-primary">Xem thêm</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-3">
