@@ -3,7 +3,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">Vui lòng nhập email của bạn</p>
 
-        <form action="/admin/xacnhan" method="post">
+        <form action="#" method="post">
             {{ csrf_field() }}
             <div class="form-group has-feedback">
                 <input type="email" name="email" class="form-control" placeholder="Email">
