@@ -124,7 +124,7 @@
                 </a>
             </div>
             <div class="center">
-                <img src="upload/devider.png">
+                <img class="diver" src="upload/devider.png">
                 <h2 class="nomargin duan-title">Tất cả các dự án</h2>
             </div>
                 @foreach($dsduan as $duan)

@@ -496,7 +496,7 @@ img {
 
     .container .center img {
         width: 100%;
-        height: 140px;
+        height: auto;
     }
 
 
@@ -529,6 +529,9 @@ img {
     /*.navbar-right{*/
     /*margin-left:150px;*/
     /*}*/
+    .hovereffect img{
+        height: 160px !important;
+    }
     img.diver{
         width: 200px !important;
     }
@@ -550,7 +553,7 @@ img {
         margin: 0px;
     }
     .slimScrollDiv {
-        height: 404px !important;
+        height: 400px !important;
     }
     .navbar-header{
         height: 70px;
@@ -610,7 +613,7 @@ img {
     #duAnNoiBat .block .block-body {
         padding-top: 0px;
         padding-bottom: 0px;
-        height: 404px !important;
+        height: 400px !important;
         overflow: auto;
     }
 
@@ -632,7 +635,7 @@ img {
     }
 
     #tinMoi .block-body {
-        height: auto;
+        height: 400px;
     }
 
     .block-content .content-text .content-title {
@@ -663,32 +666,42 @@ img {
     }
 }
 @media all and (min-width: 1366px) {
+    .navbar-right{
+        margin-left: 200px;
+    }
     #duAnNoiBat{
         padding: 0px 15px;
     }
     .slimScrollDiv {
-        height: 385px !important;
+        height: 400px !important;
     }
 
     #duAnNoiBat .block .block-body {
         padding-top: 0px;
         padding-bottom: 0px;
-        height: 385px !important;
+        height: 400px !important;
         overflow: auto;
+    }
+
+    #tinMoi .block-body{
+        height: 400px;
     }
 }
 
 @media all and (min-width: 1440px) {
+    #tinMoi .block-body{
+        height: 400px;
+    }
     #duAnNoiBat .block-content{
         padding-top: 21px;
     }
     .slimScrollDiv {
-        height: 385px !important;
+        height: 400px !important;
     }
     #duAnNoiBat .block .block-body {
         padding-top: 0px;
         padding-bottom: 0px;
-        height: 385px !important;
+        height: 400px !important;
         overflow: auto;
     }
     .navbar-right{
@@ -740,8 +753,8 @@ img {
     }
 
     .container .center img {
-        width: auto;
-        height: 100px;
+        width: 100%;
+        height: auto;
     }
 
     iframe {
