@@ -430,3 +430,16 @@
 	color: #e67e22;
 	font-weight: bold;
 }
+
+#duAnTrongTam .title-content{
+	background: #16a085;
+	float: left;
+	padding: 10px 15px;
+	margin: 10px 0px;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+}

@@ -105,9 +105,7 @@
                     <div class="col-sm-12 col-md-12 duan-hinhanh" >
                         <img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}">
                     </div>
-                    <div class="col-sm-12 col-md-12 duan-tomtat">
-                        <p>{!! $duantrongtam[0]->tomtat !!}</p>
-                    </div>
+
                     <div class="col-sm-12 col-md-12 duan-tongquat">
                         @foreach($duantrongtam[0]->BlockContent as $key => $block)
                             <div class="blockcontent row nomargin">
