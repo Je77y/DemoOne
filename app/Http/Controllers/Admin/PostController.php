@@ -53,6 +53,8 @@ class PostController extends Controller
                 $duoi = $file->getClientOriginalExtension();
                 if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
                 {
+                    $mss->status = false;
+                    $mss->message('Sai định dạng ảnh');
                     return response(json_encode($mss));
                 }
                 $name = $file->getClientOriginalName();
@@ -112,6 +114,8 @@ class PostController extends Controller
                 $duoi = $file->getClientOriginalExtension();
                 if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
                 {
+                    $mss->status = false;
+                    $mss->message('Sai định dạng ảnh');
                     return response(json_encode($mss));
                 }
                 //$file = '.'. $file;

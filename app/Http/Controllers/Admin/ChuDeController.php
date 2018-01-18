@@ -66,6 +66,8 @@ class ChuDeController extends Controller
                 $duoi = $file->getClientOriginalExtension();
                 if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
                 {
+                    $mss->status = false;
+                    $mss->message = 'Sai dinh dang anh';
                     return response(json_encode($mss));
                 }
 
@@ -165,7 +167,8 @@ class ChuDeController extends Controller
                 $duoi = $file->getClientOriginalExtension();
                 if ($duoi != 'jpg' && $duoi != 'png' && $duoi != 'jpeg')
                 {
-                    $mss = new Message('Loi', 'Sai dinh dang anh');
+                    $mss->status = false;
+                    $mss->message = 'Sai dinh dang anh';
                     return response()->json($mss);
                 }
 
