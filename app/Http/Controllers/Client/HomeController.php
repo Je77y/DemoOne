@@ -32,10 +32,10 @@ class HomeController extends Controller
             }
         }
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->take(1)->get();
-        $dsbaiviet = BaiViet::orderBy('id', 'desc')->skip(1)->take(4)->get();
+        $dsbaiviet = BaiViet::where('ghim', '!=', 1)->orderBy('id', 'desc')->skip(1)->take(4)->get();
         $dsbaighim = Ghim::orderBy('id', 'desc')->take(2)->get();
         $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->get();
-        $duantrongtam = ChuDe::where('trongtam', 1)->get();
+        $duantrongtam = ChuDe::where('trongtam', 1)->take(1)->get();
         $dshinhanh = DB::table('HinhAnhBlock')
             ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
             ->join('ChuDe', 'BlockContent.chudeid', '=', 'ChuDe.id')
@@ -71,7 +71,7 @@ class HomeController extends Controller
             $mss->message = "Bạn ";
         }
 
-        return redirect('/home')->with(json_encode($mss));
+        return redirect('/')->with(json_encode($mss));
     }
 //    public function Email(Request $request)
 //    {
