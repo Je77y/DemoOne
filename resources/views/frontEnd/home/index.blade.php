@@ -156,8 +156,8 @@
                                                 <span class="fa fa-angle-right"></span>
                                             </a>
                                         </div>
-                                    @elseif(count($block->HinhAnh)==1)
-                                        <img src="upload/hinhanh/{{ $block->HinhAnh[0]->url  }}" alt="{{ $block->tenblock }}">
+                                    @elseif(count($block[0]->HinhAnh)==1)
+                                        <img src="upload/hinhanh/{{ $block[0]->HinhAnh[0]->url  }}" alt="{{ $block[0]->tenblock }}">
                                     @endif
                                 </div>
                             @endif
@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @if($block[0]->noidung == 'null')
+                            @if($block[4]->noidung == 'null')
                                 <div class="col-sm-12 nomargin body-img">
                                     @foreach($block[4]->HinhAnh as $hinhanh)
                                         <img src="upload/hinhanh/{{ $hinhanh->url  }}" alt="{{ $block[4]->tenblock }}">
@@ -187,10 +187,10 @@
                                 </div>
                                 <div class="col-sm-7 nomargin body-img">
                                     @if(count($block[4]->HinhAnh)>1)
-                                        <div id="carousel-example-genericabc" class="carousel slide" data-ride="carousel">
+                                        <div id="carousel-example-genericabc4" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
                                                 @for($i = 0; $i < count($block[4]->HinhAnh); $i++)
-                                                    <li data-target="#carousel-example-genericabc" data-slide-to="{{ $i  }}" @if($i == 0) {{'class="active"' }} @endif></li>
+                                                    <li data-target="#carousel-example-genericabc4" data-slide-to="{{ $i  }}" @if($i == 0) {{'class="active"' }} @endif></li>
                                                 @endfor
                                             </ol>
                                             <div class="carousel-inner">
@@ -201,19 +201,27 @@
                                                 @endfor
 
                                             </div>
-                                            <a class="left carousel-control" href="#carousel-example-genericabc" data-slide="prev">
+                                            <a class="left carousel-control" href="#carousel-example-genericabc4" data-slide="prev">
                                                 <span class="fa fa-angle-left"></span>
                                             </a>
-                                            <a class="right carousel-control" href="#carousel-example-genericabc" data-slide="next">
+                                            <a class="right carousel-control" href="#carousel-example-genericabc4" data-slide="next">
                                                 <span class="fa fa-angle-right"></span>
                                             </a>
                                         </div>
-                                    @elseif(count($block->HinhAnh)==1)
-                                        <img src="upload/hinhanh/{{ $block->HinhAnh[0]->url  }}" alt="{{ $block->tenblock }}">
+                                    @elseif(count($block[4]->HinhAnh)==1)
+                                        <img src="upload/hinhanh/{{ $block[4]->HinhAnh[0]->url  }}" alt="{{ $block[4]->tenblock }}">
                                     @endif
                                 </div>
                             @endif
                         </div>
+
+                            <div class="row nomargin" style="padding-top: 10px;">
+                                <div class="center">
+                                    <a href="/duan/{{ $duantrongtam[0]->id }}" class="btn btn-primary btn-lg">Xem thêm</a>
+                                </div>
+
+                            </div>
+
                     </div>
                 </div>
             </div>
