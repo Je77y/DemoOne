@@ -50,6 +50,7 @@ class HinhAnhController extends Controller
                     return response(json_encode($mss));
                 }
                 $hinhanh->url = $file->getClientOriginalName();
+                $file->move("upload/hinhanh", $hinhanh->url);
             }
             try {
                 $hinhanh->save();
