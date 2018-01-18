@@ -13,7 +13,7 @@
 
                             <div class="baiviet-time">{{$baiViet->created_at}}</div>
                             <div class="baiviet-chude">
-                                <span>Chủ đề </span><a href="">{{$baiViet->chude->tenchude}}</a>
+                                <span>Chủ đề </span><a href="/chude/{{ $baiViet->chude->id  }}">{{$baiViet->chude->tenchude}}</a>
                             </div>
 
                             <div class="baiviet-content">

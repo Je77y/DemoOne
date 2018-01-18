@@ -10,7 +10,7 @@
                     <div class="box box-primary">
                         <div class="box-body box-profile">
                             <div class="baiviet-chude" id="chu_de">
-                                <span>Chủ đề </span><a href="">{{$chude->tenchude}}</a>
+                                <span>Chủ đề </span><a href="/chude/{{ $chude->id  }}">{{$chude->tenchude}}</a>
                             </div>
 
                             <div class="baiviet-content" id="baiviet_chude">
