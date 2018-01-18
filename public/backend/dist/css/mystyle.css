@@ -4,6 +4,9 @@ img {
 }
 /* Màn hình diện thoại nhỏ nhất */
 @media all and (min-width: 320px) {
+    img.diver{
+        width: 100px !important;
+    }
     #duAnTrongTam{
         font-family: Tahoma;
     }
@@ -114,7 +117,9 @@ img {
 }
 
 @media all and (min-width: 375px) {
-
+    img.diver{
+        width: 130px !important;
+    }
     #tinDauTrang{
         font-family: tahoma;
     }
@@ -127,7 +132,7 @@ img {
         height: 150px ;
     }
 
-    .container .center img {
+    #duAnTrongTam .center img {
         vertical-align: middle;
         width: 100%;
         height: auto;
@@ -524,6 +529,9 @@ img {
     /*.navbar-right{*/
     /*margin-left:150px;*/
     /*}*/
+    img.diver{
+        width: 200px !important;
+    }
     .main-duan img{
         height: auto;
     }

@@ -100,7 +100,7 @@
             <div id="duAnTrongTam">
                 <div class="row">
                     <div class="center">
-                        <img src="upload/devider.png">
+                        <img class="diver" src="upload/devider.png">
                     </div>
                     <div class="col-sm-12 col-md-12 duan-tieude center">
                         <h1 class="tenDuAnTrongTam">{{ $duantrongtam[0]->tenchude }}</h1>
