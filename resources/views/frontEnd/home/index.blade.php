@@ -99,6 +99,9 @@
 
             <div id="duAnTrongTam">
                 <div class="row">
+                    <div class="center">
+                        <img src="upload/devider.png">
+                    </div>
                     <div class="col-sm-12 col-md-12 duan-tieude center">
                         <h1 class="tenDuAnTrongTam">{{ $duantrongtam[0]->tenchude }}</h1>
                     </div>
@@ -106,86 +109,111 @@
                         <img src="upload/hinhanh/{{ $duantrongtam[0]->hinhanh }}">
                     </div>
 
+                    {{--Tiện ích dự án--}}
                     <div class="col-sm-12 col-md-12 duan-tongquat">
-                        @foreach($duantrongtam[0]->BlockContent as $key => $block)
-                            <div class="blockcontent row nomargin">
-                                <div class="blockcontent-header">
-                                    <span class="title-content">{{ $block->LoaiBlock->ten }}</span>
-                                    <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                                        <div class="col-sm-12">
+                        <?php $block = $duantrongtam[0]->BlockContent ?>
+                        <div class="blockcontent row nomargin bg-dark">
+                            <div class="blockcontent-header">
+                                <span class="title-content">{{ $block[0]->LoaiBlock->ten }}</span>
+                                <div class="row" style="margin-left: 0px; margin-right: 0px;">
+                                    <div class="col-sm-12">
 
-                                        </div>
                                     </div>
                                 </div>
-                                @if($block->noidung == 'null')
-                                    <div class="col-sm-12 nomargin nopadding body-img">
-                                        @foreach($block->HinhAnh as $hinhanh)
-                                            <img src="upload/hinhanh/{{ $hinhanh->url  }}" alt="{{ $block->tenblock }}">
-                                        @endforeach
+                            </div>
+                            @if($block[0]->noidung == 'null')
+                                <div class="col-sm-12 nomargin nopadding body-img">
+                                    @foreach($block[0]->HinhAnh as $hinhanh)
+                                        <img src="upload/hinhanh/{{ $hinhanh->url  }}" alt="{{ $block[0]->tenblock }}">
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="bg-dark col-sm-5 nomargin ">
+                                    <div class="body-text" >
+                                        {!! $block[0]->noidung !!}
                                     </div>
-                                @else
-                                    <div class="bg-dark col-sm-5 nomargin nopadding ">
-                                        <div class="body-text" >
-                                            {!! $block->noidung !!}
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-7 nomargin nopadding body-img">
-                                        <div id="carousel-example-generic{{$key}}" class="carousel slide" data-ride="carousel">
+                                </div>
+                                <div class="col-sm-7 nomargin body-img">
+                                    @if(count($block[0]->HinhAnh)>1)
+                                        <div id="carousel-example-genericabc" class="carousel slide" data-ride="carousel">
                                             <ol class="carousel-indicators">
-                                                @for($i = 0; $i < count($block->HinhAnh); $i++)
-                                                    <li data-target="#carousel-example-generic{{$key}}" data-slide-to="{{ $i  }}" @if($i == 0) {{'class="active"' }} @endif></li>
+                                                @for($i = 0; $i < count($block[0]->HinhAnh); $i++)
+                                                    <li data-target="#carousel-example-genericabc" data-slide-to="{{ $i  }}" @if($i == 0) {{'class="active"' }} @endif></li>
                                                 @endfor
                                             </ol>
                                             <div class="carousel-inner">
-                                                @for($i = 0; $i < count($block->HinhAnh); $i++)
+                                                @for($i = 0; $i < count($block[0]->HinhAnh); $i++)
                                                     <div class="item @if($i == 0) {{ 'active' }} @endif">
-                                                        <img src="upload/hinhanh/{{ $block->HinhAnh[$i]->url  }}" alt="{{ $block->tenblock }}">
+                                                        <img src="upload/hinhanh/{{ $block[0]->HinhAnh[$i]->url  }}" alt="{{ $block[0]->tenblock }}">
                                                     </div>
                                                 @endfor
 
                                             </div>
-                                            <a class="left carousel-control" href="#carousel-example-generic{{$key}}" data-slide="prev">
+                                            <a class="left carousel-control" href="#carousel-example-genericabc" data-slide="prev">
                                                 <span class="fa fa-angle-left"></span>
                                             </a>
-                                            <a class="right carousel-control" href="#carousel-example-generic{{$key}}" data-slide="next">
+                                            <a class="right carousel-control" href="#carousel-example-genericabc" data-slide="next">
                                                 <span class="fa fa-angle-right"></span>
                                             </a>
                                         </div>
-                                    </div>
-                                @endif
-                            </div>
-                            @break;
-                        @endforeach
-                    </div>
-                    <div id="dsHinhAnhDuAn" class="col-sm-12 col-md-12 duan-dshinhanh">
+                                    @elseif(count($block->HinhAnh)==1)
+                                        <img src="upload/hinhanh/{{ $block->HinhAnh[0]->url  }}" alt="{{ $block->tenblock }}">
+                                    @endif
+                                </div>
+                            @endif
+                        </div>
+                        {{--Tiện ích dự án--}}
 
-                        <div class="item">
-                            <div style="max-width:900px;margin:0 auto;padding:100px 0;">
+                        <div class="blockcontent row nomargin bg-orange-n">
+                            <div class="blockcontent-header">
+                                <span class="title-content">{{ $block[4]->LoaiBlock->ten }}</span>
+                                <div class="row" style="margin-left: 0px; margin-right: 0px;">
+                                    <div class="col-sm-12">
 
-                                <div style="float:left;padding-top:98px;">
-                                    <div id="thumbnail-slider">
-                                        <div class="inner">
-                                            <ul>
-
-                                                @foreach($dshinhanh as $hinhanh)
-                                                    <li>
-                                                        <a class="thumb" href="upload/hinhanh/{{$hinhanh->url}}"></a>
-                                                    </li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            @if($block[0]->noidung == 'null')
+                                <div class="col-sm-12 nomargin body-img">
+                                    @foreach($block[4]->HinhAnh as $hinhanh)
+                                        <img src="upload/hinhanh/{{ $hinhanh->url  }}" alt="{{ $block[4]->tenblock }}">
+                                    @endforeach
+                                </div>
+                            @else
+                                <div class="col-sm-5 nomargin ">
+                                    <div class="body-text" >
+                                        {!! $block[4]->noidung !!}
+                                    </div>
+                                </div>
+                                <div class="col-sm-7 nomargin body-img">
+                                    @if(count($block[4]->HinhAnh)>1)
+                                        <div id="carousel-example-genericabc" class="carousel slide" data-ride="carousel">
+                                            <ol class="carousel-indicators">
+                                                @for($i = 0; $i < count($block[4]->HinhAnh); $i++)
+                                                    <li data-target="#carousel-example-genericabc" data-slide-to="{{ $i  }}" @if($i == 0) {{'class="active"' }} @endif></li>
+                                                @endfor
+                                            </ol>
+                                            <div class="carousel-inner">
+                                                @for($i = 0; $i < count($block[4]->HinhAnh); $i++)
+                                                    <div class="item @if($i == 0) {{ 'active' }} @endif">
+                                                        <img src="upload/hinhanh/{{ $block[4]->HinhAnh[$i]->url  }}" alt="{{ $block[4]->tenblock }}">
+                                                    </div>
+                                                @endfor
+
+                                            </div>
+                                            <a class="left carousel-control" href="#carousel-example-genericabc" data-slide="prev">
+                                                <span class="fa fa-angle-left"></span>
+                                            </a>
+                                            <a class="right carousel-control" href="#carousel-example-genericabc" data-slide="next">
+                                                <span class="fa fa-angle-right"></span>
+                                            </a>
+                                        </div>
+                                    @elseif(count($block->HinhAnh)==1)
+                                        <img src="upload/hinhanh/{{ $block->HinhAnh[0]->url  }}" alt="{{ $block->tenblock }}">
+                                    @endif
+                                </div>
+                            @endif
                         </div>
-
-                    </div>
-
-                    <div class="col-sm-12 col-md-12 duan-xemthem">
-                        <div class="center">
-                            <a href="/duan/{{ $duantrongtam[0]->id }}" class="btn btn-primary btn-lg">Xem thêm</a>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -195,49 +223,16 @@
 
 
 
-    <!-- /.content -->
+        <!-- /.content -->
     </div>
 @endsection
 @section("js")
-
     <script>
-        //        $("#frm-dangkyemail").submit(function(){
-        //            var data = $(this).serialize();
-        //            var url = $(this).attr("action");
-        //            var method = $(this).attr("method");
-        //            $.ajaxSetup({
-        //                headers: {
-        //                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        //                }
-        //            });
-        //            $.ajax({
-        //                type: method,
-        //                url: url,
-        //                data: data,
-        //                success: function(data){
-        //                    if (mss.status)
-        //                    {
-        //                        $.notify(mss.message, "success");
-        //                        window.location.replace();
-        //                    }
-        //                    else
-        //                    {
-        //
-        //                    }
-        //                },
-        //                error: function() {
-        //                    console.log('Lỗi khi gọi khi đăng ký email')
-        //                }
-        //            });
-        //            return false;
-        //        });
 
         var mss = '<?php if(isset($mss)) echo $mss ?>';
         if (mss.status) {
             $.notify(mss.message, "success");
         }
-        $("#slimScrollDiv").slimScroll({
-            height: '350px'
-        });
+
     </script>
 @endsection

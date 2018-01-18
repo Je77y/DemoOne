@@ -443,3 +443,17 @@
 	color: white;
 	text-transform: uppercase;
 }
+
+.bg-dark{
+	background: rgba(44, 62, 80,1.0);
+	color: white;
+	padding-bottom: 10px;
+	font-size: medium;
+}
+
+.bg-orange-n{
+	background: rgba(226, 136, 68, 0.86);
+	color: rgba(44, 62, 80,1.0)!important;
+	padding-bottom: 10px;
+	font-size: medium;
+}
