@@ -4,13 +4,16 @@ img {
 }
 /* Màn hình diện thoại nhỏ nhất */
 @media all and (min-width: 320px) {
+    #duAnTrongTam{
+        font-family: Tahoma;
+    }
     .carousel-inner .item img {
         width: 100%;
-        height: 100px; !important;
+        height: 125px; !important;
     }
     .carousel-inner {
         width: 100%;
-        height: 100px;
+        height: 125px;
     }
 
     #tinMoi {
@@ -99,35 +102,22 @@ img {
 
     /*Dự án */
     .center img {
-        height: 70px;
+        height: auto;
     }
-
+    .block-content ul{
+        padding: 10px;
+    }
     .main-duan .duan-hinhanh  img {
         height: 270px;
     }
 
-
-    /* Danh sách bài viết của chủ đề */
-    #chu_de {
-        font-size: 20px;
-        margin: 25px 5px;
-    }
-    #baiviet_chude .center img {
-        /*width: auto;*/
-        /*height: 150px;*/
-        /*margin-bottom: 15px;*/
-        display: none;
-    }
-    #baiviet_chude .block-content {
-        margin-bottom: 25px !important;
-    }
-
-    #baiviet_chude .block-content .content-title a {
-        text-align: left;
-    }
 }
 
 @media all and (min-width: 375px) {
+
+    #tinDauTrang{
+        font-family: tahoma;
+    }
     .carousel-inner {
         width: 100%;
         height: 150px;
@@ -140,7 +130,7 @@ img {
     .container .center img {
         vertical-align: middle;
         width: 100%;
-        height: 110px;
+        height: auto;
     }
     .block-content .content-text .content-title{
         margin-top: 10px;
@@ -270,28 +260,16 @@ img {
     .main-duan .duan-hinhanh  img {
         height: 270px;
     }
-
-
-    /* Danh sách bài viết của chủ đề */
-    #chu_de {
-        font-size: 20px;
-        margin: 25px 5px;
-    }
-    #baiviet_chude .center img {
-        /*width: 100% !important;*/
-        /*height: 150px;*/
-        /*margin-bottom: 15px;*/
-        display: none;
-    }
-    #baiviet_chude .block-content {
-        margin-bottom: 25px !important;
-    }
-    #baiviet_chude .block-content .content-text .content-title {
-        text-align: left !important;
-    }
 }
 
 @media all and (min-width: 425px) {
+    .box-body{
+        font-family: Tahoma;
+    }
+    .box-body .baiviet-content img{
+        max-width: 100%;
+        height: auto;
+    }
     .navbar-nav>li>a {
         padding-top: 5px;
         padding-bottom: 5px;
@@ -392,28 +370,40 @@ img {
     .main-duan .duan-hinhanh  img {
         height: 300px;
     }
-
-    /* Danh sách bài viết của chủ đề*/
-    #chu_de {
-        font-size: 23px;
-        margin: 25px 5px;
-    }
-    #baiviet_chude .center img {
-        width: 100%;
-        height: 100%;
-        margin-bottom: 15px;
-    }
-    #baiviet_chude .content-text .content-title a{
-        font-size: 20px;
-    }
 }
 
 @media all and (min-width: 768px) {
-    .navbar-nav>li>a {
-        padding-top: 20px;
-        padding-bottom: 20px;
+    .main-duan img{
         height: auto;
-        font-size: 16px;
+    }
+    .main-duan img.devide{
+        width: 250px;
+        height: auto;
+    }
+    #duAnTrongTam .duan-hinhanh img{
+        height: auto;
+    }
+    .navbar-header{
+        height: 50px;
+    }
+    .box-body{
+        font-family: Tahoma;
+    }
+    .box-body .baiviet-content img{
+        max-width: 100%;
+        height: auto;
+    }
+    .navbar-brand {
+        font-size: 20px;
+        padding: 6px 15px;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 7px;
+        padding-right: 5px;
+        height: auto;
+        font-size: 14px;
     }
 
     .carousel-inner {
@@ -479,12 +469,8 @@ img {
         height: 282px ;
     }
     .main-header {
-        margin-bottom: 70px;
+        margin-bottom: 50px;
     }
-
-
-
-
 
     .form-email {
         margin: 0px;
@@ -532,38 +518,46 @@ img {
         height: auto;
     }
 
-
-    /* Danh sách bài viết của chủ đề*/
-    #chu_de {
-        font-size: 25px;
-        margin: 20px 5px;
-    }
-    #baiviet_chude .center img {
-        width: 100%;
-        height: 100%;
-        margin-top: 10px;
-        display: block;
-    }
-    #baiviet_chude .content-text {
-        /*padding: 10px !important;*/
-        line-height: 18px;
-    }
-    #baiviet_chude .content-img {
-        padding: 8px !important;
-    }
-    #baiviet_chude .content-text .content-title a{
-        font-size: 13px;
-    }
-    #baiviet_chude .content-text .content-tomtat {
-        overflow: visible;
-        font-size: 13px;
-    }
-
-
 }
 
 @media all and (min-width: 1024px) {
-
+    /*.navbar-right{*/
+    /*margin-left:150px;*/
+    /*}*/
+    .main-duan img{
+        height: auto;
+    }
+    .main-duan .duan-hinhanh  img{
+        height: auto;
+    }
+    #duAnTrongTam{
+        margin-top: 0px;
+    }
+    #duAnNoiBat .block-body .duan-item{
+        padding: 3px;
+        margin: 0px;
+    }
+    #duAnNoiBat .block-content .duan-item{
+        margin: 0px;
+    }
+    .slimScrollDiv {
+        height: 404px !important;
+    }
+    .navbar-header{
+        height: 70px;
+    }
+    .navbar-brand {
+        font-size: 25px;
+        padding: 15px 15px;
+    }
+    .navbar-nav>li>a {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        padding-left: 10px;
+        padding-right: 10px;
+        height: auto;
+        font-size: 17px;
+    }
     .carousel-inner {
         width: 100%;
         height: 350px;
@@ -578,7 +572,7 @@ img {
     }
 
     .carousel-inner .item img {
-        width: 940px;
+        width: 100%;
         height: 530px;
     }
 
@@ -591,10 +585,10 @@ img {
         font-size: 27px;
     }
 
-    .block-content {
-        margin-top: 20px;
-        margin-left: 20px;
+    /*.block-content {
+        margin: 25px 5px;
     }
+    */
 
     .block-content ul {
         padding: 5px;
@@ -607,21 +601,24 @@ img {
     #duAnNoiBat .block .block-body {
         padding-top: 0px;
         padding-bottom: 0px;
-        height: 230px !important;
+        height: 404px !important;
         overflow: auto;
     }
 
     #duAnNoiBat {
         margin-top: 0px;
+        padding:0px;
     }
-
+    #duAnNoiBat .block-content{
+        padding-top: 10px;
+    }
     #duAnNoiBat .block-body {
         overflow-y: scroll;
         overflow-x: hidden;
     }
     .duan-item .duan-item-img img {
         width: 100%;
-        height: 160px;
+        height: 100px;
         max-width: 145px;
     }
 
@@ -656,8 +653,53 @@ img {
         text-align: justify;
     }
 }
+@media all and (min-width: 1366px) {
+    .slimScrollDiv {
+        height: 385px !important;
+    }
+
+    #duAnNoiBat .block .block-body {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 385px !important;
+        overflow: auto;
+    }
+}
 
 @media all and (min-width: 1440px) {
+    #duAnNoiBat .block-content{
+        padding-top: 21px;
+    }
+    .slimScrollDiv {
+        height: 385px !important;
+    }
+    #duAnNoiBat .block .block-body {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        height: 385px !important;
+        overflow: auto;
+    }
+    .navbar-right{
+        margin-left:150px;
+    }
+    .duan-item .duan-item-name {
+        color: #055699;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 10px 0px 15px;
+    }
+
+    .carousel-inner .item img{
+        width: 100%;
+    }
+    .navbar-nav>li>a {
+        padding-top: 17px;
+        padding-bottom: 17px;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: auto;
+        font-size: 17px;
+    }
     .main-header {
         margin-bottom: 70px;
     }
@@ -699,39 +741,4 @@ img {
         margin: 10px;
         padding: 10px;
     }
-
-    /* Danh sách bài viết của chủ đề*/
-    #chu_de {
-        font-size: 25px;
-        margin: 20px 5px;
-    }
-    #baiviet_chude .center img {
-        width: 100%;
-        height: 100%;
-        margin-top: 10px;
-        display: block;
-    }
-    #baiviet_chude .content-text {
-        /*padding: 10px !important;*/
-        line-height: 18px;
-    }
-    #baiviet_chude .content-img img {
-        max-width: 250px;
-    }
-    #baiviet_chude .content-img {
-        padding: 0px !important;
-
-    }
-    #baiviet_chude .content-text .content-title a{
-        font-size: 18px;
-    }
-    #baiviet_chude .content-text .content-tomtat {
-        overflow: visible;
-        font-size: 15px;
-    }
-
-    #
 }
-
-
-
