@@ -36,7 +36,7 @@ class TaiLieuController extends Controller
             $tentailieu = $request->input('tentailieu');
             $file = $request->file('tailieu');
             $extension = $request->tailieu->extension();
-            $url = str_random(4). changeTitle($tentailieu).'.'. $extension;
+            $url = changeTitle($tentailieu).'.'. $extension;
 
             try {
                 $tailieu = new TaiLieuDuAn;

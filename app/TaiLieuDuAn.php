@@ -17,4 +17,9 @@ class TaiLieuDuAn extends Model
         }
         parent::delete();
     }
+
+    public function DuAn()
+    {
+        return $this->belongsTo(ChuDe::class, 'chudeid', 'id');
+    }
 }
