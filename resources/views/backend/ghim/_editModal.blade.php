@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($ghim->trangthai == 1) {{ 'checked' }} @endif name="trangthai" >Trạng thái</label>
+                            <label class="checkbox-inline"><input type="checkbox" value="1" @if($ghim->trangthai == 1) {{ 'checked' }} @endif name="trangthai" >Liên kết trang ngoài</label>
                         </div>
                     </div>
                 </form>
