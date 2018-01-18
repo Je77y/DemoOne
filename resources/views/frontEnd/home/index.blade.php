@@ -77,7 +77,7 @@
                                     <div class="row nomargin nopadding" >
                                         @foreach($dsduan  as $duan)
                                             @if($duan->noibat == 1)
-                                                <div class="col-sm-3 col-xm-3 duan-item">
+                                                <div class="col-sm-3 col-xm-3 col-md-6 duan-item">
                                                     <div class="duan-item-img">
                                                         <img src="upload/hinhanh/{{ $duan->hinhanh  }}" class="duannoibat"/>
                                                     </div>
@@ -192,10 +192,10 @@
                 </div>
             </div>
 
-
+            @include('frontEnd/layout/dangKyEmail')
         </div>
 
-    @include('frontEnd/layout/dangKyEmail')
+
 
     <!-- /.content -->
     </div>

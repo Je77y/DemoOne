@@ -13,15 +13,7 @@
                                         <li id="menu-item-600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-600"><a href="http://titangroup.vn/danh-sach-du-an/">Các dự án phân phối bởi Titan</a></li>
                                         <li id="menu-item-602" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-602"><a href="http://titangroup.vn/lien-he/">Liên hệ</a></li>
                                     </ul></div></div>                                </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <div id="nav_menu-3" class="widget widget_nav_menu"><h4 class="widget-title"><span>Lĩnh vực hoạt động</span></h4><div class="menu-linh-vuc-hoat-dong-container"><ul id="menu-linh-vuc-hoat-dong" class="menu"><li id="menu-item-629" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-629"><a href="http://titangroup.vn/#phan_phoi_bds">Phân phối bất động sản</a></li>
-                                        <li id="menu-item-630" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-630"><a href="http://titangroup.vn/#tu_van_dau_tu">Tư vấn đầu tư</a></li>
-                                        <li id="menu-item-631" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-631"><a href="http://titangroup.vn/#marketing_va_truyen_thong">Marketing và truyền thông</a></li>
-                                    </ul></div></div>                                </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <div id="nav_menu-4" class="widget widget_nav_menu"><h4 class="widget-title"><span>Tin tức</span></h4><div class="menu-menu-tin-tuc-container"><ul id="menu-menu-tin-tuc" class="menu"><li id="menu-item-640" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-640"><a href="http://titangroup.vn/thong-cao-bao-chi/">Thông cáo báo chí</a></li>
-                                    </ul></div></div>
-                        </div>
+
                     </div>
                 </div>
             </div>

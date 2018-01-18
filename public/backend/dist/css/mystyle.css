@@ -531,7 +531,8 @@ img {
         height: auto;
     }
     #duAnTrongTam{
-        margin-top: 0px;
+        clear: both;
+        /*margin-top: 0px;*/
     }
     #duAnNoiBat .block-body .duan-item{
         padding: 3px;
@@ -654,6 +655,9 @@ img {
     }
 }
 @media all and (min-width: 1366px) {
+    #duAnNoiBat{
+        padding: 0px 15px;
+    }
     .slimScrollDiv {
         height: 385px !important;
     }

@@ -32,9 +32,9 @@ class HomeController extends Controller
             }
         }
         $baivietmoinhat = BaiViet::orderBy('id', 'desc')->take(1)->get();
-        $dsbaiviet = BaiViet::where('ghim', '!=', 1)->orderBy('id', 'desc')->take(4)->get();
+        $dsbaiviet = BaiViet::orderBy('id', 'desc')->skip(1)->take(4)->get();
         $dsbaighim = Ghim::orderBy('id', 'desc')->take(2)->get();
-        $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->take(4)->get();
+        $dsduan = ChuDe::where('duan', 1)->orderBy('id', 'desc')->get();
         $duantrongtam = ChuDe::where('trongtam', 1)->get();
         $dshinhanh = DB::table('HinhAnhBlock')
             ->join('BlockContent', 'HinhAnhBlock.blockid', '=', 'BlockContent.id')
