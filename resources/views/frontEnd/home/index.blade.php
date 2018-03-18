@@ -1,5 +1,32 @@
 @extends('frontEnd/layout/baseClient')
 @section('css')
+<style type="text/css">
+        .Ads-cao{
+            position: fixed;
+            top: 85px;
+            right: 0;
+        }
+        .Ads-animation-close{
+            --webkit-animation: myclose 2s infinite;
+            --moz-animation: myclose 2s infinite;
+            animation: myclose 2s;
+
+        }
+        @keyframes myclose {
+            from { right: 0px }
+            to { right: -500px }
+        }
+        @-webkit-keyframes myclose{
+            from { right: 0px }
+            to { right: -500px }
+        }
+        .Ads-close{
+            position: relative;
+            top: 20px;
+            left: 5px;
+            color: #E4F1FE;
+        }
+    </style>
 @endsection
 @section('title', 'Home')
 @section('content')
@@ -233,6 +260,35 @@
 
         <!-- /.content -->
     </div>
+    <div class="Ads-cao">
+        <a class="Ads-close" href="javascript:void(0)" onclick="close_ads()"><i class="fa fa-times" aria-hidden="true"></i></a>
+        <a href=""><img src="http://groupthelife.com/upload/hinhanh/p8cM_anh-baner-sun-grand-city-jpg.jpg"></a>
+    </div>
+
+        <script type="text/javascript">
+        $(document).ready(function() {
+
+            function animation_close(time) {
+                $(".Ads-cao").addClass("Ads-animation-close");
+                setTimeout(function(){
+                    $(".Ads-cao").css("display", "none");
+                }, time);
+            }
+
+            setTimeout(function() {
+                animation_close(2000);
+            }, 8000);
+
+
+        });
+        function close_ads() {
+            $(".Ads-cao").removeClass("Ads-animation-close");
+            $(".Ads-cao").css("display", "none");
+
+        }
+
+           
+        </script>
 @endsection
 @section("js")
     <script>

@@ -35,9 +35,10 @@
     @yield('css')
     <!-- Google Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    
     <script src="backend/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="backend/css_js/thumbnail-slider.js"></script>
-
+    
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-blue layout-top-nav">
@@ -47,6 +48,8 @@
     <!-- Full Width Column -->
         @yield('content')
     <!-- /.content-wrapper -->
+        
+        
 
         @include('frontEnd/layout/bottomClientLayout')
     </div>
